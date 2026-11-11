@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TributaFlow Pro v2.1.0 | Suite Tributaria Oficial para Ecuador</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header Corporativo -->
+    <header class="header">
+        <div class="container nav-container">
+            <div class="logo">
+                <span class="logo-badge">🇪🇨</span>
+                <span class="logo-title">TributaFlow<span class="highlight">Pro</span></span>
+            </div>
+            <nav class="nav-links">
+                <a href="#funciones">Funcionalidades</a>
+                <a href="#tutorial">Video Tutorial</a>
+                <a href="#precios">Planes</a>
+                <a href="#activacion" class="btn-nav">Activar Licencia</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="pill-release">v2.1.0 Commercial Edition • SRI Homologado</div>
+                <h1>Automatización Fiscal y Auditoría Tributaria Inteligente</h1>
+                <p>Descarga masiva de comprobantes del SRI, clasificador jerárquico RIDE, generador de anexos ATS y auditoría contra empresas fantasmas en segundos.</p>
+                <div class="hero-actions">
+                    <a href="#activacion" class="btn-primary">Activar mi Licencia Comercial</a>
+                    <a href="#tutorial" class="btn-secondary">Ver Demostración en Video</a>
+                </div>
+            </div>
+            <div class="hero-card">
+                <div class="mockup-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="mockup-title">TributaFlow Pro - Dashboard</span>
+                </div>
+                <div class="mockup-body">
+                    <div class="stat-box blue">
+                        <span class="stat-label">Comprobantes Indexados</span>
+                        <span class="stat-val">1,482 XMLs</span>
+                    </div>
+                    <div class="stat-box green">
+                        <span class="stat-label">Crédito Tributario IVA</span>
+                        <span class="stat-val">$18,492.30</span>
+                    </div>
+                    <div class="stat-box purple">
+                        <span class="stat-label">Estado de Auditor</span>
+                        <span class="stat-val">100% Conforme SRI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Tutorial & Funcionamiento -->
+    <section id="tutorial" class="section bg-alt">
+        <div class="container text-center">
+            <h2 class="section-title">Instalación, Sincronización y Activación</h2>
+            <p class="section-subtitle">Conoce cómo instalar TributaFlow Pro, sincronizar tus compras del SRI en 1 clic y activar tu licencia de forma permanente.</p>
+            
+            <div class="video-wrapper">
+                <!-- Puedes enlazar tu video de YouTube o un archivo mp4 local -->
+                <div class="video-placeholder">
+                    <iframe 
+                        width="100%" 
+                        height="520" 
+                        src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" 
+                        title="TributaFlow Pro - Tutorial Oficial" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Funcionalidades Clave -->
+    <section id="funciones" class="section">
+        <div class="container">
+            <h2 class="section-title text-center">Diseñado para Contadores y Empresas</h2>
+            <div class="grid-features">
+                <div class="card-feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Sincronizador SRI Playwright</h3>
+                    <p>Conexión directa y desatendida al portal del SRI en línea para descargar todas tus facturas electrónicas emitidas y recibidas.</p>
+                </div>
+                <div class="card-feature">
+                    <div class="feature-icon">🛡</div>
+                    <h3>Auditor Fantasma</h3>
+                    <p>Cruza en tiempo real el catastro del SRI para detectar compras emitidas por proveedores calificados como empresas fantasmas.</p>
+                </div>
+                <div class="card-feature">
+                    <div class="feature-icon">📑</div>
+                    <h3>Generador ATS y RIDE</h3>
+                    <p>Genera reportes PDF RIDE homologados y el XML del Anexo Transaccional Simplificado (ATS) sin errores de estructura.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabla de Precios (Competencia con Perseo) -->
+    <section id="precios" class="section bg-alt">
+        <div class="container">
+            <h2 class="section-title text-center">Planes y Licenciamiento Oficial</h2>
+            <div class="pricing-grid">
+                
+                <!-- Plan Contador -->
+                <div class="pricing-card">
+                    <h3>Profesional Contador</h3>
+                    <p class="pricing-desc">Para contadores independientes y firmas pequeñas.</p>
+                    <div class="price">$120<span> / año</span></div>
+                    <ul class="pricing-features">
+                        <li>✔ 1 Equipo (HWID vinculado)</li>
+                        <li>✔ Hasta 10 RUCs Contribuyentes</li>
+                        <li>✔ Sincronización SRI Automática</li>
+                        <li>✔ Generación de RIDEs en PDF</li>
+                    </ul>
+                    <button class="btn-select-plan" onclick="seleccionarPlan('Profesional Contador', 120)">Elegir Plan</button>
+                </div>
+
+                <!-- Plan Estudio Contable (Destacado) -->
+                <div class="pricing-card featured">
+                    <div class="badge-featured">MÁS POPULAR</div>
+                    <h3>Estudio Corporativo</h3>
+                    <p class="pricing-desc">Para firmas contables con alto volumen de RUCs.</p>
+                    <div class="price">$220<span> / año</span></div>
+                    <ul class="pricing-features">
+                        <li>✔ RUCs Ilimitados</li>
+                        <li>✔ Auditor Fantasma SRI en tiempo real</li>
+                        <li>✔ Exportación Masiva a Excel Formulario 104</li>
+                        <li>✔ Generador ATS Completo</li>
+                        <li>✔ Soporte Técnico Prioritario</li>
+                    </ul>
+                    <button class="btn-select-plan primary" onclick="seleccionarPlan('Estudio Corporativo', 220)">Elegir Plan</button>
+                </div>
+
+                <!-- Plan Vitalicio -->
+                <div class="pricing-card">
+                    <h3>Licencia Vitalicia</h3>
+                    <p class="pricing-desc">Pago único para siempre. Sin suscripciones anuales.</p>
+                    <div class="price">$380<span> pago único</span></div>
+                    <ul class="pricing-features">
+                        <li>✔ 1 Equipo Permanente (10 años RSA-2048)</li>
+                        <li>✔ RUCs Ilimitados de por vida</li>
+                        <li>✔ Todas las actualizaciones fiscales</li>
+                        <li>✔ Respaldo Criptográfico de Licencia</li>
+                    </ul>
+                    <button class="btn-select-plan" onclick="seleccionarPlan('Licencia Vitalicia', 380)">Elegir Plan</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Checkout y Activación Directa -->
+    <section id="activacion" class="section">
+        <div class="container">
+            <div class="activation-box">
+                <h2>Portal Oficial de Emisión de Licencia</h2>
+                <p>Completa tus datos o confirma tu pago para recibir tu Llave Comercial firmada.</p>
+                
+                <form id="formLicencia" class="activation-form" onsubmit="procesarSolicitud(event)">
+                    <div class="form-group">
+                        <label for="hwidInput">Identificador de Equipo (HWID detectado)</label>
+                        <input type="text" id="hwidInput" class="input-mono" placeholder="TF-XXXXXX-XXXXXX-XXXXXX-XXXXXX" required readonly>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="clienteNombre">Nombre o Razón Social</label>
+                            <input type="text" id="clienteNombre" placeholder="Ej. Estudio Contable Machala" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="clienteRUC">RUC del Titular</label>
+                            <input type="text" id="clienteRUC" placeholder="Ej. 0705968071001" maxlength="13" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clienteEmail">Correo Electrónico Corporativo (Para entrega de Certificado)</label>
+                        <input type="email" id="clienteEmail" placeholder="facturacion@tuempresa.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="planSeleccionado">Plan Seleccionado</label>
+                        <input type="text" id="planSeleccionado" value="Estudio Corporativo ($220 / año)" readonly>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Generar Orden y Solicitar Activación Oficial</button>
+                </form>
+
+                <div id="resultadoProceso" class="resultado-box" style="display:none;">
+                    <h3>✅ Solicitud Registrada Oficialmente</h3>
+                    <p>Tu orden ha sido enlazada criptográficamente a tu HWID. Para completar la emisión desatendida, realiza la transferencia bancaria o pago con tarjeta.</p>
+                    <div class="info-transferencia">
+                        <p><strong>Banco:</strong> Banco Pichincha / Guayaquil (Cuenta Corriente)</p>
+                        <p><strong>Titular:</strong> TRIBUTAFLOW SOLUTIONS EC</p>
+                        <p><strong>Envío de comprobante seguro:</strong> licencias@tributaflow.ec</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>© 2026 TributaFlow Pro Ecuador. Todos los derechos reservados. Validación RSA-2048/SHA256.</p>
+        </div>
+    </footer>
+
+    <!-- Widget Flotante de Soporte e Instalación Asistida -->
+    <div class="support-floating-widget">
+        <a href="mailto:soporte@tributaflow.ec?subject=Ayuda%20con%20Instalacion%20TributaFlow" class="btn-support" title="Mesa de Ayuda e Instalación">
+            <span class="support-icon">🎧</span>
+            <span class="support-text">Soporte e Instalación</span>
+        </a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
