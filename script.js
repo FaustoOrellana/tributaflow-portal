@@ -1,10 +1,8 @@
 "use strict";
-
 /**
  * QUORATEC SECURITY & CHECKOUT ENGINE v2.1
  * Protección anti-manipulación de enlaces de pago, validación de dominio y sanitización Anti-XSS
  */
-
 // 1. Catálogo inmutable congelado en memoria (Object.freeze)
 const CATALOGO_PLANES = Object.freeze({
     personal: Object.freeze({
