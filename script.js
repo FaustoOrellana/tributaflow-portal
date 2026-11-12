@@ -1,59 +1,68 @@
 "use strict";
 /**
- * QUORATEC SECURITY & CHECKOUT ENGINE v2.1.0
+ * QUORATEC SECURITY & CHECKOUT ENGINE v2.2.0 Enterprise
  * Protección anti-manipulación de enlaces de pago, validación de dominio,
- * autodetección de instaladores nativos y sanitización Anti-XSS
+ * autodetección de instaladores nativos v2.2.0 y sanitización Anti-XSS
  */
-// 1. Catálogo inmutable congelado en memoria (Object.freeze)
+
+// 1. Catálogo inmutable de suscripciones anuales congelado en memoria
 const CATALOGO_PLANES = Object.freeze({
     personal: Object.freeze({
         id: "personal",
         nombre: "Licencia Anual Personal Pro",
         precio: "39.00",
+        etiquetaPrecio: "$39.00 USD / año",
+        esCorporativo: false,
         urlPayphone: "https://ppls.me/EL3ETzqgERrFbxp12ysVA"
     }),
     contador: Object.freeze({
         id: "contador",
         nombre: "Licencia Anual Contador Master",
         precio: "89.00",
+        etiquetaPrecio: "$89.00 USD / año",
+        esCorporativo: false,
         urlPayphone: "https://ppls.me/nCkv1fVRqiAqs1c9aybBw"
     }),
-    empresarial: Object.freeze({
-        id: "empresarial",
-        nombre: "Licencia Anual Empresarial",
+    estudio: Object.freeze({
+        id: "estudio",
+        nombre: "Licencia Anual Estudio Contable Pro",
         precio: "169.00",
+        etiquetaPrecio: "$169.00 USD / año",
+        esCorporativo: false,
         urlPayphone: "https://ppls.me/73i5byfZ25yoQj5nOybw"
     }),
-    vitalicio: Object.freeze({
-        id: "vitalicio",
-        nombre: "Licencia Vitalicia Corporativa",
-        precio: "299.00",
-        urlPayphone: "https://ppls.me/3GMPcKPBk3TjHOfTyH16Q"
+    enterprise: Object.freeze({
+        id: "enterprise",
+        nombre: "Licencia Anual Enterprise Server (5+ Estaciones)",
+        precio: "1,490.00",
+        etiquetaPrecio: "Desde $1,490.00 USD / año",
+        esCorporativo: true,
+        urlPayphone: ""
     })
 });
 
-// 2. Instaladores Oficiales v2.1.0 (Repositorio Público)
+// 2. Instaladores Oficiales v2.2.0 Enterprise (Repositorio Público)
 const INSTALADORES_OFICIALES = Object.freeze({
     windows: Object.freeze({
         eyebrow: "INSTALADOR OFICIAL WINDOWS 10 / 11 (64-BIT)",
-        archivo: "TributaFlow_Pro_v2.1.0_Windows_x64_Setup.exe",
-        tamano: "79.6 MB",
+        archivo: "TributaFlow_Pro_v2.2.0_Enterprise_Windows_x64_Setup.exe",
+        tamano: "80.0 MB",
         boton: "⬇ Descargar para Windows (.exe)",
-        url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.1.0/TributaFlow_Pro_v2.1.0_Windows_x64_Setup.exe"
-    }),
-    macos: Object.freeze({
-        eyebrow: "INSTALADOR OFICIAL macOS (APPLE SILICON / INTEL)",
-        archivo: "TributaFlow_Pro_v2.1.0_macOS.dmg",
-        tamano: "86.7 MB",
-        boton: "⬇ Descargar para macOS (.dmg)",
-        url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.1.0/TributaFlow_Pro_v2.1.0_macOS.dmg"
+        url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.2.0/TributaFlow_Pro_v2.2.0_Enterprise_Windows_x64_Setup.exe"
     }),
     linux: Object.freeze({
         eyebrow: "PAQUETE OFICIAL LINUX (UBUNTU / DEBIAN / MINT)",
-        archivo: "TributaFlow_Pro_v2.1.0_Linux_amd64.deb",
-        tamano: "106 MB",
+        archivo: "TributaFlow_Pro_v2.2.0_Linux_amd64.deb",
+        tamano: "109 MB",
         boton: "⬇ Descargar para Linux (.deb)",
-        url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.1.0/TributaFlow_Pro_v2.1.0_Linux_amd64.deb"
+        url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.2.0/TributaFlow_Pro_v2.2.0_Linux_amd64.deb"
+    }),
+    macos: Object.freeze({
+        eyebrow: "INSTALADOR OFICIAL macOS (APPLE SILICON / INTEL)",
+        archivo: "TributaFlow_Pro_v2.2.0_macOS.dmg",
+        tamano: "87.4 MB",
+        boton: "⬇ Descargar para macOS (.dmg)",
+        url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.2.0/TributaFlow_Pro_v2.2.0_macOS.dmg"
     })
 });
 
@@ -64,7 +73,7 @@ const CANALES_OFICIALES = Object.freeze({
     dominiosPagoPermitidos: Object.freeze(["ppls.me", "payphone.app"])
 });
 
-let planSeleccionadoActual = "empresarial";
+let planSeleccionadoActual = "estudio";
 
 // 4. Detección de Sistema Operativo del Visitante
 function detectarSistemaOperativo() {
@@ -130,58 +139,61 @@ const DOCUMENTOS_LEGALES = Object.freeze({
     terminos: Object.freeze({
         titulo: "Términos y Condiciones de Servicio",
         bloques: [
-            { sub: "1. Naturaleza del Software", txt: "TributaFlow Pro v2.1.0 es una solución desarrollada por Quoratec Software Solutions para la descarga masiva, clasificación y auditoría de comprobantes electrónicos del SRI Ecuador." },
-            { sub: "2. Responsabilidad Tributaria", txt: "La revisión final, cuadre contable y presentación oportuna de declaraciones (Formulario 104, ATS) ante el SRI corresponde al contribuyente o contador responsable." },
-            { sub: "3. Licenciamiento HWID", txt: "Cada licencia está vinculada criptográficamente al identificador de hardware (HWID) del equipo registrado mediante firma RSA-2048." }
+            { sub: "1. Naturaleza del Software", txt: "TributaFlow Pro v2.2.0 Enterprise es una suite desarrollada por Quoratec Software Solutions para la sincronización masiva, validación XSD y auditoría de comprobantes electrónicos del SRI Ecuador." },
+            { sub: "2. Responsabilidad Tributaria", txt: "La revisión contable final y presentación oportuna de declaraciones (Formulario 104, ATS) ante el Servicio de Rentas Internas corresponde exclusivamente al contribuyente o contador responsable." },
+            { sub: "3. Licenciamiento Criptográfico HWID", txt: "Cada licencia anual se vincula mediante firma digital RSA-2048 al identificador de hardware (HWID) del equipo autorizado." }
         ]
     }),
     privacidad: Object.freeze({
-        titulo: "Privacidad Zero-Knowledge y Datos SRI",
+        titulo: "Arquitectura Zero-Knowledge y Privacidad SRI",
         bloques: [
-            { sub: "1. Almacenamiento 100% Local", txt: "Ninguna factura XML, credencial del SRI ni base de datos SQLite se sube a servidores externos. Todo reside cifrado en tu propio disco duro." },
-            { sub: "2. Cero Telemetría", txt: "Quoratec no recolecta información financiera ni comercial de tus clientes." }
+            { sub: "1. Bóveda Multi-Tenant 100% Local", txt: "Ninguna factura XML, credencial del SRI ni base de datos SQLite se transmite a servidores de Quoratec. Toda la contabilidad permanece aislada y cifrada en el almacenamiento local del cliente." },
+            { sub: "2. Cero Telemetría Comercial", txt: "Quoratec no recopila, analiza ni comercializa información financiera o tributaria de tus contribuyentes." }
         ]
     }),
     licenciamiento: Object.freeze({
-        titulo: "Política de Licencias y Soporte",
+        titulo: "Política de Suscripciones Anuales y Soporte",
         bloques: [
-            { sub: "1. Evaluación Gratuita", txt: "Dispones de 15 días de prueba funcional completa antes de adquirir una licencia." },
-            { sub: "2. Activación Inmediata", txt: "Una vez confirmado el pago en Payphone, se genera el certificado comercial (.lic) para tu equipo y se envía a tu correo o WhatsApp." }
+            { sub: "1. Período de Evaluación", txt: "TributaFlow Pro ofrece 15 días de prueba funcional completa sin costo antes de requerir una suscripción anual." },
+            { sub: "2. Vigencia y Actualizaciones Normativas", txt: "Todas las licencias tienen vigencia de 365 días calendario a partir de su emisión e incluyen actualizaciones ante cambios de esquemas XML/XSD del SRI." },
+            { sub: "3. Activación Inmediata", txt: "Una vez verificado el pago vía Payphone o transferencia corporativa, el certificado comercial (.lic) se genera y entrega por correo electrónico o WhatsApp." }
         ]
     })
 });
 
 // 8. Inicialización Segura del DOM
 document.addEventListener("DOMContentLoaded", () => {
-    // Configurar instalador recomendado según el sistema operativo del usuario
     configurarDescargasMultiplataforma();
 
-    // Feedback visual al iniciar descarga directa nativa (sin salir de la página)
     const btnPrincipal = document.getElementById("btnDescargaPrincipal");
     if (btnPrincipal) {
         btnPrincipal.addEventListener("click", () => {
             const textoOriginal = btnPrincipal.textContent;
-            btnPrincipal.textContent = "⏳ Descargando instalador...";
+            btnPrincipal.textContent = "⏳ Iniciando descarga segura...";
             setTimeout(() => {
                 btnPrincipal.textContent = textoOriginal;
             }, 3000);
         });
     }
 
-    // Configurar botón flotante de soporte con el número secundario
     const btnFlotante = document.getElementById("btnFlotanteSoporte");
     if (btnFlotante) {
-        const saludo = encodeURIComponent("Hola Quoratec, tengo una consulta sobre TributaFlow Pro.");
+        const saludo = encodeURIComponent("Hola Quoratec, necesito asesoría técnica sobre TributaFlow Pro v2.2.0 Enterprise.");
         btnFlotante.href = `https://wa.me/${CANALES_OFICIALES.whatsappNumero}?text=${saludo}`;
     }
 
-    // Detectar parámetros si el cliente llega desde el programa de escritorio (?device_id=...&plan=...)
+    // Compatibilidad con parámetros enviados desde la aplicación de escritorio (?device_id=...&plan=...)
     const params = new URLSearchParams(window.location.search);
     const deviceId = limpiarHWID(params.get("device_id") || params.get("hwid") || "");
     const planParam = (params.get("plan") || "").toLowerCase().trim();
 
-    if (planParam && CATALOGO_PLANES[planParam]) {
-        planSeleccionadoActual = planParam;
+    if (planParam) {
+        // Alias de compatibilidad si el cliente llega con ?plan=empresarial desde versiones previas
+        const mapaAlias = { empresarial: "estudio", vitalicio: "enterprise" };
+        const planResuelto = CATALOGO_PLANES[planParam] ? planParam : mapaAlias[planParam];
+        if (planResuelto) {
+            planSeleccionadoActual = planResuelto;
+        }
     }
 
     if (deviceId) {
@@ -192,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Asignar eventos de clic en tarjetas y botones de planes
+    // Eventos en tarjetas y botones de planes
     document.querySelectorAll(".plan-card, .btn-plan").forEach((elemento) => {
         elemento.addEventListener("click", (e) => {
             e.stopPropagation();
@@ -203,7 +215,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Actualizar enlaces dinámicos cuando el usuario escribe su HWID o correo
     const hwidInput = document.getElementById("hwidModal");
     if (hwidInput) {
         hwidInput.addEventListener("input", (e) => {
@@ -220,14 +231,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Modales Legales
     document.querySelectorAll(".legal-trigger").forEach((btn) => {
         btn.addEventListener("click", () => {
             mostrarLegal(btn.getAttribute("data-legal"));
         });
     });
 
-    // Cierre de modales
     document.getElementById("btnCerrarCheckout")?.addEventListener("click", () => {
         document.getElementById("modalCheckout").style.display = "none";
     });
@@ -246,16 +255,38 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// 9. Apertura segura de Checkout
+// 9. Apertura segura de Checkout (Soporta pasarela Payphone y flujo corporativo Enterprise)
 function abrirCheckout(planId) {
     const plan = CATALOGO_PLANES[planId];
-    if (!plan || !esUrlSeguraPayphone(plan.urlPayphone)) return;
+    if (!plan) return;
+
+    if (!plan.esCorporativo && !esUrlSeguraPayphone(plan.urlPayphone)) return;
 
     planSeleccionadoActual = planId;
 
     document.getElementById("modalPlanTitulo").textContent = plan.nombre;
-    document.getElementById("modalPlanPrecio").textContent = `$${plan.precio} USD`;
-    document.getElementById("btnPagarPayphone").href = plan.urlPayphone;
+    document.getElementById("modalPlanPrecio").textContent = plan.etiquetaPrecio;
+
+    const btnPayphone = document.getElementById("btnPagarPayphone");
+    const badgeModal = document.getElementById("modalBadgeTexto");
+    const postInstruccion = document.getElementById("postPaymentInstruccion");
+
+    if (plan.esCorporativo) {
+        if (btnPayphone) btnPayphone.style.display = "none";
+        if (badgeModal) badgeModal.textContent = "DESPLIEGUE CORPORATIVO MULTI-ESTACIÓN";
+        if (postInstruccion) {
+            postInstruccion.innerHTML = "<strong>Solicita tu cotización y despliegue Enterprise</strong> indicando el número de estaciones y correo corporativo:";
+        }
+    } else {
+        if (btnPayphone) {
+            btnPayphone.style.display = "flex";
+            btnPayphone.href = plan.urlPayphone;
+        }
+        if (badgeModal) badgeModal.textContent = "PASARELA OFICIAL VERIFICADA";
+        if (postInstruccion) {
+            postInstruccion.innerHTML = "<strong>2. Una vez completado el pago</strong>, envía tu comprobante para emitir tu llave criptográfica RSA-2048 por tu canal preferido:";
+        }
+    }
 
     actualizarCanalesConfirmacion();
     document.getElementById("modalCheckout").style.display = "flex";
@@ -269,30 +300,36 @@ function actualizarCanalesConfirmacion() {
     const hwid = limpiarHWID(document.getElementById("hwidModal").value) || "PENDIENTE_ENVIAR";
     const emailCliente = limpiarEmail(document.getElementById("emailModal").value) || "NO_INGRESADO";
 
-    // A. Enlace para WhatsApp
-    const msgWp = `Hola Quoratec, realicé el pago en Payphone para TributaFlow Pro:%0A%0A` +
-        `• *Plan:* ${encodeURIComponent(plan.nombre)} ($${plan.precio} USD)%0A` +
-        `• *HWID:* ${encodeURIComponent(hwid)}%0A` +
+    const encabezadoMsg = plan.esCorporativo
+        ? `Hola Quoratec, solicito información y activación corporativa para TributaFlow Pro v2.2.0 Enterprise:%0A%0A`
+        : `Hola Quoratec, realicé el pago en Payphone para TributaFlow Pro v2.2.0:%0A%0A`;
+
+    const cierreMsg = plan.esCorporativo
+        ? `Quedo atento a la propuesta comercial y emisión de licencias para nuestras estaciones.`
+        : `Adjunto mi comprobante para la emisión de mi certificado anual RSA-2048.`;
+
+    const msgWp = encabezadoMsg +
+        `• *Plan:* ${encodeURIComponent(plan.nombre)} (${encodeURIComponent(plan.etiquetaPrecio)})%0A` +
+        `• *HWID Principal:* ${encodeURIComponent(hwid)}%0A` +
         `• *Correo entrega:* ${encodeURIComponent(emailCliente)}%0A%0A` +
-        `Adjunto mi comprobante para la emisión de mi licencia RSA-2048.`;
+        cierreMsg;
 
     document.getElementById("btnConfirmarWpModal").href = `https://wa.me/${CANALES_OFICIALES.whatsappNumero}?text=${msgWp}`;
 
-    // B. Enlace para Correo Electrónico
-    const asuntoEmail = encodeURIComponent(`Activación Licencia TributaFlow Pro - ${plan.nombre}`);
+    const asuntoEmail = encodeURIComponent(`${plan.esCorporativo ? "Solicitud Enterprise" : "Activación Licencia Anual"} TributaFlow Pro v2.2.0 - ${plan.nombre}`);
     const cuerpoEmail = encodeURIComponent(
-        `Hola equipo de Quoratec,\n\n` +
-        `He realizado el pago correspondiente a:\n` +
-        `- Plan: ${plan.nombre} ($${plan.precio} USD)\n` +
-        `- HWID de mi equipo: ${hwid}\n` +
-        `- Correo para recibir la llave (.lic): ${emailCliente}\n\n` +
-        `Adjunto mi comprobante de pago de Payphone.\n\nSaludos.`
+        `Hola equipo de Quoratec Software Solutions,\n\n` +
+        `Detalle de solicitud para TributaFlow Pro v2.2.0 Enterprise:\n` +
+        `- Plan: ${plan.nombre} (${plan.etiquetaPrecio})\n` +
+        `- HWID de equipo: ${hwid}\n` +
+        `- Correo para entrega de certificados (.lic): ${emailCliente}\n\n` +
+        `${plan.esCorporativo ? "Por favor contáctennos para coordinar el despliegue multi-estación." : "Adjunto el comprobante de pago de Payphone."}\n\nSaludos.`
     );
 
     document.getElementById("btnConfirmarEmailModal").href = `mailto:${CANALES_OFICIALES.correoSoporte}?subject=${asuntoEmail}&body=${cuerpoEmail}`;
 }
 
-// 11. Renderizado seguro sin innerHTML
+// 11. Renderizado seguro sin innerHTML para documentos legales
 function mostrarLegal(tipo) {
     const doc = DOCUMENTOS_LEGALES[tipo];
     if (!doc) return;
