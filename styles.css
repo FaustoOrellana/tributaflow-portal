@@ -181,8 +181,20 @@ body {
 
 .hero-buttons {
     display: flex;
+    flex-wrap: wrap;
     gap: 14px;
     margin-bottom: 40px;
+}
+
+.btn-sales {
+    border-color: rgba(56, 189, 248, 0.35);
+    color: var(--accent);
+}
+
+.btn-sales:hover {
+    border-color: var(--accent);
+    background: rgba(56, 189, 248, 0.12);
+    color: #fff;
 }
 
 .btn-glow {
@@ -456,6 +468,15 @@ body {
     overflow: hidden;
     border: 1px solid var(--border-subtle);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    background: #050811;
+}
+
+.video-frame video {
+    width: 100%;
+    max-height: 540px;
+    display: block;
+    border-radius: 12px;
+    background: #050811;
 }
 
 /* Pricing Grid con Interacción Real */

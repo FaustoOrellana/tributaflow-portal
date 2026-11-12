@@ -52,6 +52,7 @@
                 <div class="hero-buttons">
                     <a href="#precios" class="btn-glow">Ver Planes Anuales</a>
                     <a href="#descargas" class="btn-glass">⬇ Descargar Prueba (15 días)</a>
+                    <button type="button" id="btnAbrirVentas" class="btn-glass btn-sales">💬 Hablar con Ventas</button>
                 </div>
 
                 <div class="trust-metrics">
@@ -197,12 +198,11 @@
                 <p>Observa el flujo operativo real de TributaFlow Pro v2.2.0 Enterprise desde la vinculación del equipo hasta la generación del ATS.</p>
             </div>
             <div class="video-frame">
-                <video 
-                    controls 
-                    preload="metadata" 
+                <video
+                    controls
+                    preload="metadata"
                     playsinline
-                    poster="assets/demo-poster.png"
-                    style="width: 100%; max-height: 540px; display: block; border-radius: 12px; background: #050811;">
+                    poster="assets/demo-poster.png">
                     <source src="assets/demo-tributaflow.mp4" type="video/mp4">
                     Tu navegador no soporta la reproducción de video HTML5. Puedes descargar el instalador de prueba arriba.
                 </video>
@@ -221,67 +221,67 @@
 
             <div class="plans-grid">
                 
-                <!-- Plan 1: Personal Pro ($39/año) -->
+                <!-- Plan 1: Personal Pro ($49/año) -->
                 <div class="plan-card" data-plan-id="personal">
                     <div class="plan-header">
                         <h3>Personal Pro</h3>
                         <p>Para personas naturales, profesionales independientes y régimen RIMPE.</p>
                     </div>
                     <div class="plan-price">
-                        <span class="currency">$</span>39<span class="period">/ año</span>
+                        <span class="currency">$</span>49<span class="period">/ año</span>
                     </div>
                     <ul class="plan-list">
-                        <li>✔ 1 Equipo autorizado (HWID)</li>
+                        <li>✔ 1 PC (Código de Equipo vinculado)</li>
                         <li>✔ 1 RUC Contribuyente</li>
-                        <li>✔ Descarga masiva XML y RIDE</li>
-                        <li>✔ Resumen para Formulario 104</li>
+                        <li>✔ Descarga Masiva SRI y RIDE</li>
+                        <li>✔ Auditor Fantasma, ATS y Excel</li>
                         <li>✔ Actualizaciones SRI por 1 año</li>
                     </ul>
                     <button type="button" class="btn-plan" data-plan-id="personal">
-                        💳 Adquirir Plan ($39/año)
+                        💳 Adquirir Plan ($49/año)
                     </button>
                 </div>
 
-                <!-- Plan 2: Contador Master ($89/año) -->
+                <!-- Plan 2: Contador Master ($119/año) -->
                 <div class="plan-card" data-plan-id="contador">
                     <div class="plan-header">
                         <h3>Contador Master</h3>
                         <p>Para contadores independientes con cartera activa de clientes.</p>
                     </div>
                     <div class="plan-price">
-                        <span class="currency">$</span>89<span class="period">/ año</span>
+                        <span class="currency">$</span>119<span class="period">/ año</span>
                     </div>
                     <ul class="plan-list">
-                        <li>✔ 1 Equipo autorizado (HWID)</li>
+                        <li>✔ 1 PC (Código de Equipo vinculado)</li>
                         <li>✔ Hasta 15 RUCs en bóveda aislada</li>
                         <li>✔ Sincronización automática SRI</li>
-                        <li>✔ Generador ATS + Validador XSD</li>
+                        <li>✔ Validación oficial ATS</li>
                         <li>✔ Exportación contable a Excel</li>
                     </ul>
                     <button type="button" class="btn-plan" data-plan-id="contador">
-                        💳 Adquirir Plan ($89/año)
+                        💳 Adquirir Plan ($119/año)
                     </button>
                 </div>
 
-                <!-- Plan 3: Estudio Contable Pro ($169/año) -->
+                <!-- Plan 3: Estudio Contable Pro / PyME ($229/año) -->
                 <div class="plan-card plan-popular" data-plan-id="estudio">
                     <div class="popular-ribbon">MÁS ELEGIDO</div>
                     <div class="plan-header">
                         <h3>Estudio Contable Pro</h3>
-                        <p>Para firmas contables, auditores externos y empresas PyME.</p>
+                        <p>Ideal para estudios contables, auditores y PyMEs (Hasta 2 PCs • Hasta 50 RUCs).</p>
                     </div>
                     <div class="plan-price">
-                        <span class="currency">$</span>169<span class="period">/ año</span>
+                        <span class="currency">$</span>229<span class="period">/ año</span>
                     </div>
                     <ul class="plan-list">
-                        <li>✔ <strong>2 Equipos autorizados</strong> (2 HWIDs)</li>
-                        <li>✔ <strong>RUCs Ilimitados</strong> multi-tenant</li>
+                        <li>✔ <strong>Hasta 2 PCs</strong> (2 Equipos vinculados)</li>
+                        <li>✔ <strong>Hasta 50 RUCs</strong> en bóveda aislada</li>
                         <li>✔ Auditor Fantasma SRI en tiempo real</li>
-                        <li>✔ Modo Contingencia y ATS XSD</li>
+                        <li>✔ Validación oficial ATS + Contingencia</li>
                         <li>✔ Soporte prioritario directo</li>
                     </ul>
                     <button type="button" class="btn-plan btn-plan-accent" data-plan-id="estudio">
-                        💳 Adquirir Plan ($169/año)
+                        💳 Adquirir Plan ($229/año)
                     </button>
                 </div>
 
@@ -296,14 +296,14 @@
                         <span class="currency">$</span>1,490<span class="period">/ año</span>
                     </div>
                     <ul class="plan-list">
-                        <li>✔ <strong>5+ Estaciones</strong> en red / servidor</li>
-                        <li>✔ RUCs y empresas ilimitadas</li>
-                        <li>✔ Despliegue centralizado y backups</li>
-                        <li>✔ SLA empresarial y capacitación</li>
-                        <li>✔ Facturación corporativa y soporte VIP</li>
+                        <li>✔ <strong>5+ Estaciones</strong> en red local / servidor</li>
+                        <li>✔ RUCs Ilimitados</li>
+                        <li>✔ Base de datos centralizada + Despliegue</li>
+                        <li>✔ Soporte prioritario SLA y capacitación</li>
+                        <li>✔ Cotización B2B y factura corporativa</li>
                     </ul>
                     <button type="button" class="btn-plan" data-plan-id="enterprise">
-                        🏢 Solicitar Despliegue Enterprise
+                        🏢 Cotizar Despliegue Enterprise
                     </button>
                 </div>
 
@@ -347,13 +347,13 @@
             <div class="modal-content">
                 <div class="price-summary">
                     <span>Inversión suscripción anual:</span>
-                    <strong id="modalPlanPrecio">$169.00 USD / año</strong>
+                    <strong id="modalPlanPrecio">$229.00 USD / año</strong>
                 </div>
 
                 <div class="field-group">
                     <label for="hwidModal">1. Identificador de Equipo (HWID):</label>
                     <input type="text" id="hwidModal" class="mono-input" placeholder="Ej: TF-F2158D-A492B1-7391C0" maxlength="35">
-                    <small>Cópialo desde la ventana de activación de TributaFlow Pro en tu equipo.</small>
+                    <small>Código único de esta computadora. Cópialo desde la ventana de activación de TributaFlow Pro.</small>
                 </div>
 
                 <div class="field-group">
@@ -366,13 +366,59 @@
                 </a>
 
                 <div class="post-payment-box">
-                    <p id="postPaymentInstruccion"><strong>2. Una vez completado el pago</strong>, envía tu comprobante para emitir tu llave criptográfica RSA-2048 por tu canal preferido:</p>
+                    <p id="postPaymentInstruccion"><strong>2. Una vez completado el pago</strong>, envía tu comprobante para emitir tu certificado anual (.lic) por tu canal preferido:</p>
                     <div class="confirm-buttons-grid">
                         <a id="btnConfirmarWpModal" href="#" target="_blank" rel="noopener noreferrer" class="btn-wp-confirm">
                             📲 Confirmar por WhatsApp
                         </a>
                         <a id="btnConfirmarEmailModal" href="#" class="btn-email-confirm">
                             ✉️ Confirmar por Correo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Contacto Directo de Ventas Quoratec -->
+    <div id="modalVentas" class="modal-overlay" style="display: none;">
+        <div class="modal-box checkout-box">
+            <div class="modal-top">
+                <div>
+                    <span class="modal-badge">ASESORÍA COMERCIAL QUORATEC</span>
+                    <h3>Hablar con Ventas — TributaFlow Pro</h3>
+                </div>
+                <button type="button" id="btnCerrarVentas" class="btn-close">&times;</button>
+            </div>
+            <div class="modal-content">
+                <div class="field-group">
+                    <label for="ventasPlan">1. Plan Anual de Interés:</label>
+                    <select id="ventasPlan" class="text-input">
+                        <option value="personal">Personal Pro — $49.00 USD / año (1 PC • 1 RUC)</option>
+                        <option value="contador">Contador Master — $119.00 USD / año (1 PC • Hasta 15 RUCs)</option>
+                        <option value="estudio" selected>Estudio Contable Pro / PyME — $229.00 USD / año (2 PCs • Hasta 50 RUCs)</option>
+                        <option value="enterprise">Enterprise Server — Desde $1,490.00 USD / año (5+ Estaciones • Red LAN)</option>
+                    </select>
+                </div>
+
+                <div class="field-group">
+                    <label for="ventasNombre">2. Tu Nombre o Empresa:</label>
+                    <input type="text" id="ventasNombre" class="text-input" placeholder="Ej: Estudio Contable Andino / María Pérez" maxlength="80">
+                </div>
+
+                <div class="field-group">
+                    <label for="ventasConsulta">3. Consulta o Requerimiento:</label>
+                    <textarea id="ventasConsulta" class="text-input" rows="3" placeholder="Cuéntanos cuántos equipos o RUCs manejas, o si necesitas proforma corporativa..." maxlength="400"></textarea>
+                </div>
+
+                <div class="post-payment-box">
+                    <p>Elige tu canal directo de atención ejecutiva Quoratec:</p>
+                    <div class="confirm-buttons-grid">
+                        <a id="btnVentasWp" href="#" target="_blank" rel="noopener noreferrer" class="btn-wp-confirm">
+                            📲 WhatsApp Business
+                        </a>
+                        <a id="btnVentasEmail" href="#" class="btn-email-confirm">
+                            ✉️ Correo Corporativo
                         </a>
                     </div>
                 </div>

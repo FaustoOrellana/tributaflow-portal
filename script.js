@@ -2,7 +2,8 @@
 /**
  * QUORATEC SECURITY & CHECKOUT ENGINE v2.2.0 Enterprise
  * Protección anti-manipulación de enlaces de pago, validación de dominio,
- * autodetección de instaladores nativos v2.2.0 y sanitización Anti-XSS
+ * autodetección de instaladores nativos v2.2.0, sanitización Anti-XSS
+ * y validación profesional anti-spam en formularios.
  */
 
 // 1. Catálogo inmutable de suscripciones anuales congelado en memoria
@@ -10,26 +11,26 @@ const CATALOGO_PLANES = Object.freeze({
     personal: Object.freeze({
         id: "personal",
         nombre: "Licencia Anual Personal Pro",
-        precio: "39.00",
-        etiquetaPrecio: "$39.00 USD / año",
+        precio: "49.00",
+        etiquetaPrecio: "$49.00 USD / año",
         esCorporativo: false,
-        urlPayphone: "https://ppls.me/EL3ETzqgERrFbxp12ysVA"
+        urlPayphone: "https://ppls.me/TQ60xZb4IC498LymTNXdPw"
     }),
     contador: Object.freeze({
         id: "contador",
         nombre: "Licencia Anual Contador Master",
-        precio: "89.00",
-        etiquetaPrecio: "$89.00 USD / año",
+        precio: "119.00",
+        etiquetaPrecio: "$119.00 USD / año",
         esCorporativo: false,
-        urlPayphone: "https://ppls.me/nCkv1fVRqiAqs1c9aybBw"
+        urlPayphone: "https://ppls.me/60mVhMAXkywW0YSjC7ew"
     }),
     estudio: Object.freeze({
         id: "estudio",
-        nombre: "Licencia Anual Estudio Contable Pro",
-        precio: "169.00",
-        etiquetaPrecio: "$169.00 USD / año",
+        nombre: "Licencia Anual Estudio Contable Pro / PyME Multi-RUC",
+        precio: "229.00",
+        etiquetaPrecio: "$229.00 USD / año",
         esCorporativo: false,
-        urlPayphone: "https://ppls.me/73i5byfZ25yoQj5nOybw"
+        urlPayphone: "https://ppls.me/KG3vhwDg0f0p4ajzQXIpwA"
     }),
     enterprise: Object.freeze({
         id: "enterprise",
@@ -69,11 +70,12 @@ const INSTALADORES_OFICIALES = Object.freeze({
 // 3. Canales Oficiales de Contacto Quoratec
 const CANALES_OFICIALES = Object.freeze({
     whatsappNumero: "593996459771",
-    correoSoporte: "soporte@quoratec.com",
+    correoSoporte: "soportetributaflow@quoratec.com",
     dominiosPagoPermitidos: Object.freeze(["ppls.me", "payphone.app"])
 });
 
 let planSeleccionadoActual = "estudio";
+let ultimoEnvioVentasMs = 0;
 
 // 4. Detección de Sistema Operativo del Visitante
 function detectarSistemaOperativo() {
@@ -113,7 +115,7 @@ function configurarDescargasMultiplataforma() {
     });
 }
 
-// 5. Sanitizadores Anti-XSS para entradas de usuario y URL
+// 5. Sanitizadores Anti-XSS y Validadores Anti-Spam
 function limpiarHWID(valor) {
     if (typeof valor !== "string") return "";
     return valor.toUpperCase().replace(/[^A-Z0-9-]/g, "").slice(0, 35);
@@ -122,6 +124,88 @@ function limpiarHWID(valor) {
 function limpiarEmail(valor) {
     if (typeof valor !== "string") return "";
     return valor.replace(/[^a-zA-Z0-9@._\-+]/g, "").trim().slice(0, 80);
+}
+
+function limpiarTextoLibre(valor, maxLen = 400) {
+    if (typeof valor !== "string") return "";
+    // Permite espacios y saltos de línea (\n), bloqueando etiquetas HTML/XSS y caracteres de control
+    return valor
+        .replace(/[<>"'`\u0000-\u0009\u000B-\u001F\u007F]/g, "")
+        .replace(/ {3,}/g, "  ")
+        .slice(0, maxLen);
+}
+
+function contienePatronSpam(texto) {
+    if (!texto) return false;
+    // Bloquea URLs externas inyectadas por bots y repeticiones absurdas de un mismo carácter
+    const tieneUrl = /(https?:\/\/|www\.|bit\.ly|tinyurl\.com)/i.test(texto);
+    const repeticionExcesiva = /(.)\1{7,}/.test(texto);
+    return tieneUrl || repeticionExcesiva;
+}
+
+function validarFormularioVentas() {
+    const campoNombre = document.getElementById("ventasNombre");
+    const campoConsulta = document.getElementById("ventasConsulta");
+
+    const nombreLimpio = limpiarTextoLibre(campoNombre?.value || "", 80).trim();
+    const consultaLimpia = limpiarTextoLibre(campoConsulta?.value || "", 400).trim();
+
+    if (nombreLimpio.length < 3 || contienePatronSpam(nombreLimpio)) {
+        return {
+            valido: false,
+            campo: campoNombre,
+            mensaje: "Ingresa tu nombre completo o razón social (mínimo 3 caracteres, sin enlaces)."
+        };
+    }
+
+    if (consultaLimpia.length < 10 || contienePatronSpam(consultaLimpia)) {
+        return {
+            valido: false,
+            campo: campoConsulta,
+            mensaje: "Describe brevemente tu consulta, cantidad de equipos o RUCs (mínimo 10 caracteres, sin enlaces)."
+        };
+    }
+
+    const ahora = Date.now();
+    if (ahora - ultimoEnvioVentasMs < 4000) {
+        return {
+            valido: false,
+            campo: null,
+            mensaje: "Por favor espera unos segundos antes de reenviar tu solicitud."
+        };
+    }
+
+    return {
+        valido: true,
+        nombre: nombreLimpio,
+        consulta: consultaLimpia
+    };
+}
+
+function mostrarAvisoVentas(texto, esError = true) {
+    const modalContent = document.querySelector("#modalVentas .modal-content");
+    if (!modalContent) return;
+
+    let avisoEl = document.getElementById("ventasAvisoEstado");
+    if (!avisoEl) {
+        avisoEl = document.createElement("p");
+        avisoEl.id = "ventasAvisoEstado";
+        avisoEl.setAttribute("role", "alert");
+        avisoEl.style.marginTop = "10px";
+        avisoEl.style.fontSize = "0.86rem";
+        avisoEl.style.fontWeight = "500";
+        modalContent.appendChild(avisoEl);
+    }
+
+    if (!texto) {
+        avisoEl.textContent = "";
+        avisoEl.style.display = "none";
+        return;
+    }
+
+    avisoEl.textContent = texto;
+    avisoEl.style.color = esError ? "#f87171" : "#34d399";
+    avisoEl.style.display = "block";
 }
 
 // 6. Verificación estricta de URL antes de permitir la navegación al cobro
@@ -161,7 +245,7 @@ const DOCUMENTOS_LEGALES = Object.freeze({
     })
 });
 
-// 8. Inicialización Segura del DOM
+// 8. Inicialización Segura del DOM (Listeners únicos)
 document.addEventListener("DOMContentLoaded", () => {
     configurarDescargasMultiplataforma();
 
@@ -178,7 +262,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const btnFlotante = document.getElementById("btnFlotanteSoporte");
     if (btnFlotante) {
-        const saludo = encodeURIComponent("Hola Quoratec, necesito asesoría técnica sobre TributaFlow Pro v2.2.0 Enterprise.");
+        const saludo = encodeURIComponent("[TRIBUTAFLOW PRO] Hola Quoratec, necesito asesoría técnica sobre TributaFlow Pro v2.2.0 Enterprise.");
         btnFlotante.href = `https://wa.me/${CANALES_OFICIALES.whatsappNumero}?text=${saludo}`;
     }
 
@@ -188,7 +272,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const planParam = (params.get("plan") || "").toLowerCase().trim();
 
     if (planParam) {
-        // Alias de compatibilidad si el cliente llega con ?plan=empresarial desde versiones previas
         const mapaAlias = { empresarial: "estudio", vitalicio: "enterprise" };
         const planResuelto = CATALOGO_PLANES[planParam] ? planParam : mapaAlias[planParam];
         if (planResuelto) {
@@ -245,6 +328,50 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("modalLegal").style.display = "none";
     });
 
+    // Modal de Ventas: apertura, cierre y actualización fluida sin recortar espacios al escribir
+    document.getElementById("btnAbrirVentas")?.addEventListener("click", (e) => {
+        e.preventDefault();
+        abrirModalVentas();
+    });
+
+    document.getElementById("btnCerrarVentas")?.addEventListener("click", () => {
+        document.getElementById("modalVentas").style.display = "none";
+    });
+
+    document.getElementById("ventasPlan")?.addEventListener("change", () => {
+        mostrarAvisoVentas("");
+        actualizarCanalesVentas();
+    });
+
+    document.getElementById("ventasNombre")?.addEventListener("input", (e) => {
+        e.target.value = limpiarTextoLibre(e.target.value, 80);
+        mostrarAvisoVentas("");
+        actualizarCanalesVentas();
+    });
+
+    document.getElementById("ventasConsulta")?.addEventListener("input", (e) => {
+        e.target.value = limpiarTextoLibre(e.target.value, 400);
+        mostrarAvisoVentas("");
+        actualizarCanalesVentas();
+    });
+
+    // Protección Anti-Spam al hacer clic en WhatsApp o Correo del modal de Ventas
+    ["btnVentasWp", "btnVentasEmail"].forEach((btnId) => {
+        document.getElementById(btnId)?.addEventListener("click", (e) => {
+            const validacion = validarFormularioVentas();
+            if (!validacion.valido) {
+                e.preventDefault();
+                mostrarAvisoVentas(validacion.mensaje, true);
+                if (validacion.campo) validacion.campo.focus();
+                return;
+            }
+            ultimoEnvioVentasMs = Date.now();
+            actualizarCanalesVentas();
+            mostrarAvisoVentas("✓ Redirigiendo con tu solicitud formateada...", false);
+        });
+    });
+
+    // Cierre de modales al hacer clic fuera del contenedor
     window.addEventListener("click", (e) => {
         if (e.target === document.getElementById("modalCheckout")) {
             document.getElementById("modalCheckout").style.display = "none";
@@ -252,10 +379,34 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.target === document.getElementById("modalLegal")) {
             document.getElementById("modalLegal").style.display = "none";
         }
+        if (e.target === document.getElementById("modalVentas")) {
+            document.getElementById("modalVentas").style.display = "none";
+        }
+    });
+
+    // Cierre de modales con tecla Escape
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            const mCheckout = document.getElementById("modalCheckout");
+            const mLegal = document.getElementById("modalLegal");
+            const mVentas = document.getElementById("modalVentas");
+            if (mCheckout) mCheckout.style.display = "none";
+            if (mLegal) mLegal.style.display = "none";
+            if (mVentas) mVentas.style.display = "none";
+        }
     });
 });
 
 // 9. Apertura segura de Checkout (Soporta pasarela Payphone y flujo corporativo Enterprise)
+function establecerInstruccionModal(elemento, negrita, textoRestante) {
+    if (!elemento) return;
+    elemento.textContent = "";
+    const strongEl = document.createElement("strong");
+    strongEl.textContent = negrita;
+    elemento.appendChild(strongEl);
+    elemento.appendChild(document.createTextNode(textoRestante));
+}
+
 function abrirCheckout(planId) {
     const plan = CATALOGO_PLANES[planId];
     if (!plan) return;
@@ -270,22 +421,32 @@ function abrirCheckout(planId) {
     const btnPayphone = document.getElementById("btnPagarPayphone");
     const badgeModal = document.getElementById("modalBadgeTexto");
     const postInstruccion = document.getElementById("postPaymentInstruccion");
+    const btnWp = document.getElementById("btnConfirmarWpModal");
+    const btnEmail = document.getElementById("btnConfirmarEmailModal");
 
     if (plan.esCorporativo) {
         if (btnPayphone) btnPayphone.style.display = "none";
-        if (badgeModal) badgeModal.textContent = "DESPLIEGUE CORPORATIVO MULTI-ESTACIÓN";
-        if (postInstruccion) {
-            postInstruccion.innerHTML = "<strong>Solicita tu cotización y despliegue Enterprise</strong> indicando el número de estaciones y correo corporativo:";
-        }
+        if (badgeModal) badgeModal.textContent = "DESPLIEGUE CORPORATIVO B2B";
+        establecerInstruccionModal(
+            postInstruccion,
+            "Atención Corporativa B2B:",
+            " solicita tu proforma formal, orden de compra, transferencia bancaria y factura electrónica directamente con Quoratec:"
+        );
+        if (btnWp) btnWp.textContent = "📲 WhatsApp Ejecutivo";
+        if (btnEmail) btnEmail.textContent = "✉️ Correo Corporativo";
     } else {
         if (btnPayphone) {
             btnPayphone.style.display = "flex";
             btnPayphone.href = plan.urlPayphone;
         }
         if (badgeModal) badgeModal.textContent = "PASARELA OFICIAL VERIFICADA";
-        if (postInstruccion) {
-            postInstruccion.innerHTML = "<strong>2. Una vez completado el pago</strong>, envía tu comprobante para emitir tu llave criptográfica RSA-2048 por tu canal preferido:";
-        }
+        establecerInstruccionModal(
+            postInstruccion,
+            "2. Una vez completado el pago,",
+            " envía tu comprobante para emitir tu certificado anual (.lic) por tu canal preferido:"
+        );
+        if (btnWp) btnWp.textContent = "📲 Confirmar por WhatsApp";
+        if (btnEmail) btnEmail.textContent = "✉️ Confirmar por Correo";
     }
 
     actualizarCanalesConfirmacion();
@@ -301,12 +462,12 @@ function actualizarCanalesConfirmacion() {
     const emailCliente = limpiarEmail(document.getElementById("emailModal").value) || "NO_INGRESADO";
 
     const encabezadoMsg = plan.esCorporativo
-        ? `Hola Quoratec, solicito información y activación corporativa para TributaFlow Pro v2.2.0 Enterprise:%0A%0A`
-        : `Hola Quoratec, realicé el pago en Payphone para TributaFlow Pro v2.2.0:%0A%0A`;
+        ? `${encodeURIComponent("[TRIBUTAFLOW PRO - ENTERPRISE]")} Hola Quoratec, solicito cotización y activación corporativa para TributaFlow Pro v2.2.0 Enterprise:%0A%0A`
+        : `${encodeURIComponent("[TRIBUTAFLOW PRO]")} Hola Quoratec, realicé el pago en Payphone para TributaFlow Pro v2.2.0:%0A%0A`;
 
     const cierreMsg = plan.esCorporativo
-        ? `Quedo atento a la propuesta comercial y emisión de licencias para nuestras estaciones.`
-        : `Adjunto mi comprobante para la emisión de mi certificado anual RSA-2048.`;
+        ? encodeURIComponent("Requiero proforma formal, datos de transferencia bancaria y emisión de licencias para nuestras estaciones.")
+        : encodeURIComponent("Adjunto mi comprobante para la emisión de mi certificado anual (.lic).");
 
     const msgWp = encabezadoMsg +
         `• *Plan:* ${encodeURIComponent(plan.nombre)} (${encodeURIComponent(plan.etiquetaPrecio)})%0A` +
@@ -316,17 +477,58 @@ function actualizarCanalesConfirmacion() {
 
     document.getElementById("btnConfirmarWpModal").href = `https://wa.me/${CANALES_OFICIALES.whatsappNumero}?text=${msgWp}`;
 
-    const asuntoEmail = encodeURIComponent(`${plan.esCorporativo ? "Solicitud Enterprise" : "Activación Licencia Anual"} TributaFlow Pro v2.2.0 - ${plan.nombre}`);
+    const asuntoEmail = encodeURIComponent(
+        plan.esCorporativo
+            ? "[TRIBUTAFLOW ENTERPRISE] Solicitud de Cotización Corporativa"
+            : `[TRIBUTAFLOW PRO] Activación Licencia Anual - ${plan.nombre}`
+    );
     const cuerpoEmail = encodeURIComponent(
         `Hola equipo de Quoratec Software Solutions,\n\n` +
         `Detalle de solicitud para TributaFlow Pro v2.2.0 Enterprise:\n` +
         `- Plan: ${plan.nombre} (${plan.etiquetaPrecio})\n` +
         `- HWID de equipo: ${hwid}\n` +
         `- Correo para entrega de certificados (.lic): ${emailCliente}\n\n` +
-        `${plan.esCorporativo ? "Por favor contáctennos para coordinar el despliegue multi-estación." : "Adjunto el comprobante de pago de Payphone."}\n\nSaludos.`
+        `${plan.esCorporativo ? "Solicitamos proforma formal, orden de compra, transferencia bancaria y factura electrónica para el despliegue multi-estación." : "Adjunto el comprobante de pago de Payphone."}\n\nSaludos cordiales.`
     );
 
     document.getElementById("btnConfirmarEmailModal").href = `mailto:${CANALES_OFICIALES.correoSoporte}?subject=${asuntoEmail}&body=${cuerpoEmail}`;
+}
+
+// 10B. Modal de Contacto Directo de Ventas Multi-Producto
+function abrirModalVentas() {
+    mostrarAvisoVentas("");
+    actualizarCanalesVentas();
+    const modal = document.getElementById("modalVentas");
+    if (modal) modal.style.display = "flex";
+}
+
+function actualizarCanalesVentas() {
+    const planId = document.getElementById("ventasPlan")?.value || "estudio";
+    const plan = CATALOGO_PLANES[planId] || CATALOGO_PLANES.estudio;
+    const nombre = limpiarTextoLibre(document.getElementById("ventasNombre")?.value || "", 80).trim() || "No especificado";
+    const consulta = limpiarTextoLibre(document.getElementById("ventasConsulta")?.value || "", 400).trim() || "Solicito asesoría comercial sobre este plan anual.";
+
+    const etiqueta = plan.esCorporativo ? "[TRIBUTAFLOW PRO - ENTERPRISE]" : "[TRIBUTAFLOW PRO]";
+    const msgWp = encodeURIComponent(
+        `${etiqueta} Hola Quoratec Software Solutions, deseo hablar con Ventas sobre TributaFlow Pro v2.2.0:\n\n` +
+        `• Plan de interés: ${plan.nombre} (${plan.etiquetaPrecio})\n` +
+        `• Nombre / Empresa: ${nombre}\n` +
+        `• Consulta: ${consulta}`
+    );
+    const btnWp = document.getElementById("btnVentasWp");
+    if (btnWp) btnWp.href = `https://wa.me/${CANALES_OFICIALES.whatsappNumero}?text=${msgWp}`;
+
+    const asunto = encodeURIComponent(`${etiqueta} Consulta Comercial - ${plan.nombre}`);
+    const cuerpo = encodeURIComponent(
+        `Hola equipo de Ventas de Quoratec Software Solutions,\n\n` +
+        `Solicito información comercial sobre TributaFlow Pro v2.2.0:\n` +
+        `- Plan de interés: ${plan.nombre} (${plan.etiquetaPrecio})\n` +
+        `- Nombre / Empresa: ${nombre}\n` +
+        `- Consulta: ${consulta}\n\n` +
+        `Saludos cordiales.`
+    );
+    const btnEmail = document.getElementById("btnVentasEmail");
+    if (btnEmail) btnEmail.href = `mailto:${CANALES_OFICIALES.correoSoporte}?subject=${asunto}&body=${cuerpo}`;
 }
 
 // 11. Renderizado seguro sin innerHTML para documentos legales
