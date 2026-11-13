@@ -16,13 +16,16 @@ const CONFIG_COMERCIAL = Object.freeze({
     }),
     QR_DEUNA_SRC: "assets/qr-deuna.png",
     QR_DEUNA_SUBPAGE_SRC: "../assets/qr-deuna.png",
-    TITULAR_RECAUDO: "Cuenta de Recaudo Oficial TributaFlow Pro (Banco Pichincha)",
+    TITULAR_RECAUDO: "Fausto Orellana — Recaudo Oficial TributaFlow Pro",
+    TITULAR_NOTA_BANCO: "Al escanear el QR o transferir en Banco Pichincha, verifica que el titular registrado sea Fausto Andrés Orellana Jaén (Recaudo Oficial TributaFlow Pro).",
     BANCO_RECAUDO: "Banco Pichincha",
     TIPO_CUENTA_RECAUDO: "Recaudo Empresarial / Deuna! Directo",
     NUMERO_CUENTA_RECAUDO: "Solicitar número vigente por WhatsApp Oficial (0996459771)",
     WHATSAPP_NUMERO: "593996459771",
     WHATSAPP_LOCAL: "0996459771",
     DOMINIOS_PAYPHONE: Object.freeze(["ppls.me", "payphone.app"]),
+    PAYPHONE_BADGES: "Visa · Mastercard · Diners · Discover · Alia",
+    PAYPHONE_GARANTIA: "🛡️ Pago protegido con verificación 3D Secure Ecuador",
     PRECIO_SEAT_EXTRA_USD: 150,
     RELEASES_BASE: "https://github.com/FaustoOrellana/tributaflow-portal/releases",
     DEMO_RUC_PRINCIPAL: "1790012345001",
@@ -531,6 +534,7 @@ function asegurarModalPago() {
     btnWp.rel = "noopener noreferrer";
 
     boxDeuna.appendChild(deunaLayout);
+    boxDeuna.appendChild(crearEl("p", "deuna-titular-note", CONFIG_COMERCIAL.TITULAR_NOTA_BANCO));
     boxDeuna.appendChild(bankRows);
     boxDeuna.appendChild(btnWp);
 
@@ -549,14 +553,23 @@ function asegurarModalPago() {
         crearEl(
             "p",
             "",
-            "Paga de forma inmediata con Visa o Mastercard mediante enlace seguro HTTPS verificado (ppls.me) y luego envía tu comprobante por WhatsApp con tu Referencia."
+            "Paga de forma inmediata con tarjeta mediante enlace seguro HTTPS verificado (ppls.me) y luego envía tu comprobante por WhatsApp con tu Referencia."
         )
     );
+    const badgesWrap = crearEl("div", "pay-badges");
+    ["Visa", "Mastercard", "Diners", "Discover", "Alia"].forEach((marca) => {
+        badgesWrap.appendChild(crearEl("span", "pay-badge-pill", marca));
+    });
+    badgesWrap.setAttribute("aria-label", CONFIG_COMERCIAL.PAYPHONE_BADGES);
+    payphonePanel.appendChild(badgesWrap);
+
     const btnPayphone = crearEl("a", "btn-payphone-main", "💳 Pagar con Tarjeta en PayPhone ($299.00)");
     btnPayphone.id = "btnPagarPayphoneModal";
     btnPayphone.target = "_blank";
     btnPayphone.rel = "noopener noreferrer";
     payphonePanel.appendChild(btnPayphone);
+
+    payphonePanel.appendChild(crearEl("div", "pay-security-note", CONFIG_COMERCIAL.PAYPHONE_GARANTIA));
 
     const lanPanel = crearEl("div", "enterprise-lan-notice");
     lanPanel.id = "pagoEnterpriseLanPanel";
