@@ -4,17 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; form-action 'self'; base-uri 'self';">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; base-uri 'self'; form-action 'none';">
+    <meta name="referrer" content="no-referrer">
 
     <title>TributaFlow Pro v2.3.0 Enterprise | Gestión Tributaria, Bóveda y ATS Ecuador</title>
     <meta name="description" content="Sistema nativo de gestión tributaria SRI Ecuador, bóveda documental jerárquica estilo Perseo, Auditor Fantasma en tiempo real, validador ATS XSD y arquitectura Red LAN TCP/IP.">
 
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <link rel="stylesheet" href="assets/css/portal.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body data-root="">
 
@@ -350,7 +347,7 @@
 
     <!-- Matriz de 5 Planes con Separación Estricta de Tarjeta vs Botón de Pago -->
     <section id="precios" class="section">
-        <div class="container">
+        <div id="planes" class="container">
             <div class="section-head">
                 <span class="eyebrow">5 PLANES OFICIALES ANUALES (365 DÍAS)</span>
                 <h2>Precios Transparentes y Alcance Exacto por Edición</h2>
@@ -606,24 +603,29 @@
                 </table>
             </div>
 
-            <!-- Canales Oficiales de Pago en Ecuador (QR Deuna + Transferencia + PayPhone) -->
+            <!-- Canales Oficiales de Pago en Ecuador (Deuna Protegido + Transferencia + PayPhone) -->
             <div class="architecture-split" style="margin-top: 28px;">
-                <div class="feature-list-panel">
+                <div class="feature-list-panel deuna-protected-card">
                     <span class="eyebrow">PAGO LOCAL ECUADOR (0 % COMISIÓN)</span>
-                    <h3>Deuna! QR y Transferencia Bancaria Directa</h3>
-                    <p style="font-size: 13.5px; color: var(--text-muted);">Disponible en las 5 ediciones. Al pulsar <strong>Adquirir Plan</strong> o <strong>Solicitar Activación Corporativa</strong> en tu plan elegido se abre el modal de pago con tu monto exacto y referencia única <code>TF-&lt;PLAN&gt;-&lt;HWID&gt;</code>.</p>
+                    <h3>Pago Local Instantáneo con Deuna! (0 % Comisión)</h3>
+                    <p style="font-size: 13.5px; color: var(--text-muted);">Disponible en las 5 ediciones. Para proteger cada orden, el QR oficial escaneable se genera exclusivamente dentro del checkout tras seleccionar tu plan con tu monto exacto y referencia única <code>TF-&lt;PLAN&gt;-&lt;HWID&gt;</code>.</p>
                     <div class="deuna-layout" style="margin-top: 6px;">
-                        <div class="qr-preview-wrap">
-                            <img src="assets/qr-deuna.png" alt="QR Deuna Fausto Orellana Recaudo Oficial TributaFlow Pro">
+                        <div class="deuna-shield-box" aria-label="QR Deuna protegido por orden de pago">
+                            <span class="deuna-shield-icon" aria-hidden="true">🛡️</span>
+                            <strong>QR Oficial Protegido por Orden</strong>
+                            <small>Selecciona tu plan arriba para desbloquear el QR Deuna! con monto USD y referencia única <code>TF-...</code>.</small>
                         </div>
                         <ul class="deuna-steps">
-                            <li><strong>1.</strong> Abre Deuna! o Banca Móvil Banco Pichincha.</li>
-                            <li><strong>2.</strong> Escanea el QR de Recaudo Oficial TributaFlow Pro.</li>
-                            <li><strong>3.</strong> Ingresa el monto exacto y referencia <code>TF-...</code> generada en el modal.</li>
-                            <li><strong>4.</strong> Envía tu comprobante por WhatsApp (0996459771) para emitir tu licencia <code>.lic</code>.</li>
+                            <li><strong>1.</strong> Elige tu plan anual arriba y abre el modal de pago seguro.</li>
+                            <li><strong>2.</strong> Abre Deuna! o Banca Móvil Banco Pichincha y escanea el QR oficial dentro del modal.</li>
+                            <li><strong>3.</strong> Ingresa el monto exacto en USD y tu referencia única <code>TF-...</code>.</li>
+                            <li><strong>4.</strong> Envía tu comprobante real por WhatsApp (<code>0996459771</code>) o correo (<code>soporte@tributaflow.com</code>) para recibir tu licencia <code>.lic</code>.</li>
                         </ul>
                     </div>
                     <p class="deuna-titular-note">🔎 Al escanear el QR o transferir en Banco Pichincha, verifica que el titular registrado sea <strong>Fausto Andrés Orellana Jaén (Recaudo Oficial TributaFlow Pro)</strong>.</p>
+                    <div style="margin-top: 6px;">
+                        <a href="#planes" class="btn-glow" id="btnSeleccionarPlanQr">Seleccionar Plan para Generar QR y Referencia ➔</a>
+                    </div>
                 </div>
                 <div class="feature-list-panel">
                     <span class="eyebrow">TARJETAS Y REGLAS COMERCIALES</span>
@@ -642,6 +644,13 @@
                         <li>✔ <strong>15 días gratis sin tarjeta:</strong> Prueba cualquiera de las 5 ediciones desde el instalador antes de pagar.</li>
                         <li>✔ <strong>Vigencia anual (365 días) + Actualizaciones SRI:</strong> Política ética de sellado de RUCs tras la primera descarga real del SRI.</li>
                     </ul>
+                    <div class="support-inline-bar">
+                        <span>¿Dudas técnicas o comerciales antes de pagar?</span>
+                        <div class="support-inline-links">
+                            <a href="https://wa.me/593996459771?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" target="_blank" rel="noopener noreferrer" class="btn-support-link" data-support-link="whatsapp">💬 Soporte Oficial (0996459771)</a>
+                            <a href="mailto:soporte@tributaflow.com?subject=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" class="btn-support-link" data-support-link="correo">✉️ soporte@tributaflow.com</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -654,7 +663,11 @@
                 <div class="footer-col">
                     <h4>TributaFlow Pro v2.3.0 Enterprise</h4>
                     <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Suite nativa especializada en sincronización tributaria SRI, bóveda documental jerárquica estilo Perseo, validación ATS XSD y despliegue Red LAN TCP/IP para Ecuador.</p>
-                    <p style="font-size: 12.5px; color: var(--accent);">Soporte WhatsApp Oficial: 0996459771</p>
+                    <p style="font-size: 12.5px; color: var(--accent);">Soporte WhatsApp Oficial: 0996459771 • soporte@tributaflow.com</p>
+                    <div class="footer-support-links">
+                        <a href="https://wa.me/593996459771?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" target="_blank" rel="noopener noreferrer" class="btn-support-link" data-support-link="whatsapp">💬 Soporte Oficial WhatsApp</a>
+                        <a href="mailto:soporte@tributaflow.com?subject=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" class="btn-support-link" data-support-link="correo">✉️ Correo Soporte Oficial</a>
+                    </div>
                 </div>
 
                 <div class="footer-col">

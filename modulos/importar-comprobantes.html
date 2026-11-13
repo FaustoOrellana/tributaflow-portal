@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; form-action 'self'; base-uri 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; base-uri 'self'; form-action 'none';">
+    <meta name="referrer" content="no-referrer">
     <title>Importar Comprobantes (.txt / XML) | TributaFlow Pro v2.3.0</title>
     <meta name="description" content="Carga masiva de archivos .txt de claves de acceso del SRI y carpetas locales XML con reconstrucción automática de RIDE PDF en árbol Perseo.">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <link rel="stylesheet" href="../assets/css/portal.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body data-root="../">
     <header class="navbar">
@@ -22,6 +20,7 @@
             </a>
             <button type="button" id="navToggle" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
             <nav id="navMenu" class="nav-menu">
+                <a href="../index.html#flujo">Cómo Funciona</a>
                 <div class="nav-dropdown" data-nav-dropdown>
                     <button type="button" class="nav-dropdown-trigger active" aria-expanded="false" aria-haspopup="true">
                         <span>9 Módulos</span>
@@ -109,8 +108,10 @@
         <div class="container">
             <div class="footer-bottom">
                 <span>© 2026 TributaFlow Pro — Sistema de Gestión Tributaria, Bóveda Documental y ATS para Ecuador</span>
-                <div style="display: flex; gap: 16px;">
+                <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center;">
                     <a href="../index.html" style="color: var(--accent); text-decoration: none;">Inicio</a>
+                    <a href="https://wa.me/593996459771?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" target="_blank" rel="noopener noreferrer" style="color: #86efac; text-decoration: none;" data-support-link="whatsapp">Soporte WhatsApp (0996459771)</a>
+                    <a href="mailto:soporte@tributaflow.com?subject=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" style="color: var(--accent); text-decoration: none;" data-support-link="correo">soporte@tributaflow.com</a>
                     <button type="button" class="legal-trigger" data-legal="terminos">Términos</button>
                     <button type="button" class="legal-trigger" data-legal="privacidad">Privacidad</button>
                 </div>

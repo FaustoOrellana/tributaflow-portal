@@ -5,15 +5,27 @@
  * modales independientes por SO, cero datos privados y CSP estricta.
  */
 
-const CONFIG_COMERCIAL = Object.freeze({
+function congelarProfundo(objeto) {
+    if (!objeto || typeof objeto !== "object") return objeto;
+    Object.getOwnPropertyNames(objeto).forEach((prop) => {
+        const valor = objeto[prop];
+        if (valor && typeof valor === "object") {
+            congelarProfundo(valor);
+        }
+    });
+    return Object.freeze(objeto);
+}
+
+const CONFIG_COMERCIAL = congelarProfundo({
     VERSION: "2.3.0",
-    PAYPHONE_LINKS: Object.freeze({
+    PAYPHONE_LINKS: {
         PERSONAL_PRO: "https://ppls.me/5S1Y89pBi1vYHBTEgEzRA",
         CONTADOR_MASTER: "https://ppls.me/dxope7VBAjK5LR1mO4UitA",
         ESTUDIO_PRO: "https://ppls.me/60Bdw7lcRhMfvjqwA5cFdg",
         ENTERPRISE_TEAM: null,
         ENTERPRISE_CORP: null,
-    }),
+    },
+    PAYPHONE_URL_PREFIX: "https://ppls.me/",
     QR_DEUNA_SRC: "assets/qr-deuna.png",
     QR_DEUNA_SUBPAGE_SRC: "../assets/qr-deuna.png",
     TITULAR_RECAUDO: "Fausto Orellana — Recaudo Oficial TributaFlow Pro",
@@ -23,7 +35,11 @@ const CONFIG_COMERCIAL = Object.freeze({
     NUMERO_CUENTA_RECAUDO: "Solicitar número vigente por WhatsApp Oficial (0996459771)",
     WHATSAPP_NUMERO: "593996459771",
     WHATSAPP_LOCAL: "0996459771",
-    DOMINIOS_PAYPHONE: Object.freeze(["ppls.me", "payphone.app"]),
+    WHATSAPP_URL_PREFIX: "https://wa.me/593996459771",
+    CORREO_SOPORTE: "soporte@tributaflow.com",
+    MAILTO_URL_PREFIX: "mailto:soporte@tributaflow.com",
+    ASUNTO_SOPORTE: "Consulta Soporte Técnico — TributaFlow Pro",
+    DOMINIOS_PAYPHONE: ["ppls.me"],
     PAYPHONE_BADGES: "Visa · Mastercard · Diners · Discover · Alia",
     PAYPHONE_GARANTIA: "🛡️ Pago protegido con verificación 3D Secure Ecuador",
     PRECIO_SEAT_EXTRA_USD: 150,
@@ -95,7 +111,7 @@ const PLANES_V230 = Object.freeze({
     }),
 });
 
-const INSTALADORES_SO = Object.freeze({
+const INSTALADORES_SO = congelarProfundo({
     windows: Object.freeze({
         id: "windows",
         modalId: "modalDescargaWindows",
@@ -140,7 +156,7 @@ const INSTALADORES_SO = Object.freeze({
     }),
 });
 
-const TEXTOS_LEGALES = Object.freeze({
+const TEXTOS_LEGALES = congelarProfundo({
     terminos: Object.freeze({
         titulo: "Términos y Condiciones — TributaFlow Pro",
         secciones: [
@@ -228,17 +244,62 @@ function formatearUsd(monto) {
     })}`;
 }
 
+const PAYPHONE_URLS_OFICIALES = Object.freeze(
+    Object.values(CONFIG_COMERCIAL.PAYPHONE_LINKS).filter((u) => typeof u === "string" && u.length > 0)
+);
+
 function esUrlPayphoneSegura(url) {
     if (!url || typeof url !== "string") return false;
     try {
         const parsed = new URL(url);
         return (
             parsed.protocol === "https:" &&
-            CONFIG_COMERCIAL.DOMINIOS_PAYPHONE.includes(parsed.hostname.toLowerCase())
+            url.startsWith(CONFIG_COMERCIAL.PAYPHONE_URL_PREFIX) &&
+            CONFIG_COMERCIAL.DOMINIOS_PAYPHONE.includes(parsed.hostname.toLowerCase()) &&
+            PAYPHONE_URLS_OFICIALES.includes(url)
         );
     } catch {
         return false;
     }
+}
+
+function esUrlWhatsappSegura(url) {
+    if (!url || typeof url !== "string") return false;
+    const prefijo = CONFIG_COMERCIAL.WHATSAPP_URL_PREFIX;
+    if (!url.startsWith(prefijo)) return false;
+    const siguiente = url.charAt(prefijo.length);
+    return siguiente === "" || siguiente === "?";
+}
+
+function esUrlCorreoSegura(url) {
+    if (!url || typeof url !== "string") return false;
+    const prefijo = CONFIG_COMERCIAL.MAILTO_URL_PREFIX;
+    if (!url.startsWith(prefijo)) return false;
+    const siguiente = url.charAt(prefijo.length);
+    return siguiente === "" || siguiente === "?";
+}
+
+function validarDestinoSeguro(url, tipo = "auto") {
+    if (tipo === "payphone") return esUrlPayphoneSegura(url);
+    if (tipo === "whatsapp") return esUrlWhatsappSegura(url);
+    if (tipo === "correo") return esUrlCorreoSegura(url);
+    return esUrlPayphoneSegura(url) || esUrlWhatsappSegura(url) || esUrlCorreoSegura(url);
+}
+
+function asignarEnlaceSeguro(anchorEl, url, tipo) {
+    if (!anchorEl) return false;
+    anchorEl.setAttribute("data-tf-canal-seguro", tipo);
+    if (!validarDestinoSeguro(url, tipo)) {
+        anchorEl.removeAttribute("href");
+        mostrarToastCopia("⛔ Canal bloqueado por verificación de integridad.");
+        return false;
+    }
+    anchorEl.setAttribute("href", url);
+    if (tipo !== "correo") {
+        anchorEl.target = "_blank";
+        anchorEl.rel = "noopener noreferrer";
+    }
+    return true;
 }
 
 function resolverPlan(planRaw) {
@@ -307,6 +368,92 @@ function copiarAlPortapapeles(valor, etiqueta) {
     }
 }
 
+function construirPlantillaComprobante(resumen, metodoPago) {
+    const { plan, extras, montoTexto, estacionesTotales, referencia, hwidORef } = resumen;
+    const hwidTexto =
+        hwidORef && hwidORef !== "SIN_ESPECIFICAR"
+            ? hwidORef
+            : "[Pegar código TF-XXXXXX-...]";
+    const detalleEstaciones =
+        extras > 0
+            ? `${estacionesTotales} PCs (${plan.estacionesBase} base + ${extras} adicionales)`
+            : estacionesTotales === 1
+                ? "1 PC"
+                : `${estacionesTotales} PCs`;
+    const asunto = `[TRIBUTAFLOW PRO] Activación Licencia Anual ${referencia} (${metodoPago})`;
+    const esPayPhone = String(metodoPago || "").toLowerCase().includes("payphone");
+    const campoComprobante = esPayPhone
+        ? "• N.º de Comprobante o Titular de la Tarjeta: [Escribir autorización o titular]"
+        : "• N.º de Comprobante / Autorización: [Escribir número de transacción]";
+    const lineaHwidsAdicionales =
+        Number(estacionesTotales) >= 2
+            ? "\n• Código HWID PC(s) Adicional(es): [Pegar códigos HWID adicionales]"
+            : "";
+    const cuerpo =
+        `[TRIBUTAFLOW PRO] Hola equipo de TributaFlow Pro, envío mi comprobante de pago para activar mi licencia anual v${CONFIG_COMERCIAL.VERSION}:\n\n` +
+        `• Plan seleccionado: ${plan.nombreComercial}\n` +
+        `• Monto USD anual: ${montoTexto} USD / año\n` +
+        `• Estaciones autorizadas: ${detalleEstaciones}\n` +
+        `• Método de pago: ${metodoPago}\n` +
+        `• Referencia de orden: ${referencia}\n` +
+        `${campoComprobante}\n` +
+        `• Código HWID PC Principal (TributaFlow Pro -> Activar Licencia): ${hwidTexto}` +
+        `${lineaHwidsAdicionales}\n\n` +
+        `Datos para emisión de licencia (.lic):\n` +
+        `• RUC o Cédula: [Escribir RUC/Cédula]\n` +
+        `• Nombre / Razón Social: [Escribir nombre o empresa]\n` +
+        `• Correo para recibir tu archivo .lic: [Escribir correo]\n\n` +
+        `⚠️ Adjunta la captura o PDF del comprobante. Tu archivo .lic será emitido en breve una vez confirmado el pago.`;
+    return { asunto, cuerpo };
+}
+
+function construirPlantillaSoporte(planNombre, referencia) {
+    const asunto = CONFIG_COMERCIAL.ASUNTO_SOPORTE;
+    const detallePlan = planNombre ? `\n• Plan consultado: ${planNombre}` : "";
+    const detalleRef = referencia ? `\n• Referencia de consulta: ${referencia}` : "";
+    const cuerpo =
+        `${asunto}\n\n` +
+        `Hola equipo de TributaFlow Pro, tengo una consulta técnica o comercial (sin envío de comprobante):` +
+        `${detallePlan}${detalleRef}\n` +
+        `• Detalle de mi consulta: [Escribir consulta técnica o comercial]`;
+    return { asunto, cuerpo };
+}
+
+function construirUrlWhatsapp(texto) {
+    return `https://wa.me/${CONFIG_COMERCIAL.WHATSAPP_NUMERO}?text=${encodeURIComponent(texto)}`;
+}
+
+function construirUrlMailto(asunto, cuerpo) {
+    return (
+        `mailto:${CONFIG_COMERCIAL.CORREO_SOPORTE}` +
+        `?subject=${encodeURIComponent(asunto)}` +
+        `&body=${encodeURIComponent(cuerpo)}`
+    );
+}
+
+function vincularCopiaCorreo(anchorEl, obtenerPlantillaFn) {
+    if (!anchorEl || anchorEl.dataset.copyMailBound === "1") return;
+    anchorEl.dataset.copyMailBound = "1";
+    anchorEl.addEventListener("click", () => {
+        const { asunto, cuerpo } = obtenerPlantillaFn();
+        const respaldo = `Para: ${CONFIG_COMERCIAL.CORREO_SOPORTE}\nAsunto: ${asunto}\n\n${cuerpo}`;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard
+                .writeText(respaldo)
+                .then(() =>
+                    mostrarToastCopia(
+                        `✓ Plantilla copiada al portapapeles (${CONFIG_COMERCIAL.CORREO_SOPORTE})`
+                    )
+                )
+                .catch(() =>
+                    mostrarToastCopia(`Correo oficial: ${CONFIG_COMERCIAL.CORREO_SOPORTE}`)
+                );
+        } else {
+            mostrarToastCopia(`Correo oficial: ${CONFIG_COMERCIAL.CORREO_SOPORTE}`);
+        }
+    });
+}
+
 /* ==========================================================================
    Construcción segura de modales compartidos (sin innerHTML) en cualquier página
    ========================================================================== */
@@ -328,12 +475,8 @@ function asegurarBotonFlotanteSoporte() {
     if (document.getElementById("btnFlotanteSoporte")) return;
     const btn = crearEl("a", "whatsapp-float", "💬 Soporte TributaFlow Pro");
     btn.id = "btnFlotanteSoporte";
-    btn.target = "_blank";
-    btn.rel = "noopener noreferrer";
-    const msg = encodeURIComponent(
-        "[TRIBUTAFLOW PRO] Hola equipo de TributaFlow Pro, necesito asesoría comercial/técnica sobre la versión v2.3.0 Enterprise."
-    );
-    btn.href = `https://wa.me/${CONFIG_COMERCIAL.WHATSAPP_NUMERO}?text=${msg}`;
+    const { cuerpo } = construirPlantillaSoporte(`TributaFlow Pro v${CONFIG_COMERCIAL.VERSION}`, "");
+    asignarEnlaceSeguro(btn, construirUrlWhatsapp(cuerpo), "whatsapp");
     document.body.appendChild(btn);
 }
 
@@ -527,15 +670,42 @@ function asegurarModalPago() {
         bankRows.appendChild(row);
     });
 
-    const btnWp = crearEl("a", "btn-wp-confirm", "📲 Enviar Comprobante por WhatsApp / Soporte");
+    const deunaActions = crearEl("div", "checkout-actions-row");
+    const btnWp = crearEl("a", "btn-wp-confirm", "📲 Enviar Comprobante por WhatsApp");
     btnWp.id = "btnEnviarComprobanteWp";
     btnWp.target = "_blank";
     btnWp.rel = "noopener noreferrer";
 
+    const btnCorreoDeuna = crearEl("a", "btn-email-confirm", "📧 Enviar Comprobante por Correo");
+    btnCorreoDeuna.id = "btnEnviarComprobanteCorreo";
+    vincularCopiaCorreo(btnCorreoDeuna, () =>
+        construirPlantillaComprobante(calcularResumenCheckout(), "Deuna! / Banco Pichincha")
+    );
+    deunaActions.appendChild(btnWp);
+    deunaActions.appendChild(btnCorreoDeuna);
+
+    const deunaSupportBar = crearEl("div", "support-inline-bar");
+    deunaSupportBar.appendChild(crearEl("span", "", "¿Dudas antes de pagar?"));
+    const deunaSupportLinks = crearEl("div", "support-inline-links");
+    const btnSoporteDeunaWp = crearEl("a", "btn-support-link", "💬 Soporte Oficial (WhatsApp)");
+    btnSoporteDeunaWp.id = "btnSoporteDeunaWp";
+    btnSoporteDeunaWp.target = "_blank";
+    btnSoporteDeunaWp.rel = "noopener noreferrer";
+    const btnSoporteDeunaCorreo = crearEl("a", "btn-support-link", "✉️ Soporte Oficial (Correo)");
+    btnSoporteDeunaCorreo.id = "btnSoporteDeunaCorreo";
+    vincularCopiaCorreo(btnSoporteDeunaCorreo, () => {
+        const r = calcularResumenCheckout();
+        return construirPlantillaSoporte(r.plan.nombreComercial, r.referencia);
+    });
+    deunaSupportLinks.appendChild(btnSoporteDeunaWp);
+    deunaSupportLinks.appendChild(btnSoporteDeunaCorreo);
+    deunaSupportBar.appendChild(deunaSupportLinks);
+
     boxDeuna.appendChild(deunaLayout);
     boxDeuna.appendChild(crearEl("p", "deuna-titular-note", CONFIG_COMERCIAL.TITULAR_NOTA_BANCO));
     boxDeuna.appendChild(bankRows);
-    boxDeuna.appendChild(btnWp);
+    boxDeuna.appendChild(deunaActions);
+    boxDeuna.appendChild(deunaSupportBar);
 
     // Casilla 2: PayPhone / Bloque Corporativo Enterprise
     const boxCard = crearEl("div", "pay-box pay-card");
@@ -552,7 +722,7 @@ function asegurarModalPago() {
         crearEl(
             "p",
             "",
-            "Paga de forma inmediata con tarjeta mediante enlace seguro HTTPS verificado (ppls.me) y luego envía tu comprobante por WhatsApp con tu Referencia."
+            "Paso 1: Paga con tarjeta mediante enlace seguro HTTPS verificado (ppls.me)."
         )
     );
     const badgesWrap = crearEl("div", "pay-badges");
@@ -570,9 +740,74 @@ function asegurarModalPago() {
 
     payphonePanel.appendChild(crearEl("div", "pay-security-note", CONFIG_COMERCIAL.PAYPHONE_GARANTIA));
 
+    const payphoneStep2 = crearEl("div", "payphone-step2-box");
+    payphoneStep2.id = "pagoPayphonePaso2";
+    payphoneStep2.appendChild(
+        crearEl(
+            "div",
+            "anti-fp-alert",
+            "Paso 2 — Una vez aprobado tu pago con tarjeta, envíanos tu comprobante o el nombre del titular de la tarjeta por WhatsApp o correo junto con tu referencia para activar tu licencia de inmediato."
+        )
+    );
+
+    const btnPayphoneWp = crearEl("a", "btn-wp-confirm", "📲 Enviar Voucher PayPhone por WhatsApp");
+    btnPayphoneWp.id = "btnPayphoneVoucherWp";
+    btnPayphoneWp.target = "_blank";
+    btnPayphoneWp.rel = "noopener noreferrer";
+
+    const btnPayphoneCorreo = crearEl("a", "btn-email-confirm", "📧 Enviar Voucher PayPhone por Correo");
+    btnPayphoneCorreo.id = "btnPayphoneVoucherCorreo";
+    vincularCopiaCorreo(btnPayphoneCorreo, () =>
+        construirPlantillaComprobante(calcularResumenCheckout(), "PayPhone Tarjeta")
+    );
+
+    payphoneStep2.appendChild(btnPayphoneWp);
+    payphoneStep2.appendChild(btnPayphoneCorreo);
+
+    const payphoneSupportBar = crearEl("div", "support-inline-bar");
+    payphoneSupportBar.appendChild(crearEl("span", "", "¿Consulta técnica sin pago?"));
+    const payphoneSupportLinks = crearEl("div", "support-inline-links");
+    const btnSoportePayphoneWp = crearEl("a", "btn-support-link", "💬 Contactar Soporte Oficial");
+    btnSoportePayphoneWp.id = "btnSoportePayphoneWp";
+    btnSoportePayphoneWp.target = "_blank";
+    btnSoportePayphoneWp.rel = "noopener noreferrer";
+    const btnSoportePayphoneCorreo = crearEl("a", "btn-support-link", "✉️ soporte@tributaflow.com");
+    btnSoportePayphoneCorreo.id = "btnSoportePayphoneCorreo";
+    vincularCopiaCorreo(btnSoportePayphoneCorreo, () => {
+        const r = calcularResumenCheckout();
+        return construirPlantillaSoporte(r.plan.nombreComercial, r.referencia);
+    });
+    payphoneSupportLinks.appendChild(btnSoportePayphoneWp);
+    payphoneSupportLinks.appendChild(btnSoportePayphoneCorreo);
+    payphoneSupportBar.appendChild(payphoneSupportLinks);
+    payphoneStep2.appendChild(payphoneSupportBar);
+
+    payphonePanel.appendChild(payphoneStep2);
+
     const lanPanel = crearEl("div", "enterprise-lan-notice");
     lanPanel.id = "pagoEnterpriseLanPanel";
     lanPanel.style.display = "none";
+    const lanTexto = crearEl("p", "", "");
+    lanTexto.id = "pagoEnterpriseLanTexto";
+    const lanSupportBar = crearEl("div", "support-inline-bar");
+    lanSupportBar.style.marginTop = "10px";
+    lanSupportBar.appendChild(crearEl("span", "", "Asesoría corporativa previa:"));
+    const lanSupportLinks = crearEl("div", "support-inline-links");
+    const btnSoporteEnterpriseWp = crearEl("a", "btn-support-link", "💬 Contactar Soporte Oficial");
+    btnSoporteEnterpriseWp.id = "btnSoporteEnterpriseWp";
+    btnSoporteEnterpriseWp.target = "_blank";
+    btnSoporteEnterpriseWp.rel = "noopener noreferrer";
+    const btnSoporteEnterpriseCorreo = crearEl("a", "btn-support-link", "✉️ soporte@tributaflow.com");
+    btnSoporteEnterpriseCorreo.id = "btnSoporteEnterpriseCorreo";
+    vincularCopiaCorreo(btnSoporteEnterpriseCorreo, () => {
+        const r = calcularResumenCheckout();
+        return construirPlantillaSoporte(r.plan.nombreComercial, r.referencia);
+    });
+    lanSupportLinks.appendChild(btnSoporteEnterpriseWp);
+    lanSupportLinks.appendChild(btnSoporteEnterpriseCorreo);
+    lanSupportBar.appendChild(lanSupportLinks);
+    lanPanel.appendChild(lanTexto);
+    lanPanel.appendChild(lanSupportBar);
 
     boxCard.appendChild(cardTitle);
     boxCard.appendChild(payphonePanel);
@@ -601,6 +836,7 @@ function asegurarModalPago() {
     box.appendChild(content);
     overlay.appendChild(box);
     document.body.appendChild(overlay);
+    actualizarVistaModalPago();
 }
 
 function asegurarModalDescargaSO(soMeta) {
@@ -725,20 +961,51 @@ function actualizarVistaModalPago() {
         ].forEach((txt) => pasosUl.appendChild(crearEl("li", "", txt)));
     }
 
-    const msgWp = encodeURIComponent(
-        `[TRIBUTAFLOW PRO v${CONFIG_COMERCIAL.VERSION}] Hola Soporte TributaFlow Pro, envío confirmación para activación anual:\n\n` +
-            `• Plan: ${plan.nombreComercial}\n` +
-            `• Monto exacto USD: ${montoTexto}\n` +
-            `• Estaciones autorizadas: ${estacionesTotales} PC(s)${extras > 0 ? ` (10 base + ${extras} adicionales)` : ""}\n` +
-            `• Referencia de Pago: ${referencia}\n` +
-            `• HWID / RUC Referencia: ${res.hwidORef}\n\n` +
-            `Adjunto mi comprobante de pago.`
+    const deunaTemplate = construirPlantillaComprobante(res, "Deuna! / Banco Pichincha");
+    asignarEnlaceSeguro(
+        document.getElementById("btnEnviarComprobanteWp"),
+        construirUrlWhatsapp(deunaTemplate.cuerpo),
+        "whatsapp"
     );
-    document.getElementById("btnEnviarComprobanteWp").href =
-        `https://wa.me/${CONFIG_COMERCIAL.WHATSAPP_NUMERO}?text=${msgWp}`;
+    asignarEnlaceSeguro(
+        document.getElementById("btnEnviarComprobanteCorreo"),
+        construirUrlMailto(deunaTemplate.asunto, deunaTemplate.cuerpo),
+        "correo"
+    );
+
+    const payphoneTemplate = construirPlantillaComprobante(res, "PayPhone Tarjeta");
+    asignarEnlaceSeguro(
+        document.getElementById("btnPayphoneVoucherWp"),
+        construirUrlWhatsapp(payphoneTemplate.cuerpo),
+        "whatsapp"
+    );
+    asignarEnlaceSeguro(
+        document.getElementById("btnPayphoneVoucherCorreo"),
+        construirUrlMailto(payphoneTemplate.asunto, payphoneTemplate.cuerpo),
+        "correo"
+    );
+
+    const soporteTemplate = construirPlantillaSoporte(plan.nombreComercial, referencia);
+    const soporteWpUrl = construirUrlWhatsapp(soporteTemplate.cuerpo);
+    const soporteCorreoUrl = construirUrlMailto(soporteTemplate.asunto, soporteTemplate.cuerpo);
+    [
+        "btnSoporteDeunaWp",
+        "btnSoportePayphoneWp",
+        "btnSoporteEnterpriseWp",
+    ].forEach((id) => {
+        asignarEnlaceSeguro(document.getElementById(id), soporteWpUrl, "whatsapp");
+    });
+    [
+        "btnSoporteDeunaCorreo",
+        "btnSoportePayphoneCorreo",
+        "btnSoporteEnterpriseCorreo",
+    ].forEach((id) => {
+        asignarEnlaceSeguro(document.getElementById(id), soporteCorreoUrl, "correo");
+    });
 
     const payphonePanel = document.getElementById("pagoPayphonePanel");
     const lanPanel = document.getElementById("pagoEnterpriseLanPanel");
+    const lanTexto = document.getElementById("pagoEnterpriseLanTexto");
     const cardTitle = document.getElementById("pagoCardTitulo");
     const btnPayphone = document.getElementById("btnPagarPayphoneModal");
 
@@ -746,15 +1013,21 @@ function actualizarVistaModalPago() {
         cardTitle.textContent = "2. Tarjeta Crédito / Débito (PayPhone Oficial)";
         payphonePanel.style.display = "flex";
         lanPanel.style.display = "none";
-        btnPayphone.href = urlPayphone;
+        asignarEnlaceSeguro(btnPayphone, urlPayphone, "payphone");
         btnPayphone.textContent = `💳 Pagar con Tarjeta en PayPhone (${montoTexto})`;
     } else {
         cardTitle.textContent = "2. Activación Corporativa Red LAN (Transferencia Directa)";
         payphonePanel.style.display = "none";
         lanPanel.style.display = "block";
-        lanPanel.textContent =
-            `El plan ${plan.nombreComercial} (${montoTexto} USD / año para ${estacionesTotales} estaciones) ` +
-            `se activa con 0 % comisión mediante Transferencia Bancaria Directa o QR Deuna! usando la referencia ${referencia}.`;
+        if (btnPayphone) {
+            btnPayphone.removeAttribute("href");
+            btnPayphone.removeAttribute("data-tf-canal-seguro");
+        }
+        if (lanTexto) {
+            lanTexto.textContent =
+                `El plan ${plan.nombreComercial} (${montoTexto} USD / año para ${estacionesTotales} estaciones) ` +
+                `se activa con 0 % comisión mediante Transferencia Bancaria Directa o QR Deuna! usando la referencia ${referencia}.`;
+        }
     }
 }
 
@@ -843,12 +1116,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const navRoot = (document.body && document.body.getAttribute("data-root")) || "";
     const currentPage = (window.location.pathname || "").split("/").pop() || "";
 
+    function esModoMovil() {
+        return window.matchMedia && window.matchMedia("(max-width: 768px)").matches;
+    }
+
     function cerrarDropdowns(excluir) {
         document.querySelectorAll("[data-nav-dropdown]").forEach((dd) => {
             if (dd === excluir) return;
-            dd.classList.remove("is-open");
-            const btn = dd.querySelector(".nav-dropdown-trigger");
-            if (btn) btn.setAttribute("aria-expanded", "false");
+            if (typeof dd._closeNavDropdown === "function") {
+                dd._closeNavDropdown();
+            } else {
+                dd.classList.remove("is-open");
+                const btn = dd.querySelector(".nav-dropdown-trigger");
+                if (btn) btn.setAttribute("aria-expanded", "false");
+            }
         });
     }
 
@@ -910,15 +1191,106 @@ document.addEventListener("DOMContentLoaded", () => {
         panel.appendChild(grid);
         panel.appendChild(footer);
 
+        let hoverCloseTimer = null;
+        let pinnedByClick = false;
+        let lastHoverOpenTs = 0;
+
+        function abrirDd(pinned) {
+            if (hoverCloseTimer) {
+                clearTimeout(hoverCloseTimer);
+                hoverCloseTimer = null;
+            }
+            cerrarDropdowns(dd);
+            dd.classList.add("is-open");
+            trigger.setAttribute("aria-expanded", "true");
+            if (pinned) pinnedByClick = true;
+        }
+
+        function cerrarDd() {
+            if (hoverCloseTimer) {
+                clearTimeout(hoverCloseTimer);
+                hoverCloseTimer = null;
+            }
+            dd.classList.remove("is-open");
+            trigger.setAttribute("aria-expanded", "false");
+            pinnedByClick = false;
+        }
+
+        dd._closeNavDropdown = cerrarDd;
+
+        dd.addEventListener("mouseenter", () => {
+            if (esModoMovil()) return;
+            if (hoverCloseTimer) {
+                clearTimeout(hoverCloseTimer);
+                hoverCloseTimer = null;
+            }
+            if (!dd.classList.contains("is-open")) {
+                lastHoverOpenTs = Date.now();
+                abrirDd(false);
+            }
+        });
+
+        dd.addEventListener("mouseleave", () => {
+            if (esModoMovil() || pinnedByClick) return;
+            hoverCloseTimer = setTimeout(() => {
+                cerrarDd();
+            }, 160);
+        });
+
         trigger.addEventListener("click", (e) => {
             e.preventDefault();
             e.stopPropagation();
-            const willOpen = !dd.classList.contains("is-open");
-            cerrarDropdowns(willOpen ? dd : null);
-            dd.classList.toggle("is-open", willOpen);
-            trigger.setAttribute("aria-expanded", willOpen ? "true" : "false");
+            const isOpen = dd.classList.contains("is-open");
+            if (!esModoMovil() && isOpen && !pinnedByClick && Date.now() - lastHoverOpenTs < 400) {
+                pinnedByClick = true;
+                return;
+            }
+            if (isOpen) {
+                cerrarDd();
+            } else {
+                abrirDd(true);
+            }
         });
     });
+
+    // Blindaje anti-redirección en captura y respaldo de copia en enlaces estáticos de Soporte Oficial
+    document.querySelectorAll('[data-support-link="whatsapp"]').forEach((el) => {
+        el.setAttribute("data-tf-canal-seguro", "whatsapp");
+        if (!el.getAttribute("rel")) {
+            el.setAttribute("rel", "noopener noreferrer");
+        }
+    });
+    document.querySelectorAll('[data-support-link="correo"]').forEach((el) => {
+        el.setAttribute("data-tf-canal-seguro", "correo");
+        vincularCopiaCorreo(el, () =>
+            construirPlantillaSoporte(`TributaFlow Pro v${CONFIG_COMERCIAL.VERSION}`, "")
+        );
+    });
+    document.querySelectorAll('a[target="_blank"]').forEach((el) => {
+        el.setAttribute("rel", "noopener noreferrer");
+    });
+
+    if (!window.__TF_GUARDIAN_ENLACES__) {
+        window.__TF_GUARDIAN_ENLACES__ = true;
+        document.addEventListener(
+            "click",
+            (e) => {
+                const target = e.target;
+                if (!target || typeof target.closest !== "function") return;
+                const link = target.closest("a[data-tf-canal-seguro]");
+                if (!link) return;
+                const tipo = link.getAttribute("data-tf-canal-seguro") || "auto";
+                const hrefActual = link.getAttribute("href") || "";
+                if (!validarDestinoSeguro(hrefActual, tipo)) {
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                    window.__TF_LAST_BLOCKED_URL__ = hrefActual;
+                    mostrarToastCopia("⛔ Enlace bloqueado por seguridad: canal oficial no verificado.");
+                }
+            },
+            true
+        );
+    }
 
     // Menú responsive móvil
     const navToggle = document.getElementById("navToggle");
@@ -971,12 +1343,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Modales de descarga por Sistema Operativo (si es enlace <a> directo con download, abre modal y descarga sin salir de la página)
+    // Modales de descarga por Sistema Operativo (abre modal con guía de instalación y enlace directo GitHub Releases)
     document.querySelectorAll("[data-download-os]").forEach((btn) => {
         btn.addEventListener("click", (e) => {
-            if (btn.tagName !== "A") {
-                e.preventDefault();
-            }
+            e.preventDefault();
             abrirModalDescargaSO(btn.getAttribute("data-download-os"));
         });
     });
@@ -1016,3 +1386,21 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+if (!Object.prototype.hasOwnProperty.call(window, "__TF_SECURITY__")) {
+    Object.defineProperty(window, "__TF_SECURITY__", {
+        value: congelarProfundo({
+            CONFIG_COMERCIAL,
+            PLANES_V230,
+            INSTALADORES_SO,
+            TEXTOS_LEGALES,
+            validarDestinoSeguro,
+            esUrlPayphoneSegura,
+            esUrlWhatsappSegura,
+            esUrlCorreoSegura,
+        }),
+        writable: false,
+        configurable: false,
+        enumerable: true,
+    });
+}
