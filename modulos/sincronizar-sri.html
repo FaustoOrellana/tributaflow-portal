@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; form-action 'self'; base-uri 'self';">
+    <title>Sincronizar SRI (Árbol Estilo Perseo) | TributaFlow Pro v2.3.0</title>
+    <meta name="description" content="Descarga masiva de XML y RIDE PDF del SRI organizada en árbol jerárquico estilo Perseo con Logs de Sincronización y deduplicación por clave de acceso.">
+    <link rel="stylesheet" href="../assets/css/portal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-root="../">
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="brand">
+                <div class="brand-icon">TF</div>
+                <span>TributaFlow Pro</span>
+                <span class="brand-sub">v2.3.0 Enterprise</span>
+            </a>
+            <button type="button" id="navToggle" class="nav-toggle" aria-label="Abrir menú">☰</button>
+            <nav id="navMenu" class="nav-menu">
+                <a href="../index.html#modulos" class="active">9 Módulos</a>
+                <a href="../index.html#precios">Planes (5)</a>
+                <a href="../index.html#descargas">Descargas</a>
+                <button type="button" class="nav-cta" data-checkout-plan="ESTUDIO_PRO">Adquirir Licencia</button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="module-hero">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Ruta de navegación">
+                <a href="../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../index.html#modulos">Módulos</a>
+                <span>/</span>
+                <span>3. Sincronizar SRI (Árbol Jerárquico Estilo Perseo)</span>
+            </nav>
+            <span class="eyebrow">MÓDULO 03 • MOTOR PLAYWRIGHT + BÓVEDA PERSEO</span>
+            <h1>Sincronización SRI y Árbol Jerárquico Estilo Perseo</h1>
+            <p style="max-width: 780px; color: var(--text-soft); margin-top: 10px;">Automatiza la extracción de comprobantes electrónicos emitidos y recibidos desde el SRI en Línea, genera sus RIDE PDF y archiva todo en carpetas ordenadas por contribuyente, año, mes, dirección, tipo y formato.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="architecture-split">
+                <div class="tree-box">
+                    <span class="eyebrow">ÁRBOL JERÁRQUICO REAL EN DISCO</span>
+                    <pre>Boveda_TributaFlow/
+└── &lt;RUC&gt;_&lt;EMPRESA&gt;/ (Ej: 1790012345001_EMPRESA_DEMOSTRACION_SA)
+    ├── &lt;AÑO&gt;/ (2026)
+    │   └── &lt;MM_MES&gt;/ (10_OCTUBRE)
+    │       ├── Emitidos/
+    │       │   └── &lt;TIPO&gt;/ (Facturas | Retenciones | Notas_Credito)
+    │       │       ├── XML/
+    │       │       └── RIDE/
+    │       └── Recibidos/
+    │           └── &lt;TIPO&gt;/
+    │               ├── XML/
+    │               └── RIDE/
+    └── Logs_Sincronizacion/
+        └── historial_2026_10.log</pre>
+                </div>
+
+                <div class="feature-list-panel">
+                    <h3>Capacidades Clave de Sincronización</h3>
+                    <ul>
+                        <li>✔ <strong>Deduplicación por Clave de Acceso (49 dígitos):</strong> Nunca descarga ni duplica dos veces el mismo XML o RIDE dentro de la bóveda o SQLite.</li>
+                        <li>✔ <strong>Sincronización en Lote Multi-RUC:</strong> Desde Contador Master (15 RUCs), Estudio Pro (50 RUCs) hasta Enterprise (RUCs Ilimitados), procesa colas nocturnas o por período.</li>
+                        <li>✔ <strong>Trazabilidad en <code>Logs_Sincronizacion/</code>:</strong> Registro detallado de comprobantes nuevos, omitidos por duplicado y reintentos ante caídas del portal SRI.</li>
+                        <li>✔ <strong>Cola Anti-Colisión Red LAN:</strong> En Enterprise Team y Corp impide que dos PCs descarguen simultáneamente el mismo RUC y período.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="module-nav-footer">
+                <a href="mis-contribuyentes.html" class="btn-glass">← Anterior: Mis Contribuyentes</a>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <button type="button" class="btn-glass" data-download-os="windows">⬇ Descargar v2.3.0</button>
+                    <button type="button" class="btn-primary" data-checkout-plan="ESTUDIO_PRO">💳 Adquirir Estudio Pro ($299)</button>
+                    <a href="importar-comprobantes.html" class="btn-glass">Siguiente: Importar Comprobantes →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <span>© 2026 TributaFlow Pro — Sistema de Gestión Tributaria, Bóveda Documental y ATS para Ecuador</span>
+                <div style="display: flex; gap: 16px;">
+                    <a href="../index.html" style="color: var(--accent); text-decoration: none;">Inicio</a>
+                    <button type="button" class="legal-trigger" data-legal="terminos">Términos</button>
+                    <button type="button" class="legal-trigger" data-legal="privacidad">Privacidad</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../assets/js/portal.js"></script>
+</body>
+</html>

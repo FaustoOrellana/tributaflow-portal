@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; form-action 'self'; base-uri 'self';">
+    <title>Panel General | TributaFlow Pro v2.3.0 Enterprise</title>
+    <meta name="description" content="Módulo Panel General de TributaFlow Pro: tablero ejecutivo con KPIs fiscales, estado de licencia, cupo ético de RUCs y accesos rápidos.">
+    <link rel="stylesheet" href="../assets/css/portal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-root="../">
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="brand">
+                <div class="brand-icon">TF</div>
+                <span>TributaFlow Pro</span>
+                <span class="brand-sub">v2.3.0 Enterprise</span>
+            </a>
+            <button type="button" id="navToggle" class="nav-toggle" aria-label="Abrir menú">☰</button>
+            <nav id="navMenu" class="nav-menu">
+                <a href="../index.html#modulos" class="active">9 Módulos</a>
+                <a href="../index.html#precios">Planes (5)</a>
+                <a href="../index.html#descargas">Descargas</a>
+                <button type="button" class="nav-cta" data-checkout-plan="ESTUDIO_PRO">Adquirir Licencia</button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="module-hero">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Ruta de navegación">
+                <a href="../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../index.html#modulos">Módulos</a>
+                <span>/</span>
+                <span>1. Panel General</span>
+            </nav>
+            <span class="eyebrow">MÓDULO 01 • DISPONIBLE EN LOS 5 PLANES</span>
+            <h1>Panel General Ejecutivo en Tiempo Real</h1>
+            <p style="max-width: 780px; color: var(--text-soft); margin-top: 10px;">Centro de mando inicial de TributaFlow Pro v2.3.0 Enterprise. Consolida métricas contables del contribuyente activo, estado criptográfico de evaluación o licencia anual y control transparente del cupo ético de RUCs consumidos.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="module-detail-grid">
+                <div class="step-cards">
+                    <article class="step-card">
+                        <h4>📊 KPIs Emitidos y Recibidos</h4>
+                        <p>Visualiza en segundos el conteo exacto de facturas, notas de crédito, retenciones y liquidaciones indexadas en la bóveda local de <code>1790012345001 — EMPRESA DEMOSTRACIÓN S.A.</code>.</p>
+                    </article>
+                    <article class="step-card">
+                        <h4>🛡️ Monitor de Licencia RSA-2048</h4>
+                        <p>Muestra el plan activo (o edición en evaluación gratuita de 15 días), días restantes de vigencia anual y estaciones HWID autorizadas.</p>
+                    </article>
+                    <article class="step-card">
+                        <h4>📘 Cupo Ético de RUCs</h4>
+                        <p>Diferencia entre empresas registradas en borrador y RUCs sellados tras su primera descarga real del SRI, protegiendo tu inversión ante eliminaciones accidentales.</p>
+                    </article>
+                    <article class="step-card">
+                        <h4>⚡ Accesos Directos Operativos</h4>
+                        <p>Salta con un clic hacia Sincronizar SRI, Importar TXT/XML, Auditor Fantasma o Generador ATS sin navegar por menús complejos.</p>
+                    </article>
+                </div>
+
+                <div class="terminal-card">
+                    <div class="terminal-top">
+                        <div class="win-controls"><span></span><span></span><span></span></div>
+                        <div class="terminal-tab">panel_general — Vista Ejecutiva</div>
+                    </div>
+                    <div class="terminal-content">
+                        <div class="log-line"><span class="t-info">CONTRIBUYENTE:</span> 1790012345001 — EMPRESA DEMOSTRACIÓN S.A.</div>
+                        <div class="log-line"><span class="t-ok">✔ ESTADO LICENCIA:</span> Estudio Contable Pro (348 días restantes)</div>
+                        <div class="log-line"><span class="t-info">CUPO ÉTICO RUCs:</span> 12 sellados / 50 autorizados (2 PCs vinculadas)</div>
+                        <div class="log-line"><span class="t-ok">✔ COMPROBANTES 2026:</span> 1,040 Recibidos • 442 Emitidos • 0 Pendientes</div>
+                        <div class="terminal-summary">
+                            <div>
+                                <small>Última Sincronización Verificada</small>
+                                <strong>Hace 8 min • Sin Alertas</strong>
+                            </div>
+                            <span class="badge-ready">BÓVEDA CIFRADA OK</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-nav-footer">
+                <a href="../index.html#modulos" class="btn-glass">← Todos los Módulos</a>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <button type="button" class="btn-glass" data-download-os="windows">⬇ Descargar Prueba 15 Días</button>
+                    <button type="button" class="btn-primary" data-checkout-plan="ESTUDIO_PRO">💳 Adquirir Estudio Pro ($299)</button>
+                    <a href="mis-contribuyentes.html" class="btn-glass">Siguiente: Mis Contribuyentes →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <span>© 2026 TributaFlow Pro — Sistema de Gestión Tributaria, Bóveda Documental y ATS para Ecuador</span>
+                <div style="display: flex; gap: 16px;">
+                    <a href="../index.html" style="color: var(--accent); text-decoration: none;">Inicio</a>
+                    <button type="button" class="legal-trigger" data-legal="terminos">Términos</button>
+                    <button type="button" class="legal-trigger" data-legal="privacidad">Privacidad</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../assets/js/portal.js"></script>
+</body>
+</html>

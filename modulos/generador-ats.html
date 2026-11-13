@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; form-action 'self'; base-uri 'self';">
+    <title>Generador y Validador Oficial ATS XSD | TributaFlow Pro v2.3.0</title>
+    <meta name="description" content="Construye el Anexo Transaccional Simplificado ATS_Declaraciones/ATS_RUC_MM_AÑO.xml, valida contra esquema XSD oficial del SRI offline y genera resumen Excel.">
+    <link rel="stylesheet" href="../assets/css/portal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-root="../">
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="brand">
+                <div class="brand-icon">TF</div>
+                <span>TributaFlow Pro</span>
+                <span class="brand-sub">v2.3.0 Enterprise</span>
+            </a>
+            <button type="button" id="navToggle" class="nav-toggle" aria-label="Abrir menú">☰</button>
+            <nav id="navMenu" class="nav-menu">
+                <a href="../index.html#modulos" class="active">9 Módulos</a>
+                <a href="../index.html#precios">Planes (5)</a>
+                <a href="../index.html#descargas">Descargas</a>
+                <button type="button" class="nav-cta" data-checkout-plan="CONTADOR_MASTER">Adquirir Licencia</button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="module-hero">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Ruta de navegación">
+                <a href="../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../index.html#modulos">Módulos</a>
+                <span>/</span>
+                <span>8. Generador y Validador Oficial ATS</span>
+            </nav>
+            <span class="eyebrow">MÓDULO 08 • DESDE CONTADOR MASTER ($139) Y CONTINGENCIA EN ESTUDIO PRO ($299)</span>
+            <h1>Generador Oficial ATS y Validador XSD Offline SRI</h1>
+            <p style="max-width: 780px; color: var(--text-soft); margin-top: 10px;">Construye el Anexo Transaccional Simplificado directamente desde los XML sincronizados de tu bóveda, valida estructuralmente cada nodo contra los esquemas <code>.xsd</code> del SRI sin internet y genera el resumen contable en Excel.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="module-detail-grid">
+                <div class="step-cards">
+                    <article class="step-card">
+                        <h4>📑 Ruta Estandarizada ATS</h4>
+                        <p>Guarda cada declaración lista para comprimir en <code>ATS_Declaraciones/ATS_&lt;RUC&gt;_&lt;MM&gt;_&lt;AÑO&gt;.xml</code> dentro de la carpeta del contribuyente.</p>
+                    </article>
+                    <article class="step-card">
+                        <h4>✔ Validador XSD Oficial Offline</h4>
+                        <p>Verifica tipos de datos, códigos de sustento, formas de pago, retenciones y secuenciales contra el esquema XSD SRI antes de subir al portal.</p>
+                    </article>
+                    <article class="step-card">
+                        <h4>📊 Resumen Contable Excel</h4>
+                        <p>Adjunta hojas de conciliación por compras, ventas, anulados y retenciones para cuadrar contra el Formulario 104 en minutos.</p>
+                    </article>
+                    <article class="step-card">
+                        <h4>⚡ Modo Contingencia (Estudio Pro+)</h4>
+                        <p>Generación resiliente y corrección guiada de inconsistencias cuando proveedores emiten comprobantes con datos parciales.</p>
+                    </article>
+                </div>
+
+                <div class="tree-box">
+                    <span class="eyebrow">SALIDA OFICIAL ATS GENERADA</span>
+                    <pre>1790012345001_EMPRESA_DEMOSTRACION_SA/
+└── ATS_Declaraciones/
+    ├── ATS_1790012345001_10_2026.xml  [✔ XSD VÁLIDO]
+    ├── ATS_1790012345001_10_2026.zip  [Listo SRI DIMM]
+    └── Resumen_ATS_10_2026.xlsx       [Compras + Ventas + Ret.]
+
+Validación XSD Local:
+✔ &lt;TipoIDInformante&gt;R&lt;/TipoIDInformante&gt;
+✔ &lt;IdInformante&gt;1790012345001&lt;/IdInformante&gt;
+✔ &lt;razonSocial&gt;EMPRESA DEMOSTRACIÓN S.A.&lt;/razonSocial&gt;
+✔ 0 errores estructurales XSD SRI</pre>
+                </div>
+            </div>
+
+            <div class="module-nav-footer">
+                <a href="consulta-masiva.html" class="btn-glass">← Anterior: Consulta Masiva</a>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <button type="button" class="btn-primary" data-checkout-plan="CONTADOR_MASTER">💳 Contador Master ($139)</button>
+                    <button type="button" class="btn-primary" data-checkout-plan="ESTUDIO_PRO">💳 Estudio Pro + Contingencia ($299)</button>
+                    <a href="ajustes-seguridad.html" class="btn-glass">Siguiente: Ajustes y Red LAN →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <span>© 2026 TributaFlow Pro — Sistema de Gestión Tributaria, Bóveda Documental y ATS para Ecuador</span>
+                <div style="display: flex; gap: 16px;">
+                    <a href="../index.html" style="color: var(--accent); text-decoration: none;">Inicio</a>
+                    <button type="button" class="legal-trigger" data-legal="terminos">Términos</button>
+                    <button type="button" class="legal-trigger" data-legal="privacidad">Privacidad</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../assets/js/portal.js"></script>
+</body>
+</html>

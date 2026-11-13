@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; form-action 'self'; base-uri 'self';">
+    <title>Ajustes, Red LAN TCP/IP y Blindaje | TributaFlow Pro v2.3.0</title>
+    <meta name="description" content="Matriz de permisos ✓/🔒, Red LAN TCP/IP centralizada (5 a 10+ estaciones), bóveda compartida UNC con bloqueo atómico anti-colisión y backups .tfbkp.">
+    <link rel="stylesheet" href="../assets/css/portal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-root="../">
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="brand">
+                <div class="brand-icon">TF</div>
+                <span>TributaFlow Pro</span>
+                <span class="brand-sub">v2.3.0 Enterprise</span>
+            </a>
+            <button type="button" id="navToggle" class="nav-toggle" aria-label="Abrir menú">☰</button>
+            <nav id="navMenu" class="nav-menu">
+                <a href="../index.html#modulos" class="active">9 Módulos</a>
+                <a href="../index.html#precios">Planes (5)</a>
+                <a href="../index.html#descargas">Descargas</a>
+                <button type="button" class="nav-cta" data-checkout-plan="ENTERPRISE_TEAM">Activar Red LAN</button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="module-hero">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Ruta de navegación">
+                <a href="../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../index.html#modulos">Módulos</a>
+                <span>/</span>
+                <span>9. Ajustes, Red LAN TCP/IP y Blindaje</span>
+            </nav>
+            <span class="eyebrow">MÓDULO 09 • PERMISOS EN VIVO, RED LAN TCP/IP Y BACKUPS .TFBKP</span>
+            <h1>Ajustes, Arquitectura Red LAN TCP/IP y Blindaje</h1>
+            <p style="max-width: 780px; color: var(--text-soft); margin-top: 10px;">Visualiza en tiempo real qué funciones están activas (✔) o bloqueadas (🔒) según tu plan, configura tu estudio contable en Red LAN TCP/IP centralizada para 5 a 10+ estaciones concurrentes sobre bóveda compartida UNC y genera respaldos cifrados portátiles.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="architecture-split">
+                <div class="feature-list-panel">
+                    <h3>Matriz de Capacidades y Gobernanza en Ajustes</h3>
+                    <ul>
+                        <li>✔ <strong>Modo Local (Planes Personal, Contador y Estudio):</strong> Base SQLite cifrada por HWID con <code>PBKDF2 + AES-256-GCM + HMAC</code> sin requerir servidor.</li>
+                        <li>✔ <strong>Red LAN TCP/IP (Enterprise Team 5 PCs / Corp 10+ PCs):</strong> Múltiples auxiliares contables conectados concurrentemente al servidor de base de datos de oficina por IP/puerto.</li>
+                        <li>✔ <strong>Bóveda Compartida UNC (<code>\\SERVIDOR\Boveda_TributaFlow\...</code>):</strong> Repositorio único de XML, RIDE y ATS en red con <strong>bloqueo atómico distribuido anti-colisión</strong> para que dos estaciones no escriban o descarguen el mismo RUC a la vez.</li>
+                        <li>✔ <strong>Respaldo y Migración <code>.tfbkp</code>:</strong> Exporta o restaura bóvedas completas protegidas criptográficamente en segundos.</li>
+                    </ul>
+                </div>
+
+                <div class="tree-box">
+                    <span class="eyebrow">TOPOLOGÍA RED LAN TCP/IP ENTERPRISE</span>
+                    <pre>[Estación 1 - Auxiliar] ──┐
+[Estación 2 - Contador] ──┼──(TCP/IP Red LAN + UNC)──▶ [SERVIDOR OFICINA]
+[Estación 3 - Auditor ] ──┘                             ├── DB Centralizada
+                                                        ├── \\SERVIDOR\Boveda_TributaFlow\
+                                                        │   └── Lock Atómico Anti-Colisión
+                                                        └── 1790012345001_EMPRESA_DEMOSTRACION_SA
+
+Panel Ajustes en App:
+✓ Bóveda Jerárquica Local (Personal Pro+)
+✓ Generador ATS XML/XSD (Contador Master+)
+✓ Auditor Fantasma SRI (Estudio Pro+)
+🔒 Red LAN 5+ PCs &amp; UNC (Enterprise Team $890+)
+🔒 10+ Estaciones + Multi-Regional HTTPS (Enterprise Corp $1,490+)</pre>
+                </div>
+            </div>
+
+            <div class="module-nav-footer">
+                <a href="generador-ats.html" class="btn-glass">← Anterior: Generador ATS</a>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <button type="button" class="btn-primary" data-checkout-plan="ENTERPRISE_TEAM">🏦 Enterprise Team 5 PCs ($890)</button>
+                    <button type="button" class="btn-primary" data-checkout-plan="ENTERPRISE_CORP">🏦 Enterprise Corp 10+ PCs ($1,490+)</button>
+                    <a href="../index.html#precios" class="btn-glass">Comparar los 5 Planes →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <span>© 2026 TributaFlow Pro — Sistema de Gestión Tributaria, Bóveda Documental y ATS para Ecuador</span>
+                <div style="display: flex; gap: 16px;">
+                    <a href="../index.html" style="color: var(--accent); text-decoration: none;">Inicio</a>
+                    <button type="button" class="legal-trigger" data-legal="terminos">Términos</button>
+                    <button type="button" class="legal-trigger" data-legal="privacidad">Privacidad</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../assets/js/portal.js"></script>
+</body>
+</html>

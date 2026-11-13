@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; form-action 'self'; base-uri 'self';">
+    <title>Mis Contribuyentes (Multi-RUC) | TributaFlow Pro v2.3.0 Enterprise</title>
+    <meta name="description" content="Gestión multi-empresa aislada con SQLite cifrada por HWID (PBKDF2 + AES-256-GCM + HMAC), sellado ético SRI y respaldo cifrado .tfbkp.">
+    <link rel="stylesheet" href="../assets/css/portal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-root="../">
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="brand">
+                <div class="brand-icon">TF</div>
+                <span>TributaFlow Pro</span>
+                <span class="brand-sub">v2.3.0 Enterprise</span>
+            </a>
+            <button type="button" id="navToggle" class="nav-toggle" aria-label="Abrir menú">☰</button>
+            <nav id="navMenu" class="nav-menu">
+                <a href="../index.html#modulos" class="active">9 Módulos</a>
+                <a href="../index.html#precios">Planes (5)</a>
+                <a href="../index.html#descargas">Descargas</a>
+                <button type="button" class="nav-cta" data-checkout-plan="CONTADOR_MASTER">Adquirir Licencia</button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="module-hero">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Ruta de navegación">
+                <a href="../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../index.html#modulos">Módulos</a>
+                <span>/</span>
+                <span>2. Mis Contribuyentes (Multi-RUC)</span>
+            </nav>
+            <span class="eyebrow">MÓDULO 02 • MULTI-TENANT LOCAL CIFRADO</span>
+            <h1>Mis Contribuyentes (Multi-RUC) y Bóveda Cifrada</h1>
+            <p style="max-width: 780px; color: var(--text-soft); margin-top: 10px;">Administra 1 RUC (Personal Pro), hasta 15 RUCs (Contador Master), hasta 50 RUCs (Estudio Pro) o RUCs Ilimitados (Enterprise) en bóvedas SQLite independientes protegidas criptográficamente contra acceso externo.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="module-detail-grid">
+                <div class="step-cards">
+                    <article class="step-card">
+                        <h4>🔐 SQLite Cifrada por HWID</h4>
+                        <p>Cada base local utiliza derivación de llaves <code>PBKDF2</code>, cifrado autenticado <code>AES-256-GCM</code> y verificación de integridad <code>HMAC</code> vinculada al hardware de tu equipo.</p>
+                    </article>
+                    <article class="step-card">
+                        <h4>⚖️ Regla Ética de Sellado de RUC</h4>
+                        <p>Un RUC no consume tu cupo solo por digitarlo con error tipográfico: queda sellado en el libro histórico únicamente tras completar la primera descarga real del SRI.</p>
+                    </article>
+                    <article class="step-card">
+                        <h4>🧳 Migración Portátil Cifrada (.tfbkp)</h4>
+                        <p>Exporta un paquete cifrado <code>.tfbkp</code> para trasladar la bóveda completa de <code>1790012345001 — EMPRESA DEMOSTRACIÓN S.A.</code> hacia otro equipo autorizado.</p>
+                    </article>
+                    <article class="step-card">
+                        <h4>🗝️ Bóveda de Claves SRI Aislada</h4>
+                        <p>Las credenciales del SRI en Línea se almacenan cifradas por contribuyente en disco local y jamás abandonan tu computadora ni red LAN privada.</p>
+                    </article>
+                </div>
+
+                <div class="tree-box">
+                    <span class="eyebrow">LIBRO HISTÓRICO Y EMPAQUETADO CIFRADO</span>
+                    <pre>Contribuyentes Activos:
+├── 1790012345001 | EMPRESA DEMOSTRACIÓN S.A.
+│   ├── Bóveda SQLite: AES-256-GCM + HMAC (HWID OK)
+│   ├── Estado Libro Ético: SELLADO (Descarga SRI #1 OK)
+│   └── Respaldo Portátil: backup_1790012345001.tfbkp
+└── 0999999999001 | CONTRIBUYENTE PRUEBA C.L.
+    ├── Bóveda SQLite: AES-256-GCM + HMAC (HWID OK)
+    └── Cupo Disponible: 13 de 15 RUCs (Contador Master)</pre>
+                </div>
+            </div>
+
+            <div class="module-nav-footer">
+                <a href="panel-general.html" class="btn-glass">← Anterior: Panel General</a>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <button type="button" class="btn-glass" data-download-os="windows">⬇ Descargar Instalador</button>
+                    <button type="button" class="btn-primary" data-checkout-plan="CONTADOR_MASTER">💳 Adquirir Contador Master ($139)</button>
+                    <a href="sincronizar-sri.html" class="btn-glass">Siguiente: Sincronizar SRI →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <span>© 2026 TributaFlow Pro — Sistema de Gestión Tributaria, Bóveda Documental y ATS para Ecuador</span>
+                <div style="display: flex; gap: 16px;">
+                    <a href="../index.html" style="color: var(--accent); text-decoration: none;">Inicio</a>
+                    <button type="button" class="legal-trigger" data-legal="terminos">Términos</button>
+                    <button type="button" class="legal-trigger" data-legal="privacidad">Privacidad</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../assets/js/portal.js"></script>
+</body>
+</html>

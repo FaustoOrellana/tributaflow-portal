@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; form-action 'self'; base-uri 'self';">
+    <title>Auditor Fantasma SRI en Tiempo Real | TributaFlow Pro v2.3.0</title>
+    <meta name="description" content="Cruce preventivo automático contra el catastro de empresas fantasmas e inexistentes del SRI antes de declarar impuestos. Disponible desde Estudio Pro.">
+    <link rel="stylesheet" href="../assets/css/portal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-root="../">
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="brand">
+                <div class="brand-icon">TF</div>
+                <span>TributaFlow Pro</span>
+                <span class="brand-sub">v2.3.0 Enterprise</span>
+            </a>
+            <button type="button" id="navToggle" class="nav-toggle" aria-label="Abrir menú">☰</button>
+            <nav id="navMenu" class="nav-menu">
+                <a href="../index.html#modulos" class="active">9 Módulos</a>
+                <a href="../index.html#precios">Planes (5)</a>
+                <a href="../index.html#descargas">Descargas</a>
+                <button type="button" class="nav-cta" data-checkout-plan="ESTUDIO_PRO">Adquirir Licencia</button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="module-hero">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Ruta de navegación">
+                <a href="../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../index.html#modulos">Módulos</a>
+                <span>/</span>
+                <span>5. Auditor Fantasma SRI</span>
+            </nav>
+            <span class="eyebrow">MÓDULO 05 • DISPONIBLE DESDE ESTUDIO CONTABLE PRO ($299/AÑO)</span>
+            <h1>Auditor Fantasma SRI en Tiempo Real</h1>
+            <p style="max-width: 780px; color: var(--text-soft); margin-top: 10px;">Detecta automáticamente facturas recibidas de empresas catalogadas por el SRI como fantasmas o contribuyentes con operaciones inexistentes antes de utilizar su crédito tributario o incluirlas en el ATS.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="module-detail-grid">
+                <div class="step-cards">
+                    <article class="step-card">
+                        <h4>🛡️ Cruce Preventivo de Proveedores</h4>
+                        <p>Analiza el 100 % de los RUCs emisores almacenados en tu bóveda (ejemplo de demostración: <code>0999999999001</code>) contra las resoluciones oficiales del catastro SRI.</p>
+                    </article>
+                    <article class="step-card">
+                        <h4>⚠ Alerta de Riesgo Fiscal</h4>
+                        <p>Señala el comprobante específico, fecha de emisión, monto de IVA / Subtotal y código de resolución para respaldo preventivo en auditorías.</p>
+                    </article>
+                    <article class="step-card">
+                        <h4>🚫 Bloqueo Antes de Declarar</h4>
+                        <p>Evita glosas, multas e intereses por sustento con comprobantes sin esencia económica antes de generar el XML del ATS o el Formulario 104.</p>
+                    </article>
+                    <article class="step-card">
+                        <h4>📋 Reporte Auditado en Excel</h4>
+                        <p>Exporta la sábana de revisión con semáforo de cumplimiento por proveedor lista para entregar a gerencia o auditores.</p>
+                    </article>
+                </div>
+
+                <div class="terminal-card">
+                    <div class="terminal-top">
+                        <div class="win-controls"><span></span><span></span><span></span></div>
+                        <div class="terminal-tab">auditor_fantasma — Cruce Preventivo SRI</div>
+                    </div>
+                    <div class="terminal-content">
+                        <div class="log-line"><span class="t-info">EMPRESA AUDITADA:</span> 1790012345001 — EMPRESA DEMOSTRACIÓN S.A.</div>
+                        <div class="log-line"><span class="t-warn">⚡ ESCANEANDO:</span> 148 proveedores distintos en período 2026</div>
+                        <div class="log-line"><span class="t-ok">✔ VERIFICADO:</span> Catastro oficial actualizado en caché local</div>
+                        <div class="log-line"><span class="t-info">DEMO PRUEBA:</span> RUC 0999999999001 simulado -> Estado verificado antes de ATS</div>
+                        <div class="terminal-summary">
+                            <div>
+                                <small>Proveedores Auditados Automáticamente</small>
+                                <strong>148 Verificados</strong>
+                            </div>
+                            <span class="badge-ready">BLINDAJE ACTIVO</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-nav-footer">
+                <a href="importar-comprobantes.html" class="btn-glass">← Anterior: Importar Comprobantes</a>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <button type="button" class="btn-glass" data-download-os="windows">⬇ Evaluar 15 Días Gratis</button>
+                    <button type="button" class="btn-primary" data-checkout-plan="ESTUDIO_PRO">💳 Adquirir Estudio Pro ($299)</button>
+                    <a href="busqueda-ruc.html" class="btn-glass">Siguiente: Búsqueda RUC →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <span>© 2026 TributaFlow Pro — Sistema de Gestión Tributaria, Bóveda Documental y ATS para Ecuador</span>
+                <div style="display: flex; gap: 16px;">
+                    <a href="../index.html" style="color: var(--accent); text-decoration: none;">Inicio</a>
+                    <button type="button" class="legal-trigger" data-legal="terminos">Términos</button>
+                    <button type="button" class="legal-trigger" data-legal="privacidad">Privacidad</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../assets/js/portal.js"></script>
+</body>
+</html>

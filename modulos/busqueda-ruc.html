@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; form-action 'self'; base-uri 'self';">
+    <title>Búsqueda RUC / Cédula | TributaFlow Pro v2.3.0 Enterprise</title>
+    <meta name="description" content="Consulta instantánea de estado tributario, actividad económica, tipo de contribuyente y validación de RUC o identificación Ecuador.">
+    <link rel="stylesheet" href="../assets/css/portal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-root="../">
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="brand">
+                <div class="brand-icon">TF</div>
+                <span>TributaFlow Pro</span>
+                <span class="brand-sub">v2.3.0 Enterprise</span>
+            </a>
+            <button type="button" id="navToggle" class="nav-toggle" aria-label="Abrir menú">☰</button>
+            <nav id="navMenu" class="nav-menu">
+                <a href="../index.html#modulos" class="active">9 Módulos</a>
+                <a href="../index.html#precios">Planes (5)</a>
+                <a href="../index.html#descargas">Descargas</a>
+                <button type="button" class="nav-cta" data-checkout-plan="PERSONAL_PRO">Adquirir Licencia</button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="module-hero">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Ruta de navegación">
+                <a href="../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../index.html#modulos">Módulos</a>
+                <span>/</span>
+                <span>6. Búsqueda RUC / Cédula</span>
+            </nav>
+            <span class="eyebrow">MÓDULO 06 • DISPONIBLE EN LOS 5 PLANES</span>
+            <h1>Búsqueda Instantánea de RUC y Contribuyentes</h1>
+            <p style="max-width: 780px; color: var(--text-soft); margin-top: 10px;">Consulta al instante el estado del RUC (Activo / Suspendido / Pasivo), régimen RIMPE o General, razón social, actividad económica principal y establecimientos autorizados sin abrir navegadores externos.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="module-detail-grid">
+                <div class="step-cards">
+                    <article class="step-card">
+                        <h4>🔎 Validación Algorítmica Previa</h4>
+                        <p>Verifica dígito verificador de cédula y RUC (sociedad pública, privada o persona natural) antes de consultar.</p>
+                    </article>
+                    <article class="step-card">
+                        <h4>🏢 Ficha Tributaria Completa</h4>
+                        <p>Obtiene razón social (ej. <code>1790012345001 — EMPRESA DEMOSTRACIÓN S.A.</code>), categoría de contribuyente, agente de retención y establecimientos.</p>
+                    </article>
+                    <article class="step-card">
+                        <h4>⚙️ Alta Rápida Multi-RUC</h4>
+                        <p>Autocompleta la ficha técnica al dar de alta clientes o validar emisores antes de contabilizar comprobantes.</p>
+                    </article>
+                    <article class="step-card">
+                        <h4>✅ Chequeo de Vigencia</h4>
+                        <p>Evita recibir facturas de RUCs suspendidos o no autorizados antes de cerrar el mes fiscal.</p>
+                    </article>
+                </div>
+
+                <div class="terminal-card">
+                    <div class="terminal-top">
+                        <div class="win-controls"><span></span><span></span><span></span></div>
+                        <div class="terminal-tab">busqueda_ruc — Ficha Demo Estandarizada</div>
+                    </div>
+                    <div class="terminal-content">
+                        <div class="log-line"><span class="t-info">RUC CONSULTADO:</span> 1790012345001</div>
+                        <div class="log-line"><span class="t-ok">RAZÓN SOCIAL:</span> EMPRESA DEMOSTRACIÓN S.A.</div>
+                        <div class="log-line"><span class="t-ok">✔ ESTADO:</span> ACTIVO • RÉGIMEN GENERAL</div>
+                        <div class="log-line"><span class="t-info">SECUNDARIO DEMO:</span> 0999999999001 — Verificación de dígito y vigencia OK</div>
+                        <div class="terminal-summary">
+                            <div>
+                                <small>Establecimientos Matriz / Sucursales</small>
+                                <strong>001 Abierto</strong>
+                            </div>
+                            <span class="badge-ready">CONTRIBUYENTE ACTIVO</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-nav-footer">
+                <a href="auditor-fantasma.html" class="btn-glass">← Anterior: Auditor Fantasma</a>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <button type="button" class="btn-glass" data-download-os="windows">⬇ Descargar v2.3.0</button>
+                    <button type="button" class="btn-primary" data-checkout-plan="PERSONAL_PRO">💳 Adquirir Personal Pro ($59)</button>
+                    <a href="consulta-masiva.html" class="btn-glass">Siguiente: Consulta Masiva →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <span>© 2026 TributaFlow Pro — Sistema de Gestión Tributaria, Bóveda Documental y ATS para Ecuador</span>
+                <div style="display: flex; gap: 16px;">
+                    <a href="../index.html" style="color: var(--accent); text-decoration: none;">Inicio</a>
+                    <button type="button" class="legal-trigger" data-legal="terminos">Términos</button>
+                    <button type="button" class="legal-trigger" data-legal="privacidad">Privacidad</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../assets/js/portal.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; form-action 'self'; base-uri 'self';">
+    <title>Importar Comprobantes (.txt / XML) | TributaFlow Pro v2.3.0</title>
+    <meta name="description" content="Carga masiva de archivos .txt de claves de acceso del SRI y carpetas locales XML con reconstrucción automática de RIDE PDF en árbol Perseo.">
+    <link rel="stylesheet" href="../assets/css/portal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-root="../">
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="brand">
+                <div class="brand-icon">TF</div>
+                <span>TributaFlow Pro</span>
+                <span class="brand-sub">v2.3.0 Enterprise</span>
+            </a>
+            <button type="button" id="navToggle" class="nav-toggle" aria-label="Abrir menú">☰</button>
+            <nav id="navMenu" class="nav-menu">
+                <a href="../index.html#modulos" class="active">9 Módulos</a>
+                <a href="../index.html#precios">Planes (5)</a>
+                <a href="../index.html#descargas">Descargas</a>
+                <button type="button" class="nav-cta" data-checkout-plan="PERSONAL_PRO">Adquirir Licencia</button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="module-hero">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Ruta de navegación">
+                <a href="../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../index.html#modulos">Módulos</a>
+                <span>/</span>
+                <span>4. Importar Comprobantes</span>
+            </nav>
+            <span class="eyebrow">MÓDULO 04 • DISPONIBLE EN LOS 5 PLANES</span>
+            <h1>Importar Comprobantes (.TXT Claves SRI y Carpetas XML)</h1>
+            <p style="max-width: 780px; color: var(--text-soft); margin-top: 10px;">Procesa archivos planos <code>.txt</code> descargados manualmente del portal SRI o directorios históricos de XML acumulados durante años para indexarlos en SQLite, generar sus RIDE PDF y acomodarlos en el árbol jerárquico estilo Perseo.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="module-detail-grid">
+                <div class="step-cards">
+                    <article class="step-card">
+                        <h4>📄 Lectura de TXT del SRI</h4>
+                        <p>Importa listados oficiales de comprobantes recibidos o emitidos del SRI, consulta cada clave de acceso vía Web Service autorizado y descarga el XML completo.</p>
+                    </article>
+                    <article class="step-card">
+                        <h4>📂 Reorganización de XML Existentes</h4>
+                        <p>¿Tienes cientos de XML sueltos en descargas? TributaFlow Pro los parsea, detecta empresa, período, tipo y los ubica en su carpeta exacta del árbol estilo Perseo.</p>
+                    </article>
+                    <article class="step-card">
+                        <h4>🖨️ Reconstrucción RIDE PDF</h4>
+                        <p>Genera automáticamente la representación impresa PDF (código de barras de autorización, desglose de impuestos e ítems) para cada documento XML válido.</p>
+                    </article>
+                    <article class="step-card">
+                        <h4>🏷️ Auto-Sustento Contable</h4>
+                        <p>Asigna sugerencias de sustento tributario y alimenta de inmediato los reportes de Excel, Auditor Fantasma y Anexo ATS.</p>
+                    </article>
+                </div>
+
+                <div class="terminal-card">
+                    <div class="terminal-top">
+                        <div class="win-controls"><span></span><span></span><span></span></div>
+                        <div class="terminal-tab">importador_masivo — Flujo TXT / XML</div>
+                    </div>
+                    <div class="terminal-content">
+                        <div class="log-line"><span class="t-info">ENTRADA:</span> SRI_Recibidos_1790012345001_Oct2026.txt (614 claves)</div>
+                        <div class="log-line"><span class="t-ok">✔</span> XML recuperados: 614/614 válidos (UTF-8 / comprobante autorizado)</div>
+                        <div class="log-line"><span class="t-ok">✔</span> RIDE PDF renderizados: 614 archivos en .../Recibidos/Facturas/RIDE/</div>
+                        <div class="log-line"><span class="t-info">INDEXACIÓN:</span> SQLite cifrada actualizada • Base IVA 15%: $24,810.00</div>
+                        <div class="terminal-summary">
+                            <div>
+                                <small>Comprobantes Listos para ATS y Auditoría</small>
+                                <strong>100 % Clasificados</strong>
+                            </div>
+                            <span class="badge-ready">IMPORTACIÓN OK</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-nav-footer">
+                <a href="sincronizar-sri.html" class="btn-glass">← Anterior: Sincronizar SRI</a>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <button type="button" class="btn-glass" data-download-os="windows">⬇ Descargar v2.3.0</button>
+                    <button type="button" class="btn-primary" data-checkout-plan="PERSONAL_PRO">💳 Adquirir Personal Pro ($59)</button>
+                    <a href="auditor-fantasma.html" class="btn-glass">Siguiente: Auditor Fantasma →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <span>© 2026 TributaFlow Pro — Sistema de Gestión Tributaria, Bóveda Documental y ATS para Ecuador</span>
+                <div style="display: flex; gap: 16px;">
+                    <a href="../index.html" style="color: var(--accent); text-decoration: none;">Inicio</a>
+                    <button type="button" class="legal-trigger" data-legal="terminos">Términos</button>
+                    <button type="button" class="legal-trigger" data-legal="privacidad">Privacidad</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../assets/js/portal.js"></script>
+</body>
+</html>
