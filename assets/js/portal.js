@@ -27,7 +27,6 @@ const CONFIG_COMERCIAL = Object.freeze({
     PAYPHONE_BADGES: "Visa · Mastercard · Diners · Discover · Alia",
     PAYPHONE_GARANTIA: "🛡️ Pago protegido con verificación 3D Secure Ecuador",
     PRECIO_SEAT_EXTRA_USD: 150,
-    RELEASES_BASE: "https://github.com/FaustoOrellana/tributaflow-portal/releases",
     DEMO_RUC_PRINCIPAL: "1790012345001",
     DEMO_RAZON_PRINCIPAL: "EMPRESA DEMOSTRACIÓN S.A.",
     DEMO_RUC_SECUNDARIO: "0999999999001",
@@ -647,20 +646,12 @@ function asegurarModalDescargaSO(soMeta) {
 
     const btnDownload = crearEl("a", "btn-glow", `⬇ Descargar ${soMeta.archivo}`);
     btnDownload.href = soMeta.url;
-    btnDownload.target = "_blank";
-    btnDownload.rel = "noopener noreferrer";
-    btnDownload.setAttribute("download", "");
-
-    const linkAll = crearEl("a", "module-link", "Ver todos los instaladores en GitHub Releases →");
-    linkAll.href = CONFIG_COMERCIAL.RELEASES_BASE;
-    linkAll.target = "_blank";
-    linkAll.rel = "noopener noreferrer";
+    btnDownload.setAttribute("download", soMeta.archivo);
 
     content.appendChild(metaBox);
     content.appendChild(lista);
     content.appendChild(notaEdicion);
     content.appendChild(btnDownload);
-    content.appendChild(linkAll);
 
     box.appendChild(top);
     box.appendChild(content);
@@ -844,10 +835,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Modales de descarga por Sistema Operativo
+    // Modales de descarga por Sistema Operativo (si es enlace <a> directo con download, abre modal y descarga sin salir de la página)
     document.querySelectorAll("[data-download-os]").forEach((btn) => {
         btn.addEventListener("click", (e) => {
-            e.preventDefault();
+            if (btn.tagName !== "A") {
+                e.preventDefault();
+            }
             abrirModalDescargaSO(btn.getAttribute("data-download-os"));
         });
     });

@@ -679,6 +679,7 @@ code {
 }
 
 .btn-os-modal {
+    display: block;
     margin-top: auto;
     width: 100%;
     padding: 11px 14px;
@@ -688,6 +689,8 @@ code {
     color: #ffffff;
     font-weight: 700;
     font-size: 13.5px;
+    text-align: center;
+    text-decoration: none;
     cursor: pointer;
     transition: background 0.2s;
 }
