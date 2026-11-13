@@ -6,6 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; form-action 'self'; base-uri 'self';">
     <title>Panel General | TributaFlow Pro v2.3.0 Enterprise</title>
     <meta name="description" content="Módulo Panel General de TributaFlow Pro: tablero ejecutivo con KPIs fiscales, estado de licencia, cupo ético de RUCs y accesos rápidos.">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <link rel="stylesheet" href="../assets/css/portal.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,13 +16,19 @@
     <header class="navbar">
         <div class="container nav-inner">
             <a href="../index.html" class="brand">
-                <div class="brand-icon">TF</div>
+                <img src="../assets/img/logo-tributaflow.svg" data-fallback="../assets/img/logo-tributaflow.png" alt="Logo TributaFlow Pro" class="brand-logo-img" width="36" height="36">
                 <span>TributaFlow Pro</span>
                 <span class="brand-sub">v2.3.0 Enterprise</span>
             </a>
-            <button type="button" id="navToggle" class="nav-toggle" aria-label="Abrir menú">☰</button>
+            <button type="button" id="navToggle" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
             <nav id="navMenu" class="nav-menu">
-                <a href="../index.html#modulos" class="active">9 Módulos</a>
+                <div class="nav-dropdown" data-nav-dropdown>
+                    <button type="button" class="nav-dropdown-trigger active" aria-expanded="false" aria-haspopup="true">
+                        <span>9 Módulos</span>
+                        <span class="nav-caret" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="nav-dropdown-panel" role="menu"></div>
+                </div>
                 <a href="../index.html#precios">Planes (5)</a>
                 <a href="../index.html#descargas">Descargas</a>
                 <button type="button" class="nav-cta" data-checkout-plan="ESTUDIO_PRO">Adquirir Licencia</button>

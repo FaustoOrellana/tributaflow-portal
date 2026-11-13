@@ -817,14 +817,150 @@ document.addEventListener("DOMContentLoaded", () => {
         btnPrincipalDl.addEventListener("click", () => abrirModalDescargaSO(info.id));
     }
 
+    // Fallback seguro CSP para logotipos SVG -> PNG
+    document.querySelectorAll("img[data-fallback]").forEach((img) => {
+        img.addEventListener("error", () => {
+            const fb = img.getAttribute("data-fallback");
+            if (fb && img.getAttribute("src") !== fb) {
+                img.setAttribute("src", fb);
+            }
+        });
+    });
+
+    // Hidratar menú desplegable responsivo "9 Módulos ▾" en las 10 páginas
+    const MODULOS_PORTAL = [
+        { icon: "📊", title: "1. Panel General", desc: "Tablero KPIs, vencimientos y cupo ético", href: "modulos/panel-general.html" },
+        { icon: "🏢", title: "2. Mis Contribuyentes", desc: "Multi-RUC, SQLite HWID y respaldo .tfbkp", href: "modulos/mis-contribuyentes.html" },
+        { icon: "⚡", title: "3. Sincronizar SRI", desc: "Árbol jerárquico estilo Perseo XML y RIDE", href: "modulos/sincronizar-sri.html" },
+        { icon: "📥", title: "4. Importar Comprobantes", desc: "Claves .txt del SRI y lotes XML masivos", href: "modulos/importar-comprobantes.html" },
+        { icon: "🕵️", title: "5. Auditor Fantasma SRI", desc: "Cruce preventivo contra empresas fantasma", href: "modulos/auditor-fantasma.html" },
+        { icon: "🔎", title: "6. Búsqueda RUC / Cédula", desc: "Consulta tributaria directa sin bloqueos", href: "modulos/busqueda-ruc.html" },
+        { icon: "📚", title: "7. Consulta Masiva", desc: "Verificación en lote y exportación Excel/CSV", href: "modulos/consulta-masiva.html" },
+        { icon: "📑", title: "8. Generador y Validador ATS", desc: "XML ATS oficial, XSD y clave contingencia", href: "modulos/generador-ats.html" },
+        { icon: "🔐", title: "9. Ajustes, Red LAN y Blindaje", desc: "Permisos ✓/🔒, estaciones TCP/IP y UNC", href: "modulos/ajustes-seguridad.html" },
+    ];
+
+    const navRoot = (document.body && document.body.getAttribute("data-root")) || "";
+    const currentPage = (window.location.pathname || "").split("/").pop() || "";
+
+    function cerrarDropdowns(excluir) {
+        document.querySelectorAll("[data-nav-dropdown]").forEach((dd) => {
+            if (dd === excluir) return;
+            dd.classList.remove("is-open");
+            const btn = dd.querySelector(".nav-dropdown-trigger");
+            if (btn) btn.setAttribute("aria-expanded", "false");
+        });
+    }
+
+    document.querySelectorAll("[data-nav-dropdown]").forEach((dd) => {
+        const trigger = dd.querySelector(".nav-dropdown-trigger");
+        const panel = dd.querySelector(".nav-dropdown-panel");
+        if (!trigger || !panel) return;
+
+        const header = document.createElement("div");
+        header.className = "nav-dropdown-header";
+        header.textContent = "Suite Completa — 9 Módulos TributaFlow Pro";
+
+        const grid = document.createElement("div");
+        grid.className = "nav-dropdown-grid";
+
+        MODULOS_PORTAL.forEach((mod) => {
+            const link = document.createElement("a");
+            const isCurrent = currentPage && mod.href.endsWith("/" + currentPage);
+            link.href = `${navRoot}${mod.href}`;
+            link.className = isCurrent ? "nav-dropdown-item is-current" : "nav-dropdown-item";
+            link.setAttribute("role", "menuitem");
+            if (isCurrent) {
+                link.setAttribute("aria-current", "page");
+            }
+
+            const iconSpan = document.createElement("span");
+            iconSpan.className = "nav-dropdown-icon";
+            iconSpan.setAttribute("aria-hidden", "true");
+            iconSpan.textContent = mod.icon;
+
+            const textWrap = document.createElement("span");
+            textWrap.className = "nav-dropdown-text";
+
+            const titleSpan = document.createElement("span");
+            titleSpan.className = "nav-dropdown-title";
+            titleSpan.textContent = mod.title;
+
+            const descSpan = document.createElement("span");
+            descSpan.className = "nav-dropdown-desc";
+            descSpan.textContent = mod.desc;
+
+            textWrap.appendChild(titleSpan);
+            textWrap.appendChild(descSpan);
+            link.appendChild(iconSpan);
+            link.appendChild(textWrap);
+            grid.appendChild(link);
+        });
+
+        const footer = document.createElement("div");
+        footer.className = "nav-dropdown-footer";
+        const allLink = document.createElement("a");
+        allLink.href = `${navRoot}index.html#modulos`;
+        allLink.className = "nav-dropdown-all";
+        allLink.textContent = "Ver resumen completo en portada ➔";
+        footer.appendChild(allLink);
+
+        panel.textContent = "";
+        panel.appendChild(header);
+        panel.appendChild(grid);
+        panel.appendChild(footer);
+
+        trigger.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const willOpen = !dd.classList.contains("is-open");
+            cerrarDropdowns(willOpen ? dd : null);
+            dd.classList.toggle("is-open", willOpen);
+            trigger.setAttribute("aria-expanded", willOpen ? "true" : "false");
+        });
+    });
+
     // Menú responsive móvil
     const navToggle = document.getElementById("navToggle");
     const navMenu = document.getElementById("navMenu");
     if (navToggle && navMenu) {
-        navToggle.addEventListener("click", () => {
-            navMenu.classList.toggle("is-open");
+        navToggle.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const isOpen = navMenu.classList.toggle("is-open");
+            navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+            if (!isOpen) {
+                cerrarDropdowns();
+            }
+        });
+
+        navMenu.querySelectorAll("a, .nav-cta").forEach((el) => {
+            el.addEventListener("click", () => {
+                cerrarDropdowns();
+                navMenu.classList.remove("is-open");
+                navToggle.setAttribute("aria-expanded", "false");
+            });
         });
     }
+
+    document.addEventListener("click", (e) => {
+        const target = e.target;
+        if (!target || typeof target.closest !== "function") return;
+        if (!target.closest("[data-nav-dropdown]")) {
+            cerrarDropdowns();
+        }
+        if (navMenu && navToggle && !target.closest("#navMenu") && !target.closest("#navToggle")) {
+            navMenu.classList.remove("is-open");
+            navToggle.setAttribute("aria-expanded", "false");
+        }
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            cerrarDropdowns();
+            if (navMenu) navMenu.classList.remove("is-open");
+            if (navToggle) navToggle.setAttribute("aria-expanded", "false");
+        }
+    });
 
     // Solo los botones aislados con data-checkout-plan disparan el Modal de Pago
     document.querySelectorAll("[data-checkout-plan]").forEach((btn) => {

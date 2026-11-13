@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Logo TributaFlow Pro">
+  <defs>
+    <linearGradient id="tfBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1D4ED8"/>
+      <stop offset="52%" stop-color="#1464D2"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+    <linearGradient id="tfGloss" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.22"/>
+      <stop offset="55%" stop-color="#FFFFFF" stop-opacity="0.00"/>
+    </linearGradient>
+    <linearGradient id="tfFlowEmerald" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="55%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Contenedor Squircle Corporativo -->
+  <rect x="16" y="16" width="480" height="480" rx="112" ry="112" fill="url(#tfBgGrad)"/>
+  <rect x="16" y="16" width="480" height="240" rx="112" ry="112" fill="url(#tfGloss)"/>
+
+  <!-- Borde interior sutil translúcido -->
+  <rect x="25" y="25" width="462" height="462" rx="103" ry="103" fill="none" stroke="#FFFFFF" stroke-opacity="0.26" stroke-width="5"/>
+
+  <!-- Monograma geométrico "TF" en blanco puro -->
+  <g fill="#FFFFFF">
+    <!-- Letra T -->
+    <rect x="92" y="128" width="164" height="52" rx="10"/>
+    <rect x="147" y="128" width="54" height="226" rx="10"/>
+    <!-- Letra F -->
+    <rect x="272" y="128" width="54" height="226" rx="10"/>
+    <rect x="272" y="128" width="148" height="52" rx="10"/>
+    <rect x="272" y="218" width="114" height="46" rx="9"/>
+  </g>
+
+  <!-- Línea ascendente de flujo / verificación SRI en verde esmeralda -->
+  <path d="M 102 388 L 194 422 L 418 274"
+        fill="none"
+        stroke="url(#tfFlowEmerald)"
+        stroke-width="34"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+  <path d="M 382 268 L 424 270 L 412 310"
+        fill="none"
+        stroke="#34D399"
+        stroke-width="24"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+  <circle cx="422" cy="272" r="14" fill="#6EE7B7"/>
+</svg>

@@ -10,6 +10,7 @@
     <title>TributaFlow Pro v2.3.0 Enterprise | Gestión Tributaria, Bóveda y ATS Ecuador</title>
     <meta name="description" content="Sistema nativo de gestión tributaria SRI Ecuador, bóveda documental jerárquica estilo Perseo, Auditor Fantasma en tiempo real, validador ATS XSD y arquitectura Red LAN TCP/IP.">
 
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <link rel="stylesheet" href="assets/css/portal.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,16 +22,22 @@
     <header class="navbar">
         <div class="container nav-inner">
             <a href="index.html" class="brand">
-                <div class="brand-icon">TF</div>
+                <img src="assets/img/logo-tributaflow.svg" data-fallback="assets/img/logo-tributaflow.png" alt="Logo TributaFlow Pro" class="brand-logo-img" width="36" height="36">
                 <span>TributaFlow Pro</span>
                 <span class="brand-sub">v2.3.0 Enterprise</span>
             </a>
 
-            <button type="button" id="navToggle" class="nav-toggle" aria-label="Abrir menú">☰</button>
+            <button type="button" id="navToggle" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
 
             <nav id="navMenu" class="nav-menu">
                 <a href="#flujo">Cómo Funciona</a>
-                <a href="#modulos">9 Módulos</a>
+                <div class="nav-dropdown" data-nav-dropdown>
+                    <button type="button" class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+                        <span>9 Módulos</span>
+                        <span class="nav-caret" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="nav-dropdown-panel" role="menu"></div>
+                </div>
                 <a href="#precios">Planes (5)</a>
                 <a href="#descargas">Descargas</a>
                 <a href="#precios" class="nav-cta">Ver Planes y Pagar</a>
