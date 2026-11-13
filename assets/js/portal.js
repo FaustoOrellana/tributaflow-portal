@@ -162,7 +162,7 @@ const TEXTOS_LEGALES = congelarProfundo({
         secciones: [
             {
                 sub: "1. Alcance del Software",
-                txt: "TributaFlow Pro v2.3.0 Enterprise es un sistema de escritorio para gestión tributaria, bóveda documental jerárquica estilo Perseo, validación ATS XSD y auditoría de comprobantes SRI Ecuador.",
+                txt: "TributaFlow Pro v2.3.0 Enterprise es un sistema de escritorio para gestión tributaria, bóveda contable jerárquica, validación ATS XSD y auditoría de comprobantes SRI Ecuador.",
             },
             {
                 sub: "2. Responsabilidad Contable",
@@ -1104,7 +1104,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const MODULOS_PORTAL = [
         { icon: "📊", title: "1. Panel General", desc: "Tablero KPIs, vencimientos y cupo ético", href: "modulos/panel-general.html" },
         { icon: "🏢", title: "2. Mis Contribuyentes", desc: "Multi-RUC, SQLite HWID y respaldo .tfbkp", href: "modulos/mis-contribuyentes.html" },
-        { icon: "⚡", title: "3. Sincronizar SRI", desc: "Árbol jerárquico estilo Perseo XML y RIDE", href: "modulos/sincronizar-sri.html" },
+        { icon: "⚡", title: "3. Sincronizar SRI", desc: "Árbol contable jerárquico XML y RIDE", href: "modulos/sincronizar-sri.html" },
         { icon: "📥", title: "4. Importar Comprobantes", desc: "Claves .txt del SRI y lotes XML masivos", href: "modulos/importar-comprobantes.html" },
         { icon: "🕵️", title: "5. Auditor Fantasma SRI", desc: "Cruce preventivo contra empresas fantasma", href: "modulos/auditor-fantasma.html" },
         { icon: "🔎", title: "6. Búsqueda RUC / Cédula", desc: "Consulta tributaria directa sin bloqueos", href: "modulos/busqueda-ruc.html" },

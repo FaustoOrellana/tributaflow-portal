@@ -763,7 +763,7 @@ code {
     color: #ffffff;
 }
 
-/* Árbol jerárquico Estilo Perseo y paneles técnicos */
+/* Árbol contable jerárquico y paneles técnicos */
 .architecture-split {
     display: grid;
     grid-template-columns: 1fr 1fr;
