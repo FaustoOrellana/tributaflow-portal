@@ -134,8 +134,8 @@ const INSTALADORES_SO = Object.freeze({
         url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.3.0/TributaFlow_Pro_v2.3.0_macOS.dmg",
         pasos: [
             "1. Abre el archivo TributaFlow_Pro_v2.3.0_macOS.dmg y arrastra TributaFlow Pro a Aplicaciones.",
-            "2. Selecciona cualquiera de las 5 ediciones disponibles para evaluación gratuita de 15 días.",
-            "3. Gestiona tus contribuyentes, bóveda estilo Perseo y anexos ATS 100% offline en tu Mac.",
+            "2. Al abrir por primera vez en macOS, haz clic derecho (o Control + clic) sobre TributaFlow Pro en Aplicaciones y selecciona Abrir.",
+            "3. Selecciona cualquiera de las 5 ediciones disponibles para evaluación gratuita de 15 días y opera 100% offline en tu Mac.",
         ],
     }),
 });
