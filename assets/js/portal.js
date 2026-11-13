@@ -36,8 +36,8 @@ const CONFIG_COMERCIAL = congelarProfundo({
     WHATSAPP_NUMERO: "593996459771",
     WHATSAPP_LOCAL: "0996459771",
     WHATSAPP_URL_PREFIX: "https://wa.me/593996459771",
-    CORREO_SOPORTE: "soporte@tributaflow.com",
-    MAILTO_URL_PREFIX: "mailto:soporte@tributaflow.com",
+    CORREO_SOPORTE: "soportetributaflow@quoratec.com",
+    MAILTO_URL_PREFIX: "mailto:soportetributaflow@quoratec.com",
     ASUNTO_SOPORTE: "Consulta Soporte Técnico — TributaFlow Pro",
     DOMINIOS_PAYPHONE: ["ppls.me"],
     PAYPHONE_BADGES: "Visa · Mastercard · Diners · Discover · Alia",
@@ -771,7 +771,7 @@ function asegurarModalPago() {
     btnSoportePayphoneWp.id = "btnSoportePayphoneWp";
     btnSoportePayphoneWp.target = "_blank";
     btnSoportePayphoneWp.rel = "noopener noreferrer";
-    const btnSoportePayphoneCorreo = crearEl("a", "btn-support-link", "✉️ soporte@tributaflow.com");
+    const btnSoportePayphoneCorreo = crearEl("a", "btn-support-link", "✉️ soportetributaflow@quoratec.com");
     btnSoportePayphoneCorreo.id = "btnSoportePayphoneCorreo";
     vincularCopiaCorreo(btnSoportePayphoneCorreo, () => {
         const r = calcularResumenCheckout();
@@ -797,7 +797,7 @@ function asegurarModalPago() {
     btnSoporteEnterpriseWp.id = "btnSoporteEnterpriseWp";
     btnSoporteEnterpriseWp.target = "_blank";
     btnSoporteEnterpriseWp.rel = "noopener noreferrer";
-    const btnSoporteEnterpriseCorreo = crearEl("a", "btn-support-link", "✉️ soporte@tributaflow.com");
+    const btnSoporteEnterpriseCorreo = crearEl("a", "btn-support-link", "✉️ soportetributaflow@quoratec.com");
     btnSoporteEnterpriseCorreo.id = "btnSoporteEnterpriseCorreo";
     vincularCopiaCorreo(btnSoporteEnterpriseCorreo, () => {
         const r = calcularResumenCheckout();

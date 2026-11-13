@@ -161,7 +161,7 @@ def verificar_url_whatsapp_comprobante(
 def verificar_url_correo_comprobante(
     href: str, monto: str, metodo: str, ref_prefix: str, requiere_extra_hwid: bool = False
 ) -> None:
-    assert href.startswith("mailto:soporte@tributaflow.com?"), f"URL mailto inválida: {href}"
+    assert href.startswith("mailto:soportetributaflow@quoratec.com?"), f"URL mailto inválida: {href}"
     parsed = urllib.parse.urlparse(href)
     qs = urllib.parse.parse_qs(parsed.query)
     subject = qs.get("subject", [""])[0]
@@ -179,7 +179,7 @@ def verificar_soporte_separado(href: str, canal: str) -> None:
         assert "Consulta Soporte Técnico — TributaFlow Pro" in texto
         assert "N.º de Comprobante" not in texto
     else:
-        assert href.startswith("mailto:soporte@tributaflow.com?"), f"Soporte mailto inválido: {href}"
+        assert href.startswith("mailto:soportetributaflow@quoratec.com?"), f"Soporte mailto inválido: {href}"
         subject = qs.get("subject", [""])[0]
         body = qs.get("body", [""])[0]
         assert subject == "Consulta Soporte Técnico — TributaFlow Pro", f"Asunto soporte inesperado: {subject}"
@@ -317,8 +317,8 @@ def auditar_pagina_viewport(browser, base_url: str, page_rel: str, viewport: dic
     assert any("593996459771" in l["href"] and l["visible"] for l in footer_support_links), (
         f"{page_rel}: falta enlace WhatsApp visible en footer"
     )
-    assert any("mailto:soporte@tributaflow.com" in l["href"] and l["visible"] for l in footer_support_links), (
-        f"{page_rel}: falta enlace mailto:soporte@tributaflow.com visible en footer"
+    assert any("mailto:soportetributaflow@quoratec.com" in l["href"] and l["visible"] for l in footer_support_links), (
+        f"{page_rel}: falta enlace mailto:soportetributaflow@quoratec.com visible en footer"
     )
 
     # 4. Dropdown "9 Módulos ▾" — Estilo y Funcionalidad
@@ -556,7 +556,7 @@ def auditar_pagina_viewport(browser, base_url: str, page_rel: str, viewport: dic
             page.locator("#btnEnviarComprobanteCorreo").click()
             page.wait_for_timeout(100)
             clip_txt = page.evaluate("() => navigator.clipboard.readText()")
-            assert "soporte@tributaflow.com" in clip_txt and "N.º de Comprobante" in clip_txt
+            assert "soportetributaflow@quoratec.com" in clip_txt and "N.º de Comprobante" in clip_txt
 
             modal_pago.locator(".btn-close").click()
             page.wait_for_timeout(100)
@@ -592,18 +592,18 @@ def auditar_pagina_viewport(browser, base_url: str, page_rel: str, viewport: dic
                 const unchanged =
                     sec.CONFIG_COMERCIAL.PAYPHONE_LINKS.PERSONAL_PRO === "https://ppls.me/5S1Y89pBi1vYHBTEgEzRA" &&
                     sec.CONFIG_COMERCIAL.WHATSAPP_NUMERO === "593996459771" &&
-                    sec.CONFIG_COMERCIAL.CORREO_SOPORTE === "soporte@tributaflow.com";
+                    sec.CONFIG_COMERCIAL.CORREO_SOPORTE === "soportetributaflow@quoratec.com";
                 const validChecks =
                     sec.validarDestinoSeguro("https://ppls.me/5S1Y89pBi1vYHBTEgEzRA", "payphone") &&
                     sec.validarDestinoSeguro("https://wa.me/593996459771?text=Hola", "whatsapp") &&
-                    sec.validarDestinoSeguro("mailto:soporte@tributaflow.com?subject=Test", "correo");
+                    sec.validarDestinoSeguro("mailto:soportetributaflow@quoratec.com?subject=Test", "correo");
                 const blockedChecks =
                     !sec.validarDestinoSeguro("https://evil.test/pay", "payphone") &&
                     !sec.validarDestinoSeguro("https://ppls.me/FakeId123", "payphone") &&
                     !sec.validarDestinoSeguro("https://wa.me/593996459771999?text=Phish", "whatsapp") &&
                     !sec.validarDestinoSeguro("https://wa.me/593000000000", "whatsapp") &&
                     !sec.validarDestinoSeguro("mailto:atacante@evil.com", "correo") &&
-                    !sec.validarDestinoSeguro("mailto:soporte@tributaflow.com.evil.org", "correo");
+                    !sec.validarDestinoSeguro("mailto:soportetributaflow@quoratec.com.evil.org", "correo");
                 return { ok: frozenAll && threw && unchanged && validChecks && blockedChecks, frozenAll, threw, unchanged, validChecks, blockedChecks };
             }"""
         )
@@ -672,6 +672,13 @@ def auditar_pagina_viewport(browser, base_url: str, page_rel: str, viewport: dic
         }"""
     )
     assert not inline_handlers, f"{page_rel}: atributos inline prohibidos por CSP: {inline_handlers}"
+    assert page.locator(
+        'a[href^="https://quoratec.com"], a[href^="http://quoratec.com"], '
+        'a[href^="https://www.quoratec.com"], a[href^="http://www.quoratec.com"]'
+    ).count() == 0, f"{page_rel}: enlace clickable prohibido hacia quoratec.com"
+    assert page.locator('a[href*="soporte@tributaflow.com"]').count() == 0, (
+        f"{page_rel}: correo provisional residual soporte@tributaflow.com"
+    )
 
     if page_rel == "index.html":
         assert page.locator('#navMenu a[href="#quienes-somos"]').count() == 1
@@ -680,8 +687,11 @@ def auditar_pagina_viewport(browser, base_url: str, page_rel: str, viewport: dic
         assert page.locator('footer a[href="#politicas"]').count() == 1
         sec_qs = page.locator("#quienes-somos")
         assert sec_qs.is_visible()
-        assert "Ingeniería Ecuatoriana Especializada en Automatización y Seguridad Tributaria" in sec_qs.inner_text()
+        qs_txt = sec_qs.inner_text()
+        assert "Ingeniería Ecuatoriana Especializada en Automatización y Seguridad Tributaria" in qs_txt
+        assert "Quoratec" in qs_txt
         assert sec_qs.locator(".trust-pillar-card").count() == 3
+        assert "Quoratec" in page.locator("footer .footer-bottom").inner_text()
 
         sec_pol = page.locator("#politicas")
         assert sec_pol.is_visible()
