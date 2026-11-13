@@ -657,6 +657,48 @@ def auditar_pagina_viewport(browser, base_url: str, page_rel: str, viewport: dic
     assert sec_meta["ref"] == "no-referrer", f"{page_rel}: meta referrer inesperado: {sec_meta['ref']}"
     assert not sec_meta["badBlanks"], f"{page_rel}: enlaces target=_blank sin rel=noopener noreferrer: {sec_meta['badBlanks']}"
 
+    # 6C. Verificar cero atributos inline on* y, en portada, secciones #quienes-somos y #politicas
+    inline_handlers = page.evaluate(
+        """() => {
+            const bad = [];
+            for (const el of document.querySelectorAll("*")) {
+                for (const attr of el.attributes) {
+                    if (attr.name.toLowerCase().startsWith("on")) {
+                        bad.push(`${el.tagName.toLowerCase()}[${attr.name}]`);
+                    }
+                }
+            }
+            return bad;
+        }"""
+    )
+    assert not inline_handlers, f"{page_rel}: atributos inline prohibidos por CSP: {inline_handlers}"
+
+    if page_rel == "index.html":
+        assert page.locator('#navMenu a[href="#quienes-somos"]').count() == 1
+        assert page.locator('#navMenu a[href="#politicas"]').count() == 1
+        assert page.locator('footer a[href="#quienes-somos"]').count() == 1
+        assert page.locator('footer a[href="#politicas"]').count() == 1
+        sec_qs = page.locator("#quienes-somos")
+        assert sec_qs.is_visible()
+        assert "Ingeniería Ecuatoriana Especializada en Automatización y Seguridad Tributaria" in sec_qs.inner_text()
+        assert sec_qs.locator(".trust-pillar-card").count() == 3
+
+        sec_pol = page.locator("#politicas")
+        assert sec_pol.is_visible()
+        accordions = sec_pol.locator("details.policy-accordion")
+        assert accordions.count() == 4
+        for idx in range(accordions.count()):
+            det = accordions.nth(idx)
+            det.locator("summary").scroll_into_view_if_needed()
+            det.locator("summary").click()
+            page.wait_for_timeout(40)
+            assert det.get_attribute("open") is not None, f"Acordeon {idx + 1} no se desplego"
+            ov_acc = page.evaluate("() => document.documentElement.scrollWidth - document.documentElement.clientWidth")
+            assert ov_acc <= 0, f"{page_rel}: overflow {ov_acc}px al abrir acordeon {idx + 1}"
+            det.locator("summary").click()
+            page.wait_for_timeout(40)
+            assert det.get_attribute("open") is None, f"Acordeon {idx + 1} no se cerro"
+
     # 7. Inventario genérico de <form>, <input>, <select>, <textarea> en la página
     campos_dom = page.evaluate(
         """() => Array.from(document.querySelectorAll('form, input, select, textarea')).map(el => ({

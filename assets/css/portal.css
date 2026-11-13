@@ -241,7 +241,6 @@ code {
     visibility: hidden;
     pointer-events: none;
     transform: translateY(-6px);
-    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
     position: absolute;
     top: calc(100% + 4px);
     right: 24px;
@@ -1879,8 +1878,19 @@ code {
     }
 
     .nav-menu {
-        gap: 8px;
-        font-size: 13.5px;
+        gap: 6px;
+        font-size: 13px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .nav-menu a,
+    .nav-dropdown-trigger {
+        padding: 5px 7px;
+    }
+
+    .nav-cta {
+        padding: 7px 11px;
     }
 
     .deuna-layout {
@@ -1999,5 +2009,201 @@ code {
         width: min(195px, 100%);
         min-width: 0;
         margin: 0 auto;
+    }
+}
+
+/* ==========================================================================
+   Secciones Quiénes Somos y Políticas Oficiales (Acordeones <details>)
+   ========================================================================== */
+#flujo,
+#modulos,
+#descargas,
+#precios,
+#quienes-somos,
+#politicas {
+    scroll-margin-top: 84px;
+}
+
+.about-authority-box {
+    max-width: 920px;
+    margin: 0 auto 36px auto;
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.92), rgba(17, 24, 39, 0.96));
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: var(--radius-lg);
+    padding: 28px 32px;
+    text-align: center;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.35);
+}
+
+.about-authority-box p {
+    color: var(--text-soft);
+    font-size: 1.02rem;
+    line-height: 1.72;
+}
+
+.trust-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.trust-pillar-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 26px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    transition: border-color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.trust-pillar-card:hover {
+    border-color: rgba(56, 189, 248, 0.55);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 34px rgba(2, 132, 199, 0.14);
+}
+
+.trust-pillar-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 21px;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(16, 185, 129, 0.16));
+    border: 1px solid rgba(56, 189, 248, 0.35);
+}
+
+.trust-pillar-card h3 {
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1.35;
+}
+
+.trust-pillar-card p {
+    font-size: 0.94rem;
+    color: var(--text-soft);
+    line-height: 1.62;
+}
+
+.policies-stack {
+    max-width: 920px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.policy-accordion {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: border-color 0.22s ease, background-color 0.22s ease;
+}
+
+.policy-accordion:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+}
+
+.policy-accordion[open] {
+    border-color: rgba(16, 185, 129, 0.55);
+    background: linear-gradient(180deg, rgba(17, 24, 39, 0.98), rgba(15, 23, 42, 0.98));
+    box-shadow: 0 12px 30px rgba(16, 185, 129, 0.08);
+}
+
+.policy-summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--text-main);
+    user-select: none;
+}
+
+.policy-summary::-webkit-details-marker {
+    display: none;
+}
+
+.policy-summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+}
+
+.policy-summary-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.policy-num {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    padding: 3px 9px;
+    border-radius: 99px;
+    flex-shrink: 0;
+}
+
+.policy-accordion[open] .policy-num {
+    color: #34d399;
+    background: rgba(16, 185, 129, 0.14);
+    border-color: rgba(16, 185, 129, 0.4);
+}
+
+.policy-chevron {
+    color: var(--accent);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+    transition: transform 0.22s ease, color 0.22s ease;
+    flex-shrink: 0;
+}
+
+.policy-accordion[open] .policy-chevron {
+    transform: rotate(180deg);
+    color: #10b981;
+}
+
+.policy-body {
+    padding: 0 22px 20px 22px;
+    border-top: 1px solid rgba(148, 163, 184, 0.12);
+    margin-top: 2px;
+    padding-top: 16px;
+    color: var(--text-soft);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+@media (max-width: 960px) {
+    .trust-pillars-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-authority-box {
+        padding: 20px 18px;
+    }
+
+    .policy-summary {
+        padding: 15px 16px;
+        font-size: 0.96rem;
+    }
+
+    .policy-body {
+        padding: 14px 16px 18px 16px;
     }
 }
