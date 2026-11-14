@@ -2853,3 +2853,17 @@ code {
     text-align: center;
     padding: 6px 8px;
 }
+
+/* --- CORRECCIÓN DEFINITIVA DE DESBORDAMIENTO HORIZONTAL (1368 > 1366) --- */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
