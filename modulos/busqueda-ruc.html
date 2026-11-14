@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; base-uri 'self'; form-action 'none';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none';">
     <meta name="referrer" content="no-referrer">
-    <title>Búsqueda RUC / Cédula | TributaFlow Pro v2.3.0 Enterprise</title>
+    <title>Búsqueda RUC / Cédula | TributaFlow Pro v2.4.0</title>
     <meta name="description" content="Consulta instantánea de estado tributario, actividad económica, tipo de contribuyente y validación de RUC o identificación Ecuador.">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <link rel="stylesheet" href="../assets/css/portal.css">
 </head>
 <body data-root="../">
-    <header class="navbar">
+        <header class="navbar">
         <div class="container nav-inner">
             <a href="../index.html" class="brand">
-                <img src="../assets/img/logo-tributaflow.svg" data-fallback="../assets/img/logo-tributaflow.png" alt="Logo TributaFlow Pro" class="brand-logo-img" width="36" height="36">
-                <span>TributaFlow Pro</span>
-                <span class="brand-sub">v2.3.0 Enterprise</span>
+                <img src="../assets/img/logo-tributaflow.svg" data-fallback="../assets/img/logo-tributaflow.png" alt="TributaFlow Pro" class="brand-logo-img" width="36" height="36">
+                <div>
+                    <strong>TributaFlow Pro <span data-app-version-tag>v2.4.0</span></strong>
+                    <span class="brand-sub">Suite Tributaria Ecuador · Quoratec</span>
+                </div>
             </a>
             <button type="button" id="navToggle" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
-            <nav id="navMenu" class="nav-menu">
+            <nav id="navMenu" class="nav-menu" aria-label="Navegación principal">
                 <a href="../index.html#flujo">Cómo Funciona</a>
                 <div class="nav-dropdown" data-nav-dropdown>
                     <button type="button" class="nav-dropdown-trigger active" aria-expanded="false" aria-haspopup="true">
@@ -28,7 +30,9 @@
                     </button>
                     <div class="nav-dropdown-panel" role="menu"></div>
                 </div>
-                <a href="../index.html#precios">Planes (5)</a>
+                <a href="../planes.html">Planes (5)</a>
+                <a href="../guia-uso.html">Guía de Uso</a>
+                <a href="../politicas.html">Políticas</a>
                 <a href="../index.html#descargas">Descargas</a>
                 <button type="button" class="nav-cta" data-checkout-plan="PERSONAL_PRO">Adquirir Licencia</button>
             </nav>
@@ -46,7 +50,7 @@
             </nav>
             <span class="eyebrow">MÓDULO 06 • DISPONIBLE EN LOS 5 PLANES</span>
             <h1>Búsqueda Instantánea de RUC y Contribuyentes</h1>
-            <p style="max-width: 780px; color: var(--text-soft); margin-top: 10px;">Consulta al instante el estado del RUC (Activo / Suspendido / Pasivo), régimen RIMPE o General, razón social, actividad económica principal y establecimientos autorizados sin abrir navegadores externos.</p>
+            <p class="lead-sub">Consulta al instante el estado del RUC (Activo / Suspendido / Pasivo), régimen RIMPE o General, razón social, actividad económica principal y establecimientos autorizados sin abrir navegadores externos.</p>
         </div>
     </section>
 
@@ -95,8 +99,8 @@
 
             <div class="module-nav-footer">
                 <a href="auditor-fantasma.html" class="btn-glass">← Anterior: Auditor Fantasma</a>
-                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                    <button type="button" class="btn-glass" data-download-os="windows">⬇ Descargar v2.3.0</button>
+                <div class="flex-wrap-actions">
+                    <button type="button" class="btn-glass" data-download-os="auto">⬇ Descargar v2.4.0</button>
                     <button type="button" class="btn-primary" data-checkout-plan="PERSONAL_PRO">💳 Adquirir Personal Pro ($59)</button>
                     <a href="consulta-masiva.html" class="btn-glass">Siguiente: Consulta Masiva →</a>
                 </div>
@@ -104,20 +108,77 @@
         </div>
     </section>
 
+        <div class="pre-footer-cta">
+        <div class="container">
+            <div class="pre-footer-card">
+                <div>
+                    <h3>¿Listo para implementar este módulo en tu estudio o empresa?</h3>
+                    <p>Descarga tu evaluación gratuita de <span data-trial-days>14 días</span> o escríbenos por WhatsApp al <code>0996459771</code>.</p>
+                </div>
+                <div class="pre-footer-actions">
+                    <button type="button" class="btn-glow" data-download-os="auto">⬇ Descargar para Mi PC</button>
+                    <a href="../planes.html" class="btn-glass">Comparar 5 Planes ➔</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="container">
-            <div class="footer-bottom">
-                <span>© 2026 TributaFlow Pro — Sistema de Gestión Tributaria, Bóveda Documental y ATS para Ecuador</span>
-                <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center;">
-                    <a href="../index.html" style="color: var(--accent); text-decoration: none;">Inicio</a>
-                    <a href="https://wa.me/593996459771?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" target="_blank" rel="noopener noreferrer" style="color: #86efac; text-decoration: none;" data-support-link="whatsapp">Soporte WhatsApp (0996459771)</a>
-                    <a href="mailto:soportetributaflow@quoratec.com?subject=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" style="color: var(--accent); text-decoration: none;" data-support-link="correo">soportetributaflow@quoratec.com</a>
-                    <button type="button" class="legal-trigger" data-legal="terminos">Términos</button>
-                    <button type="button" class="legal-trigger" data-legal="privacidad">Privacidad</button>
+            <div class="footer-grid-4">
+                <div class="footer-col">
+                    <h4>TributaFlow Pro <span data-app-version-tag>v2.4.0</span></h4>
+                    <p class="muted-note">Software contable ecuatoriano 100 % local para descarga masiva del SRI, auditoría tributaria y generación de ATS XML/XSD.</p>
+                    <div class="footer-trust-pill">🔒 Cifrado Local AES-256 · Sin Nube</div>
+                    <p class="muted-note">Desarrollado en Ecuador por <strong>Quoratec Software Solutions</strong>.</p>
+                </div>
+
+                <div class="footer-col footer-links-col">
+                    <h4>Navegación del Portal</h4>
+                    <a href="../index.html">Inicio</a>
+                    <a href="../index.html#modulos">9 Módulos del Sistema</a>
+                    <a href="../planes.html">Planes y Precios (5)</a>
+                    <a href="../guia-uso.html">Guía de Uso e Implementación</a>
+                    <a href="../index.html#descargas">Descargas Oficiales</a>
+                </div>
+
+                <div class="footer-col footer-links-col">
+                    <h4>Descargas y Medios de Pago</h4>
+                    <a href="../index.html#descargas" data-download-os="windows">Windows 64-bit (.exe)</a>
+                    <a href="../index.html#descargas" data-download-os="macos">macOS Universal (.dmg)</a>
+                    <a href="../index.html#descargas" data-download-os="linux">Linux Ubuntu/Debian (.deb)</a>
+                    <div class="footer-pay-badges">
+                        <span class="footer-pay-pill">PayPhone Tarjetas</span>
+                        <span class="footer-pay-pill">Deuna!</span>
+                        <span class="footer-pay-pill">Transferencia Ecuador</span>
+                    </div>
+                </div>
+
+                <div class="footer-col footer-links-col">
+                    <h4>Marco Legal y Soporte Directo</h4>
+                    <a href="../politicas.html#licencia">Acuerdo de Licencia y Condiciones de Uso</a>
+                    <a href="../politicas.html#privacidad">Privacidad Soberana Local-First</a>
+                    <a href="../politicas.html#traslado">Traslado de PC y Garantía .tfbkp</a>
+                    <a href="https://wa.me/593996459771?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" target="_blank" rel="noopener noreferrer" data-support-link="whatsapp">💬 WhatsApp Oficial (+593 99 645 9771)</a>
+                    <a href="mailto:soportetributaflow@quoratec.com?subject=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" data-support-link="correo">✉️ soportetributaflow@quoratec.com</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <span>© 2026 Quoratec Software Solutions — TributaFlow Pro. Todos los derechos reservados.</span>
+                <div class="footer-bottom-meta">
+                    <span class="footer-version-badge" data-app-version-tag>v2.4.0</span>
+                    <button type="button" class="footer-top-btn" data-scroll-top>↑ Subir</button>
                 </div>
             </div>
         </div>
     </footer>
-    <script src="../assets/js/portal.js"></script>
+
+    <a href="https://wa.me/593996459771?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" target="_blank" rel="noopener noreferrer" class="whatsapp-float" id="btnFlotanteSoporte" data-support-link="whatsapp" aria-label="Contactar Soporte Oficial TributaFlow Pro por WhatsApp">
+        <span>💬 Soporte 0996459771</span>
+    </a>
+
+    <script src="../assets/js/portal.js" defer></script>
 </body>
 </html>
+

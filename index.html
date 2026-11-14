@@ -3,810 +3,814 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; base-uri 'self'; form-action 'none';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none';">
     <meta name="referrer" content="no-referrer">
-
-    <title>TributaFlow Pro v2.3.0 Enterprise | Gestión Tributaria, Bóveda y ATS Ecuador</title>
-    <meta name="description" content="Sistema nativo de gestión tributaria SRI Ecuador, bóveda contable jerárquica, Auditor Fantasma en tiempo real, validador ATS XSD y arquitectura Red LAN TCP/IP.">
-
+    <title>TributaFlow Pro v2.4.0 | Automatización SRI, Bóveda Documental y ATS — Ecuador</title>
+    <meta name="description" content="Suite contable de escritorio 100 % local para Ecuador. Automatiza descargas XML/PDF del SRI, auditoría tributaria y generación de Anexo Transaccional Simplificado (ATS). Prueba gratis 14 días en Windows, macOS y Linux.">
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <link rel="stylesheet" href="assets/css/portal.css">
 </head>
-<body data-root="">
+<body>
 
-    <!-- Barra de Navegación Exclusiva TributaFlow Pro -->
     <header class="navbar">
         <div class="container nav-inner">
             <a href="index.html" class="brand">
-                <img src="assets/img/logo-tributaflow.svg" data-fallback="assets/img/logo-tributaflow.png" alt="Logo TributaFlow Pro" class="brand-logo-img" width="36" height="36">
-                <span>TributaFlow Pro</span>
-                <span class="brand-sub">v2.3.0 Enterprise</span>
+                <img src="assets/img/logo-tributaflow.svg" alt="TributaFlow Pro" class="brand-logo-img" data-fallback="assets/img/logo-tributaflow.png">
+                <div>
+                    <strong>TributaFlow Pro <span data-app-version-tag>v2.4.0</span></strong>
+                    <span class="brand-sub">Suite Tributaria Ecuador · Quoratec</span>
+                </div>
             </a>
 
-            <button type="button" id="navToggle" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+            <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menú de navegación" aria-expanded="false">☰</button>
 
-            <nav id="navMenu" class="nav-menu">
-                <a href="#flujo">Cómo Funciona</a>
+            <nav class="nav-menu" id="navMenu" aria-label="Navegación principal">
+                <a href="index.html#flujo">Cómo Funciona</a>
                 <div class="nav-dropdown" data-nav-dropdown>
                     <button type="button" class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
                         <span>9 Módulos</span>
                         <span class="nav-caret" aria-hidden="true">▾</span>
                     </button>
-                    <div class="nav-dropdown-panel" role="menu"></div>
+                    <div class="nav-dropdown-panel" role="menu">
+                        <div class="nav-dropdown-header">Suite Completa — 9 Módulos TributaFlow Pro</div>
+                        <div class="nav-dropdown-grid">
+                            <a href="modulos/panel-general.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">📊</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">1. Panel General</span><span class="nav-dropdown-desc">Resumen gerencial, KPIs e historial por RUC</span></span></a>
+                            <a href="modulos/mis-contribuyentes.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">🏢</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">2. Mis Contribuyentes</span><span class="nav-dropdown-desc">Bóveda Multi-RUC cifrada AES-256 sin nube</span></span></a>
+                            <a href="modulos/sincronizar-sri.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">⚡</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">3. Sincronizar SRI</span><span class="nav-dropdown-desc">Extracción masiva de XML y PDF oficiales</span></span></a>
+                            <a href="modulos/importar-comprobantes.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">📥</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">4. Importar Comprobantes</span><span class="nav-dropdown-desc">Ingesta masiva TXT y archivos ZIP locales</span></span></a>
+                            <a href="modulos/auditor-fantasma.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">🔍</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">5. Auditor Fantasma</span><span class="nav-dropdown-desc">Cruce forense de facturas y Alertas EFOS</span></span></a>
+                            <a href="modulos/busqueda-ruc.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">🆔</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">6. Búsqueda por RUC</span><span class="nav-dropdown-desc">Ficha integral, estado SRI y obligaciones</span></span></a>
+                            <a href="modulos/consulta-masiva.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">📋</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">7. Consulta Masiva</span><span class="nav-dropdown-desc">Validación por lotes a Excel y CSV estructurado</span></span></a>
+                            <a href="modulos/generador-ats.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">📑</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">8. Generador ATS Oficial</span><span class="nav-dropdown-desc">Anexo Transaccional XML validado por XSD</span></span></a>
+                            <a href="modulos/ajustes-seguridad.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">🛡️</span><span class="nav-dropdown-text"><span class="nav-dropdown-title">9. Ajustes y Respaldos</span><span class="nav-dropdown-desc">Red LAN, respaldos .tfbkp y traslados PC</span></span></a>
+                        </div>
+                        <div class="nav-dropdown-footer">
+                            <a href="index.html#modulos" class="nav-dropdown-all">Ver resumen completo en portada ➔</a>
+                        </div>
+                    </div>
                 </div>
-                <a href="#precios">Planes (5)</a>
+                <a href="planes.html">Planes (5)</a>
+                <a href="guia-uso.html">Guía de Uso</a>
+                <a href="politicas.html">Políticas</a>
                 <a href="#descargas">Descargas</a>
-                <a href="#quienes-somos">Quiénes Somos</a>
-                <a href="#politicas">Políticas</a>
-                <a href="#precios" class="nav-cta">Ver Planes y Pagar</a>
+                <a href="planes.html" class="nav-cta">Ver Planes y Pagar</a>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Principal (Sin video, enfoque operativo y técnico) -->
-    <section class="hero">
-        <div class="hero-glow"></div>
-        <div class="container hero-layout">
-            <div class="hero-text">
-                <div class="status-pill">
-                    <span class="pulse-dot"></span>
-                    <span>v2.3.0 Enterprise • SRI Ecuador • Bóveda Cifrada RSA-2048</span>
-                </div>
-                <h1>Bóveda Tributaria Jerárquica, Auditoría SRI y ATS <span class="text-gradient">100 % Local y Red LAN</span></h1>
-                <p>Descarga automáticamente XML y RIDE desde el SRI en Línea, organiza tu bóveda contable jerárquica por contribuyente y período, detecta proveedores fantasmas al instante y genera anexos ATS validados contra el esquema XSD oficial sin subir tus claves a la nube.</p>
+    <main>
+        <!-- HERO EJECUTIVO DE ALTO IMPACTO -->
+        <section class="hero">
+            <div class="hero-glow" aria-hidden="true"></div>
+            <div class="container hero-layout">
+                <div class="hero-text">
+                    <div class="status-pill">
+                        <span class="pulse-dot" aria-hidden="true"></span>
+                        <span>Lanzamiento Oficial <span data-app-version-tag>v2.4.0</span> · Prueba Gratis <span data-trial-days>14 días</span> · Sin Nube</span>
+                    </div>
 
-                <div class="hero-buttons">
-                    <a href="#precios" class="btn-glow">Ver 5 Planes Anuales</a>
-                    <button type="button" id="btnDescargaDetectada" class="btn-glass">⬇ Descargar v2.3.0 (15 días gratis)</button>
-                    <a href="#modulos" class="btn-glass">Explorar los 9 Módulos →</a>
-                </div>
+                    <h1>Automatiza tus descargas del SRI, Bóveda Documental y ATS Oficial <span class="text-gradient">en minutos</span></h1>
 
-                <div class="trust-metrics">
-                    <div class="metric">
-                        <strong>PBKDF2 + AES-256</strong>
-                        <span>Bóveda SQLite vinculada por HWID</span>
-                    </div>
-                    <div class="metric-divider"></div>
-                    <div class="metric">
-                        <strong>Bóveda Contable Jerárquica</strong>
-                        <span>Clasificación XML + RIDE automática</span>
-                    </div>
-                    <div class="metric-divider"></div>
-                    <div class="metric">
-                        <strong>Red LAN TCP/IP</strong>
-                        <span>Multi-estación Bóveda UNC Compartida</span>
-                    </div>
-                </div>
-            </div>
+                    <p>Diseñado para contadores y empresas en Ecuador. Descarga comprobantes XML y RIDE oficiales en lote, organiza cada RUC por año/mes en tu propio disco con cifrado AES-256 y genera el Anexo Transaccional Simplificado validado por esquema XSD del SRI.</p>
 
-            <!-- Consola Real Simulada con Datos Ficticios Estandarizados -->
-            <div class="terminal-card">
-                <div class="terminal-top">
-                    <div class="win-controls">
-                        <span></span><span></span><span></span>
+                    <div class="hero-buttons">
+                        <button type="button" class="btn-glow" id="btnDescargaDetectada" data-download-os="auto">⬇ Descarga Gratuita 14 Días (v2.4.0)</button>
+                        <a href="planes.html" class="btn-glass">Comparar 5 Planes y Adquirir ➔</a>
                     </div>
-                    <div class="terminal-tab">tributaflow_pro_v230.exe — Motor Fiscal Nativo</div>
-                </div>
-                <div class="terminal-content">
-                    <div class="log-line"><span class="t-time">[09:14:02]</span> <span class="t-info">ℹ</span> Bóveda montada: <strong>1790012345001 — EMPRESA DEMOSTRACIÓN S.A.</strong></div>
-                    <div class="log-line"><span class="t-time">[09:14:05]</span> <span class="t-ok">✔</span> Sincronización SRI completada: 1,482 XML + RIDE PDF generados.</div>
-                    <div class="log-line"><span class="t-time">[09:14:07]</span> <span class="t-info">ℹ</span> Ruta Bóveda: Boveda_TributaFlow/1790012345001_EMPRESA_DEMOSTRACION_SA/2026/10_OCTUBRE</div>
-                    <div class="log-line"><span class="t-time">[09:14:09]</span> <span class="t-warn">⚡</span> Auditor Fantasma SRI: verificando proveedores vs. RUC 0999999999001...</div>
-                    <div class="log-line"><span class="t-time">[09:14:11]</span> <span class="t-ok">✔</span> ATS_Declaraciones/ATS_1790012345001_10_2026.xml válido contra XSD SRI.</div>
-                    <div class="terminal-summary">
-                        <div>
-                            <small>Crédito Tributario Conciliado (EMPRESA DEMOSTRACIÓN S.A.)</small>
-                            <strong>$18,492.30</strong>
+
+                    <div class="trust-metrics">
+                        <div class="metric">
+                            <strong><span data-trial-days>14 días</span></strong>
+                            <span>Prueba Gratuita</span>
                         </div>
-                        <span class="badge-ready">XSD + AUDITOR OK</span>
+                        <div class="metric-divider" aria-hidden="true"></div>
+                        <div class="metric">
+                            <strong>100 % Local</strong>
+                            <span>Cifrado AES-256</span>
+                        </div>
+                        <div class="metric-divider" aria-hidden="true"></div>
+                        <div class="metric">
+                            <strong>3 Sistemas</strong>
+                            <span>Windows · macOS · Linux</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TERMINAL SIMULADA DEL MOTOR TRIBUTARIO -->
+                <div class="terminal-card" aria-label="Simulación de motor TributaFlow Pro v2.4.0">
+                    <div class="terminal-top">
+                        <div class="win-controls" aria-hidden="true">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <span class="terminal-tab">tributaflow-core — <span data-app-version-tag>v2.4.0</span> (AES-256 Local)</span>
+                    </div>
+                    <div class="terminal-content">
+                        <div class="log-line"><span class="t-time">[09:12:01]</span> <span class="t-info">MOTOR</span> Inicializando bóveda SQLCipher local (sin servidores externos)...</div>
+                        <div class="log-line"><span class="t-time">[09:12:03]</span> <span class="t-ok">SRI-SYNC</span> Descargando 284 XML + PDF emitidos y recibidos en paralelo...</div>
+                        <div class="log-line"><span class="t-time">[09:12:09]</span> <span class="t-ok">BÓVEDA</span> Clasificación automática RUC/2026/02-Febrero completada.</div>
+                        <div class="log-line"><span class="t-time">[09:12:12]</span> <span class="t-warn">AUDITOR</span> 2 comprobantes con inconsistencia de proveedor verificados (EFOS).</div>
+                        <div class="log-line"><span class="t-time">[09:12:14]</span> <span class="t-ok">ATS-XSD</span> Generado AT022026.xml válido contra esquema oficial SRI (0 errores).</div>
+
+                        <div class="terminal-summary">
+                            <div>
+                                <small>Estado del Cierre Mensual</small>
+                                <strong>Listo para DIMM / SRI en Línea</strong>
+                            </div>
+                            <span class="badge-ready">VALIDADO XSD 100 %</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Flujo Operativo en 4 Pasos -->
-    <section id="flujo" class="section bg-subtle">
-        <div class="container">
-            <div class="section-head">
-                <span class="eyebrow">FLUJO OPERATIVO COMPLETO</span>
-                <h2>¿Cómo Trabaja TributaFlow Pro Desde el Primer Minuto?</h2>
-                <p>Sin videos genéricos: conoce exactamente el ciclo real de instalación, descarga masiva SRI, resguardo cifrado y generación oficial de anexos.</p>
+        <!-- SIMULADOR INTERACTIVO DE AHORRO Y RECOMENDACIÓN DE PLAN -->
+        <section class="section bg-subtle" id="simulador">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Calculadora de Retorno de Tiempo</span>
+                    <h2>Calcula cuántas horas ahorras al mes con <span class="text-gradient">TributaFlow Pro</span></h2>
+                    <p>Ajusta tu cartera mensual de RUCs y el volumen promedio de comprobantes para identificar el plan exacto para tu estudio o empresa.</p>
+                </div>
+
+                <div class="simulator-card">
+                    <div class="simulator-grid">
+                        <div class="sim-controls">
+                            <div class="sim-field">
+                                <div class="sim-range-head">
+                                    <label for="simRucsRange">Cantidad de RUCs que gestionas</label>
+                                    <span class="sim-range-val" id="simRucsVal">12 RUCs</span>
+                                </div>
+                                <input class="sim-range" type="range" id="simRucsRange" min="1" max="200" step="1" value="12">
+                            </div>
+
+                            <div class="sim-field">
+                                <div class="sim-range-head">
+                                    <label for="simDocsRange">Comprobantes XML/PDF por mes (total cartera)</label>
+                                    <span class="sim-range-val" id="simDocsVal">250 comprobantes</span>
+                                </div>
+                                <input class="sim-range" type="range" id="simDocsRange" min="20" max="2000" step="10" value="250">
+                            </div>
+
+                            <div>
+                                <p class="muted-note">Escenarios rápidos frecuentes:</p>
+                                <div class="sim-presets mt-8">
+                                    <button type="button" class="sim-preset-btn" data-sim-rucs="3" data-sim-docs="90">Profesional (3 RUCs)</button>
+                                    <button type="button" class="sim-preset-btn is-active" data-sim-rucs="18" data-sim-docs="450">Contador (18 RUCs)</button>
+                                    <button type="button" class="sim-preset-btn" data-sim-rucs="52" data-sim-docs="1200">Estudio Dual-PC (52 RUCs)</button>
+                                    <button type="button" class="sim-preset-btn" data-sim-rucs="140" data-sim-docs="2000">Estudio / Corporativo (+100 RUCs)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sim-result-box">
+                            <div class="sim-kpi-row">
+                                <div class="sim-kpi">
+                                    <small>Tiempo ahorrado / mes</small>
+                                    <strong id="simHorasMes">~18 h/mes</strong>
+                                </div>
+                                <div class="sim-kpi">
+                                    <small>Tiempo ahorrado / año</small>
+                                    <strong id="simHorasAnio">~216 h/año</strong>
+                                </div>
+                            </div>
+
+                            <div class="sim-plan-rec">
+                                <span class="eyebrow">Plan Recomendado para Tu Volumen</span>
+                                <h3 id="simPlanNombre">Contador Master ($139/año)</h3>
+                                <p id="simPlanDetalle">Hasta 25 RUCs en 1 PC · Descarga SRI XML/PDF, Generador ATS XML/XSD y Excel Consolidado.</p>
+                            </div>
+
+                            <div class="sim-actions">
+                                <button type="button" class="btn-glow" id="simBtnAdquirirPlan" data-checkout-plan="CONTADOR_MASTER">Adquirir Plan Recomendado ➔</button>
+                                <a href="planes.html" class="btn-glass">Ver Tabla Comparativa Completa</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="workflow-grid">
-                <article class="workflow-step">
-                    <div class="step-num">01</div>
-                    <h3>Instala y Elige Edición (15 Días Gratis)</h3>
-                    <p>Al instalar TributaFlow Pro seleccionas qué edición deseas evaluar gratis por 15 días (desde Personal Pro hasta Enterprise Corporativo), sin tarjeta.</p>
-                </article>
-                <article class="workflow-step">
-                    <div class="step-num">02</div>
-                    <h3>Registra RUCs en Bóveda Cifrada</h3>
-                    <p>Cada empresa (ej. <code>1790012345001</code>) opera en su bóveda SQLite cifrada al HWID. El libro ético sella un RUC solo tras su primera descarga real del SRI.</p>
-                </article>
-                <article class="workflow-step">
-                    <div class="step-num">03</div>
-                    <h3>Sincroniza SRI y Bóveda Jerárquica</h3>
-                    <p>Descarga emitidos y recibidos por lotes, reconstruye RIDE PDF y clasifica cada comprobante automáticamente por año, mes, tipo y carpeta XML/RIDE.</p>
-                </article>
-                <article class="workflow-step">
-                    <div class="step-num">04</div>
-                    <h3>Audita Fantasmas y Genera ATS XSD</h3>
-                    <p>Cruza tus compras contra el catastro de empresas fantasmas SRI, exporta libros Excel y valida el archivo ATS oficial contra el esquema XSD antes de declarar.</p>
-                </article>
+        <!-- CÓMO FUNCIONA (4 PASOS) -->
+        <section class="section" id="flujo">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Flujo Operativo de 4 Pasos</span>
+                    <h2>De claves SRI dispersas a cierre tributario auditado</h2>
+                    <p>Instala en menos de 2 minutos, protege las credenciales en tu computadora y automatiza toda la ruta mensual.</p>
+                </div>
+
+                <div class="workflow-grid">
+                    <article class="workflow-step">
+                        <span class="step-num">01</span>
+                        <h3>Instala e inicia tu bóveda local</h3>
+                        <p>Disponible en Windows, macOS y Linux con <strong><span data-trial-days>14 días</span> gratis</strong> y hasta 2 RUCs reales para evaluar todo el motor.</p>
+                    </article>
+
+                    <article class="workflow-step">
+                        <span class="step-num">02</span>
+                        <h3>Registra contribuyentes con AES-256</h3>
+                        <p>Guarda cada RUC en tu disco local con SQLCipher cifrado. Tus claves SRI jamás viajan a servidores de terceros.</p>
+                    </article>
+
+                    <article class="workflow-step">
+                        <span class="step-num">03</span>
+                        <h3>Sincroniza SRI o importa TXT/ZIP</h3>
+                        <p>Descarga XML y RIDE oficiales en lote o ingesta reportes TXT masivos organizados automáticamente por año y mes.</p>
+                    </article>
+
+                    <article class="workflow-step">
+                        <span class="step-num">04</span>
+                        <h3>Audita y genera el ATS XML/XSD</h3>
+                        <p>Cruza retenciones, detecta proveedores fantasmas (EFOS) y exporta el Anexo Transaccional listo para el portal SRI.</p>
+                    </article>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Exploración Profunda de los 9 Módulos (Multipágina) -->
-    <section id="modulos" class="section">
-        <div class="container">
-            <div class="section-head">
-                <span class="eyebrow">EXPLORACIÓN MULTIPÁGINA DE ARQUITECTURA</span>
-                <h2>Explora Cada Módulo del Sistema</h2>
-                <p>Haz clic en cualquier módulo operativo para abrir su ficha técnica dedicada con arquitectura real, flujos paso a paso, rutas de almacenamiento y alcance por edición.</p>
-            </div>
+        <!-- LOS 9 MÓDULOS DE LA SUITE + ARQUITECTURA DE BÓVEDA -->
+        <section class="section bg-subtle" id="modulos">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Suite Completa Especializada</span>
+                    <h2>9 Módulos integrados en una sola aplicación nativa</h2>
+                    <p>Explora cada módulo con su flujo detallado, requisitos técnicos y permisos disponibles por nivel de licencia.</p>
+                </div>
 
-            <div class="modules-grid">
-                <article class="module-card">
-                    <div>
+                <div class="modules-grid">
+                    <article class="module-card">
                         <div class="module-top">
-                            <span class="module-icon">📊</span>
-                            <span class="module-tier">Todos los Planes</span>
+                            <span class="module-icon" aria-hidden="true">📊</span>
+                            <span class="module-tier">Todos los planes</span>
                         </div>
                         <h3>1. Panel General</h3>
-                        <p>Tablero ejecutivo en tiempo real con KPIs de comprobantes emitidos y recibidos, estado de evaluación/licencia, cupo ético de RUCs y accesos directos.</p>
-                    </div>
-                    <a href="modulos/panel-general.html" class="module-link">Explorar Panel General <span>→</span></a>
-                </article>
+                        <p>Indicadores mensuales en tiempo real, totales descargados por contribuyente y accesos rápidos a tus RUCs activos.</p>
+                        <a href="modulos/panel-general.html" class="module-link">Explorar Panel General ➔</a>
+                    </article>
 
-                <article class="module-card">
-                    <div>
+                    <article class="module-card">
                         <div class="module-top">
-                            <span class="module-icon">🏢</span>
-                            <span class="module-tier">Multi-RUC &amp; HWID</span>
+                            <span class="module-icon" aria-hidden="true">🏢</span>
+                            <span class="module-tier">Hasta Ilimitados</span>
                         </div>
-                        <h3>2. Mis Contribuyentes (Multi-RUC)</h3>
-                        <p>Administración aislada de empresas (1, 15, 50 o Ilimitados RUCs), SQLite cifrada por HWID (PBKDF2 + AES-256-GCM + HMAC), sellado ético y backups <code>.tfbkp</code>.</p>
-                    </div>
-                    <a href="modulos/mis-contribuyentes.html" class="module-link">Explorar Mis Contribuyentes <span>→</span></a>
-                </article>
+                        <h3>2. Mis Contribuyentes</h3>
+                        <p>Gestión multi-RUC escalable: 3 RUCs (Personal), 25 RUCs (Master), 60 RUCs en 1 o 2 PCs (Estudio) o ilimitados (Enterprise).</p>
+                        <a href="modulos/mis-contribuyentes.html" class="module-link">Explorar Mis Contribuyentes ➔</a>
+                    </article>
 
-                <article class="module-card">
-                    <div>
+                    <article class="module-card">
                         <div class="module-top">
-                            <span class="module-icon">⚡</span>
-                            <span class="module-tier">Árbol Jerárquico</span>
+                            <span class="module-icon" aria-hidden="true">⚡</span>
+                            <span class="module-tier">Motor Asíncrono</span>
                         </div>
-                        <h3>3. Sincronizar SRI (Árbol Jerárquico)</h3>
-                        <p>Descarga automatizada de XML y RIDE PDF clasificada en <code>Boveda_TributaFlow/&lt;RUC&gt;_&lt;EMPRESA&gt;/&lt;AÑO&gt;/&lt;MM_MES&gt;/...</code> con deduplicación y lotes Multi-RUC.</p>
-                    </div>
-                    <a href="modulos/sincronizar-sri.html" class="module-link">Explorar Sincronizar SRI <span>→</span></a>
-                </article>
+                        <h3>3. Sincronizar SRI</h3>
+                        <p>Conexión automatizada para descarga de comprobantes emitidos y recibidos en formato XML original y PDF RIDE.</p>
+                        <a href="modulos/sincronizar-sri.html" class="module-link">Explorar Sincronizar SRI ➔</a>
+                    </article>
 
-                <article class="module-card">
-                    <div>
+                    <article class="module-card">
                         <div class="module-top">
-                            <span class="module-icon">📥</span>
-                            <span class="module-tier">Todos los Planes</span>
+                            <span class="module-icon" aria-hidden="true">📥</span>
+                            <span class="module-tier">Todos los planes</span>
                         </div>
                         <h3>4. Importar Comprobantes</h3>
-                        <p>Carga masiva de archivos <code>.txt</code> de claves de acceso del SRI o carpetas locales de XML para reconstruir RIDE PDF e indexarlos en la bóveda jerárquica.</p>
-                    </div>
-                    <a href="modulos/importar-comprobantes.html" class="module-link">Explorar Importar Comprobantes <span>→</span></a>
-                </article>
+                        <p>Ingesta inteligente de archivos TXT del portal SRI, XML individuales o paquetes ZIP completos con validación de duplicados.</p>
+                        <a href="modulos/importar-comprobantes.html" class="module-link">Explorar Importar Comprobantes ➔</a>
+                    </article>
 
-                <article class="module-card">
-                    <div>
+                    <article class="module-card">
                         <div class="module-top">
-                            <span class="module-icon">🕵️</span>
-                            <span class="module-tier tier-pro">Desde Estudio Pro</span>
+                            <span class="module-icon" aria-hidden="true">🔍</span>
+                            <span class="module-tier tier-pro">Estudio Pro +</span>
                         </div>
-                        <h3>5. Auditor Fantasma SRI</h3>
-                        <p>Cruce preventivo en tiempo real de tus proveedores contra el catastro oficial de empresas fantasmas e inexistentes del SRI antes de declarar IVA o Renta.</p>
-                    </div>
-                    <a href="modulos/auditor-fantasma.html" class="module-link">Explorar Auditor Fantasma <span>→</span></a>
-                </article>
+                        <h3>5. Auditor Fantasma</h3>
+                        <p>Cruce forense automático de comprobantes recibidos frente a listas oficiales EFOS / empresas inexistentes del SRI.</p>
+                        <a href="modulos/auditor-fantasma.html" class="module-link">Explorar Auditor Fantasma ➔</a>
+                    </article>
 
-                <article class="module-card">
-                    <div>
+                    <article class="module-card">
                         <div class="module-top">
-                            <span class="module-icon">🔎</span>
-                            <span class="module-tier">Todos los Planes</span>
+                            <span class="module-icon" aria-hidden="true">🆔</span>
+                            <span class="module-tier">Todos los planes</span>
                         </div>
-                        <h3>6. Búsqueda RUC / Cédula</h3>
-                        <p>Consulta instantánea de estado tributario activo/suspendido, actividad económica principal, tipo de contribuyente y validación directa.</p>
-                    </div>
-                    <a href="modulos/busqueda-ruc.html" class="module-link">Explorar Búsqueda RUC <span>→</span></a>
-                </article>
+                        <h3>6. Búsqueda por RUC</h3>
+                        <p>Consulta instantánea de razón social, estado tributario, actividad económica y obligaciones fiscales de proveedores.</p>
+                        <a href="modulos/busqueda-ruc.html" class="module-link">Explorar Búsqueda por RUC ➔</a>
+                    </article>
 
-                <article class="module-card">
-                    <div>
+                    <article class="module-card">
                         <div class="module-top">
-                            <span class="module-icon">📚</span>
-                            <span class="module-tier">Exportación Excel</span>
+                            <span class="module-icon" aria-hidden="true">📋</span>
+                            <span class="module-tier">50 / 200 / Sin límite</span>
                         </div>
                         <h3>7. Consulta Masiva</h3>
-                        <p>Verificación en lote de múltiples comprobantes electrónicos, estados de autorización SRI y exportación consolidada a Excel/CSV contable.</p>
-                    </div>
-                    <a href="modulos/consulta-masiva.html" class="module-link">Explorar Consulta Masiva <span>→</span></a>
-                </article>
+                        <p>Verificación por lotes desde 50 líneas (Personal/Master), 200 líneas (Estudio Pro) hasta ilimitado en Enterprise.</p>
+                        <a href="modulos/consulta-masiva.html" class="module-link">Explorar Consulta Masiva ➔</a>
+                    </article>
 
-                <article class="module-card">
-                    <div>
+                    <article class="module-card">
                         <div class="module-top">
-                            <span class="module-icon">📑</span>
-                            <span class="module-tier tier-pro">Desde Contador Master</span>
+                            <span class="module-icon" aria-hidden="true">📑</span>
+                            <span class="module-tier tier-pro">Master +</span>
                         </div>
-                        <h3>8. Generador y Validador ATS</h3>
-                        <p>Generación del XML oficial en <code>ATS_Declaraciones/ATS_&lt;RUC&gt;_&lt;MM&gt;_&lt;AÑO&gt;.xml</code>, validación XSD SRI offline, resumen Excel y modo contingencia.</p>
-                    </div>
-                    <a href="modulos/generador-ats.html" class="module-link">Explorar Generador ATS <span>→</span></a>
-                </article>
+                        <h3>8. Generador ATS Oficial</h3>
+                        <p>Compilación automática de compras, ventas, retenciones y anulados en XML oficial validado por esquema XSD SRI.</p>
+                        <a href="modulos/generador-ats.html" class="module-link">Explorar Generador ATS ➔</a>
+                    </article>
 
-                <article class="module-card">
-                    <div>
+                    <article class="module-card">
                         <div class="module-top">
-                            <span class="module-icon">🔐</span>
-                            <span class="module-tier tier-pro">Red LAN &amp; Blindaje</span>
+                            <span class="module-icon" aria-hidden="true">🛡️</span>
+                            <span class="module-tier">Cifrado Local</span>
                         </div>
-                        <h3>9. Ajustes, Red LAN y Blindaje</h3>
-                        <p>Matriz de permisos en vivo (✓ / 🔒), modo Red LAN TCP/IP centralizado para 5 a 10+ estaciones, bóveda UNC compartida con bloqueo atómico y respaldos <code>.tfbkp</code>.</p>
-                    </div>
-                    <a href="modulos/ajustes-seguridad.html" class="module-link">Explorar Ajustes y Red LAN <span>→</span></a>
-                </article>
-            </div>
-
-            <!-- Vista Visual de Bóveda Contable Jerárquica -->
-            <div class="architecture-split" style="margin-top: 36px;">
-                <div class="tree-box">
-                    <span class="eyebrow">ESTRUCTURA DE BÓVEDA CONTABLE JERÁRQUICA (REAL EN DISCO)</span>
-                    <pre>Boveda_TributaFlow/
-└── 1790012345001_EMPRESA_DEMOSTRACION_SA/
-    ├── 2026/
-    │   └── 10_OCTUBRE/
-    │       ├── Emitidos/
-    │       │   ├── Facturas/
-    │       │   │   ├── XML/
-    │       │   │   └── RIDE/
-    │       │   └── Retenciones/
-    │       └── Recibidos/
-    │           ├── Facturas/
-    │           │   ├── XML/
-    │           │   └── RIDE/
-    │           └── Notas_Credito/
-    ├── ATS_Declaraciones/
-    │   ├── ATS_1790012345001_10_2026.xml
-    │   └── Resumen_ATS_10_2026.xlsx
-    └── Logs_Sincronizacion/
-        └── sync_20261031.log</pre>
+                        <h3>9. Ajustes y Seguridad</h3>
+                        <p>Respaldos portátiles cifrados (.tfbkp), modo Red Local LAN TCP/IP, traslado entre computadoras y licencia HWID.</p>
+                        <a href="modulos/ajustes-seguridad.html" class="module-link">Explorar Ajustes y Seguridad ➔</a>
+                    </article>
                 </div>
 
-                <div class="feature-list-panel">
-                    <h3>Blindaje Técnico y Gobernanza Documental</h3>
-                    <p style="color: var(--text-muted); font-size: 13.8px;">Cada archivo procesado en TributaFlow Pro v2.3.0 sigue reglas estrictas de integridad y seguridad criptográfica:</p>
-                    <ul>
-                        <li>✔ <strong>Base SQLite cifrada por HWID:</strong> Derivación <code>PBKDF2</code> + cifrado autenticado <code>AES-256-GCM</code> + verificación <code>HMAC</code>.</li>
-                        <li>✔ <strong>Cero duplicados por clave de acceso:</strong> Indexación determinista de 49 dígitos en emitidos y recibidos.</li>
-                        <li>✔ <strong>Modo Red LAN TCP/IP (Enterprise):</strong> Hasta 5 o 10+ PCs concurrentes compartiendo carpeta UNC (<code>\\SERVIDOR\Boveda_TributaFlow</code>) con bloqueo distribuido anti-colisión SRI.</li>
-                        <li>✔ <strong>Migración portátil cifrada <code>.tfbkp</code>:</strong> Traslada la historia contable de un contribuyente entre equipos autorizados sin exponer XML en texto plano.</li>
-                    </ul>
-                    <div style="margin-top: 8px;">
-                        <a href="modulos/sincronizar-sri.html" class="btn-glass">Ver Arquitectura de Bóveda Completa →</a>
+                <!-- ARQUITECTURA DE BÓVEDA DOCUMENTAL -->
+                <div class="architecture-split mt-36">
+                    <div class="tree-box">
+                        <h3>Estructura Automática de Tu Bóveda Local</h3>
+                        <pre>Boveda_TributaFlow/
+├── _config/
+│   ├── tributaflow_boveda.db        (Cifrado AES-256 SQLCipher)
+│   └── licencia_activa.lic          (Firma digital Ed25519 offline)
+├── 1790012345001_DISTRIBUIDORA_SA/
+│   ├── 2026/
+│   │   ├── 01-Enero/   [XML + RIDE PDF + Excel + ATS.xml]
+│   │   └── 02-Febrero/ [XML + RIDE PDF + Auditoria_EFOS.xlsx]
+└── Respaldos_Portatiles/
+    └── Backup_Cartera_2026.tfbkp    (Paquete portátil cifrado)</pre>
+                    </div>
+
+                    <div class="feature-list-panel">
+                        <h3>Ventajas de Arquitectura Local-First <span data-app-version-tag>v2.4.0</span></h3>
+                        <ul>
+                            <li><span>✓</span> <span><strong>Sin nube intermediaria:</strong> tus claves SRI y comprobantes no salen de tu computadora ni se venden a terceros.</span></li>
+                            <li><span>✓</span> <span><strong>Cupos reales escalables:</strong> desde 3 RUCs (Personal), 25 RUCs (Master) y 60 RUCs en 1 o 2 PCs (Estudio Pro) hasta RUCs ilimitados (Enterprise).</span></li>
+                            <li><span>✓</span> <span><strong>Respaldo portátil .tfbkp:</strong> mueve toda tu cartera contable entre oficina y casa o en red LAN cifrada.</span></li>
+                            <li><span>✓</span> <span><strong>Sellado ético al vencer:</strong> jamás perdemos tus datos; tus carpetas XML/PDF y Excel siempre permanecen legibles.</span></li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Descargas Multiplataforma con Modales Separados -->
-    <section id="descargas" class="section bg-subtle">
-        <div class="container">
-            <div class="section-head">
-                <span class="eyebrow">DESCARGA NATIVA MULTIPLATAFORMA v2.3.0</span>
-                <h2>Prueba TributaFlow Pro Gratis por 15 Días</h2>
-                <p>El asistente de instalación te permite elegir cuál de las 5 ediciones evaluar durante 15 días completos sin ingresar tarjeta de crédito.</p>
-            </div>
+        <!-- DESCARGAS INTELIGENTES POR SISTEMA OPERATIVO -->
+        <section class="section" id="descargas">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Instaladores Oficiales <span data-app-version-tag>v2.4.0</span></span>
+                    <h2>Descarga TributaFlow Pro para tu Computadora</h2>
+                    <p>Detectamos automáticamente el sistema operativo de tu computadora (Windows, macOS o Linux, incluyendo laptops táctiles y 2-en-1 con Windows) para ofrecerte el instalador exacto.</p>
+                </div>
 
-            <div class="os-grid">
-                <article class="os-card" data-os="windows">
-                    <div class="os-card-top">
-                        <span class="os-badge">Windows 10 / 11 (64-bit)</span>
-                        <span class="os-size">Setup .exe</span>
+                <div class="download-banner">
+                    <div>
+                        <h3>Prueba Gratuita Completa de <span data-trial-days>14 días</span></h3>
+                        <div class="dl-meta">
+                            <span>• Versión activa: <strong data-app-version>2.4.0</strong></span>
+                            <span>• 1 Equipo · Hasta 2 RUCs · 15 líneas en Consulta Masiva</span>
+                            <span>• Sin tarjeta requerida para instalar</span>
+                        </div>
                     </div>
-                    <h3>Instalador Windows Enterprise</h3>
-                    <code>TributaFlow_Pro_v2.3.0_Enterprise_Windows_x64_Setup.exe</code>
-                    <p style="font-size: 13px; color: var(--text-muted);">Asistente comercial firmado con selector de edición para evaluación gratuita de 15 días.</p>
-                    <a href="https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.3.0/TributaFlow_Pro_v2.3.0_Enterprise_Windows_x64_Setup.exe" class="btn-os-modal" data-download-os="windows" download="TributaFlow_Pro_v2.3.0_Enterprise_Windows_x64_Setup.exe">⬇ Descargar para Windows (.exe)</a>
-                </article>
+                    <button type="button" class="btn-glow" data-download-os="auto">Descargar para Mi Equipo ➔</button>
+                </div>
 
-                <article class="os-card" data-os="linux">
-                    <div class="os-card-top">
-                        <span class="os-badge">Linux (Ubuntu / Debian / Mint)</span>
-                        <span class="os-size">Paquete .deb</span>
-                    </div>
-                    <h3>Paquete Oficial Linux amd64</h3>
-                    <code>TributaFlow_Pro_v2.3.0_Linux_amd64.deb</code>
-                    <p style="font-size: 13px; color: var(--text-muted);">Paquete nativo de escritorio con motor Playwright integrado y bóveda SQLite cifrada.</p>
-                    <a href="https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.3.0/TributaFlow_Pro_v2.3.0_Linux_amd64.deb" class="btn-os-modal" data-download-os="linux" download="TributaFlow_Pro_v2.3.0_Linux_amd64.deb">⬇ Descargar para Linux (.deb)</a>
-                </article>
+                <div class="os-grid">
+                    <article class="os-card" data-os="windows">
+                        <div class="os-card-top">
+                            <span class="os-badge">Windows 10 / 11 (64-bit)</span>
+                            <span class="os-size">Setup .exe</span>
+                        </div>
+                        <h3>Instalador Windows Desktop</h3>
+                        <p>Compatible con PC de escritorio, laptops táctiles y tabletas Windows 10/11 de 64 bits con asistente gráfico guiado.</p>
+                        <code>TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe</code>
+                        <div class="mt-12">
+                            <button type="button" class="btn-os-modal" data-download-os="windows">⬇ Descargar Windows (<span data-app-version-tag>v2.4.0</span>)</button>
+                        </div>
+                    </article>
 
-                <article class="os-card" data-os="macos">
-                    <div class="os-card-top">
-                        <span class="os-badge">macOS (Apple Silicon / Intel)</span>
-                        <span class="os-size">Imagen .dmg</span>
-                    </div>
-                    <h3>Instalador Nativo macOS</h3>
-                    <code>TributaFlow_Pro_v2.3.0_macOS.dmg</code>
-                    <p style="font-size: 13px; color: var(--text-muted);">Imagen de disco lista para arrastrar a Aplicaciones con evaluación de 15 días incluida.</p>
-                    <a href="https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.3.0/TributaFlow_Pro_v2.3.0_macOS.dmg" class="btn-os-modal" data-download-os="macos" download="TributaFlow_Pro_v2.3.0_macOS.dmg">⬇ Descargar para macOS (.dmg)</a>
-                </article>
+                    <article class="os-card" data-os="macos">
+                        <div class="os-card-top">
+                            <span class="os-badge">macOS Universal (.dmg)</span>
+                            <span class="os-size">Apple Silicon + Intel</span>
+                        </div>
+                        <h3>Instalador nativo macOS</h3>
+                        <p>Paquete nativo Apple Disk Image para MacBook, iMac y Mac Studio con guía de primer arranque seguro (sin bloqueos).</p>
+                        <code>TributaFlow_Pro_v2.4.0_macOS.dmg</code>
+                        <div class="mt-12">
+                            <button type="button" class="btn-os-modal" data-download-os="macos">⬇ Descargar macOS (<span data-app-version-tag>v2.4.0</span>)</button>
+                        </div>
+                    </article>
+
+                    <article class="os-card" data-os="linux">
+                        <div class="os-card-top">
+                            <span class="os-badge">Ubuntu / Debian (.deb)</span>
+                            <span class="os-size">amd64</span>
+                        </div>
+                        <h3>Paquete nativo Linux</h3>
+                        <p>Instalación limpia mediante <code>apt install</code> para entornos Ubuntu, Debian y Mint de escritorio contable.</p>
+                        <code>TributaFlow_Pro_v2.4.0_Linux_amd64.deb</code>
+                        <div class="mt-12">
+                            <button type="button" class="btn-os-modal" data-download-os="linux">⬇ Descargar Linux (<span data-app-version-tag>v2.4.0</span>)</button>
+                        </div>
+                    </article>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Matriz de 5 Planes con Separación Estricta de Tarjeta vs Botón de Pago -->
-    <section id="precios" class="section">
-        <div id="planes" class="container">
-            <div class="section-head">
-                <span class="eyebrow">5 PLANES OFICIALES ANUALES (365 DÍAS)</span>
-                <h2>Precios Transparentes y Alcance Exacto por Edición</h2>
-                <p>Revisa con tranquilidad lo que incluye (✔) y no incluye (🔒) cada edición en su casilla informativa. Solo cuando estés listo, haz clic en el botón inferior para abrir el modal de pago.</p>
-            </div>
+        <!-- PLANES Y PRECIOS v2.4.0 (5 LICENCIAS ANUALES) -->
+        <section class="section bg-subtle" id="precios">
+            <span id="planes" aria-hidden="true"></span>
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Licenciamiento Anual Transparente (365 Días)</span>
+                    <h2>5 Planes oficiales para cada etapa de crecimiento</h2>
+                    <p>Elige tu nivel, paga con PayPhone Tarjetas, Deuna! o transferencia bancaria ecuatoriana y activa tu archivo oficial <code>.lic</code>.</p>
+                </div>
 
-            <div class="plans-grid-5">
-                <!-- Plan 1: Personal Pro ($59) -->
-                <article class="plan-card" data-plan-card="PERSONAL_PRO">
-                    <div class="plan-info-box">
+                <div class="plans-grid-5">
+                    <!-- 1. PERSONAL PRO -->
+                    <article class="plan-card">
                         <div class="plan-header">
                             <h3>Personal Pro</h3>
-                            <p>Profesionales independientes, RIMPE y contribuyentes individuales.</p>
+                            <p>Para profesionales independientes y hasta 3 negocios familiares.</p>
                         </div>
                         <div class="plan-pricing">
-                            <span class="price-regular">Regular: $69.00 USD / año</span>
-                            <div class="price-launch">$59 <span class="period">USD / año</span></div>
+                            <span class="price-regular">Regular $69</span>
+                            <div class="price-launch">$59 <span class="period">/ año</span></div>
+                            <span class="price-note">Equivalente a $4.92/mes · 365 días</span>
                         </div>
                         <div class="plan-quotas">
-                            <span class="quota-pill">1 RUC</span>
-                            <span class="quota-pill">1 PC (HWID)</span>
+                            <span class="quota-pill">💻 1 PC</span>
+                            <span class="quota-pill">🏢 Hasta 3 RUCs</span>
+                            <span class="quota-pill">📋 50 líneas Masiva</span>
                         </div>
                         <ul class="plan-list">
-                            <li class="ok">✔ Sincronización SRI XML y RIDE</li>
-                            <li class="ok">✔ Bóveda contable jerárquica</li>
-                            <li class="ok">✔ Bóveda cifrada AES-256 + HMAC</li>
-                            <li class="ok">✔ Exportación Excel/CSV básica</li>
-                            <li class="locked">🔒 Sin generador ATS / XSD</li>
-                            <li class="locked">🔒 Sin Auditor Fantasma SRI</li>
-                            <li class="locked">🔒 Sin Red LAN multi-estación</li>
+                            <li class="ok">Descarga XML y RIDE PDF del SRI</li>
+                            <li class="ok">Bóveda local cifrada AES-256</li>
+                            <li class="ok">Modo Local + Consulta Masiva 50 líneas</li>
+                            <li class="locked">Generador ATS XML/XSD completo</li>
                         </ul>
-                    </div>
-                    <div class="plan-action-box">
-                        <button type="button" class="btn-open-checkout" data-checkout-plan="PERSONAL_PRO">💳 Adquirir Plan ($59/año)</button>
-                        <span class="action-hint">PayPhone o Deuna / Transferencia</span>
-                    </div>
-                </article>
+                        <div class="plan-action-box">
+                            <button type="button" class="btn-open-checkout" data-checkout-plan="PERSONAL_PRO">Adquirir Personal Pro</button>
+                            <span class="action-hint">PayPhone Tarjeta o Deuna! 0 %</span>
+                        </div>
+                    </article>
 
-                <!-- Plan 2: Contador Master ($139) -->
-                <article class="plan-card" data-plan-card="CONTADOR_MASTER">
-                    <div class="plan-info-box">
+                    <!-- 2. CONTADOR MASTER -->
+                    <article class="plan-card">
                         <div class="plan-header">
                             <h3>Contador Master</h3>
-                            <p>Contadores independientes con cartera activa multi-contribuyente.</p>
+                            <p>La herramienta base del contador independiente con cartera activa.</p>
                         </div>
                         <div class="plan-pricing">
-                            <span class="price-regular">Regular: $169.00 USD / año</span>
-                            <div class="price-launch">$139 <span class="period">USD / año</span></div>
+                            <span class="price-regular">Regular $169</span>
+                            <div class="price-launch">$139 <span class="period">/ año</span></div>
+                            <span class="price-note">Equivalente a $11.58/mes · 365 días</span>
                         </div>
                         <div class="plan-quotas">
-                            <span class="quota-pill">Hasta 15 RUCs</span>
-                            <span class="quota-pill">1 PC (HWID)</span>
+                            <span class="quota-pill">💻 1 PC</span>
+                            <span class="quota-pill">🏢 Hasta 25 RUCs</span>
+                            <span class="quota-pill">📋 50 líneas Masiva</span>
                         </div>
                         <ul class="plan-list">
-                            <li class="ok">✔ Todo lo de Personal Pro</li>
-                            <li class="ok">✔ Lote Multi-RUC (hasta 15 RUCs)</li>
-                            <li class="ok">✔ Generador y Validador Oficial ATS</li>
-                            <li class="ok">✔ Resumen Contable Excel consolidado</li>
-                            <li class="ok">✔ Auto-clasificación de sustentos</li>
-                            <li class="locked">🔒 Sin Auditor Fantasma tiempo real</li>
-                            <li class="locked">🔒 Sin 2 PCs ni Red LAN</li>
+                            <li class="ok">Hasta 25 contribuyentes en 1 equipo</li>
+                            <li class="ok">Generador ATS XML + validación XSD SRI</li>
+                            <li class="ok">Excel consolidado de compras y ventas</li>
+                            <li class="locked">Doble PC (30+30 RUCs) y Auditor EFOS</li>
                         </ul>
-                    </div>
-                    <div class="plan-action-box">
-                        <button type="button" class="btn-open-checkout" data-checkout-plan="CONTADOR_MASTER">💳 Adquirir Plan ($139/año)</button>
-                        <span class="action-hint">PayPhone o Deuna / Transferencia</span>
-                    </div>
-                </article>
+                        <div class="plan-action-box">
+                            <button type="button" class="btn-open-checkout" data-checkout-plan="CONTADOR_MASTER">Adquirir Contador Master</button>
+                            <span class="action-hint">PayPhone Tarjeta o Deuna! 0 %</span>
+                        </div>
+                    </article>
 
-                <!-- Plan 3: Estudio Contable Pro ($299 Destacado) -->
-                <article class="plan-card plan-popular" data-plan-card="ESTUDIO_PRO">
-                    <div class="popular-ribbon">MÁS ELEGIDO • ESTUDIO PRO</div>
-                    <div class="plan-info-box">
+                    <!-- 3. ESTUDIO CONTABLE PRO -->
+                    <article class="plan-card plan-popular">
+                        <div class="popular-ribbon">MÁS ELEGIDO · OFICINA + CASA</div>
                         <div class="plan-header">
                             <h3>Estudio Contable Pro</h3>
-                            <p>Estudios contables, auditores externos y PyMEs exigentes.</p>
+                            <p>Trabaja con 2 PCs independientes (oficina + casa, sin PC maestra ni red).</p>
                         </div>
                         <div class="plan-pricing">
-                            <span class="price-regular">Regular: $399.00 USD / año</span>
-                            <div class="price-launch">$299 <span class="period">USD / año</span></div>
+                            <span class="price-regular">Regular $399</span>
+                            <div class="price-launch">$299 <span class="period">/ año</span></div>
+                            <span class="price-note">Hasta 2 PCs · 60 RUCs totales (30/PC)</span>
                         </div>
                         <div class="plan-quotas">
-                            <span class="quota-pill">Hasta 50 RUCs</span>
-                            <span class="quota-pill">Hasta 2 PCs</span>
+                            <span class="quota-pill">💻 Hasta 2 PCs</span>
+                            <span class="quota-pill">🏢 60 RUCs totales</span>
+                            <span class="quota-pill">📋 200 líneas Masiva</span>
                         </div>
                         <ul class="plan-list">
-                            <li class="ok">✔ Todo lo de Contador Master</li>
-                            <li class="ok">✔ <strong>Auditor Fantasma SRI</strong> tiempo real</li>
-                            <li class="ok">✔ Modo Contingencia ATS oficial</li>
-                            <li class="ok">✔ Operación Multi-PC (2 HWIDs)</li>
-                            <li class="ok">✔ Respaldos cifrados <code>.tfbkp</code></li>
-                            <li class="locked">🔒 Sin Red LAN TCP/IP centralizada</li>
-                            <li class="locked">🔒 Sin bóveda compartida UNC</li>
+                            <li class="ok">60 RUCs en 1 PC o 30 RUCs por equipo en 2 PCs</li>
+                            <li class="ok">Windows, macOS o Linux combinables</li>
+                            <li class="ok">Auditor Fantasma (EFOS) + Contingencia ATS</li>
+                            <li class="ok">Paquete de respaldo portátil cifrado (.tfbkp)</li>
                         </ul>
-                    </div>
-                    <div class="plan-action-box">
-                        <button type="button" class="btn-open-checkout btn-accent" data-checkout-plan="ESTUDIO_PRO">💳 Adquirir Plan ($299/año)</button>
-                        <span class="action-hint">PayPhone o Deuna / Transferencia</span>
-                    </div>
-                </article>
+                        <div class="plan-action-box">
+                            <button type="button" class="btn-open-checkout btn-accent" data-checkout-plan="ESTUDIO_PRO">Adquirir Estudio Pro</button>
+                            <span class="action-hint">PayPhone Tarjeta o Deuna! 0 %</span>
+                        </div>
+                    </article>
 
-                <!-- Plan 4: Enterprise Team ($890) -->
-                <article class="plan-card plan-enterprise" data-plan-card="ENTERPRISE_TEAM">
-                    <div class="plan-info-box">
+                    <!-- 4. ENTERPRISE TEAM -->
+                    <article class="plan-card plan-enterprise">
                         <div class="plan-header">
                             <h3>Enterprise Team</h3>
-                            <p>Firmas contables y departamentos financieros en red local TCP/IP.</p>
+                            <p>Operación colaborativa en red local LAN y teletrabajo VPN para equipos contables.</p>
                         </div>
                         <div class="plan-pricing">
-                            <span class="price-regular">Regular: $1,190.00 USD / año</span>
-                            <div class="price-launch">$890 <span class="period">USD / año</span></div>
+                            <span class="price-regular">Regular $1,190</span>
+                            <div class="price-launch">$890 <span class="period">/ año</span></div>
+                            <span class="price-note">5 PCs base · Modo Local + Red Oficina</span>
                         </div>
                         <div class="plan-quotas">
-                            <span class="quota-pill">RUCs Ilimitados</span>
-                            <span class="quota-pill">5 PCs Red LAN</span>
+                            <span class="quota-pill">💻 5 PCs base</span>
+                            <span class="quota-pill">🏢 RUCs Ilimitados</span>
+                            <span class="quota-pill">📋 Sin límite</span>
                         </div>
                         <ul class="plan-list">
-                            <li class="ok">✔ Todo lo de Estudio Contable Pro</li>
-                            <li class="ok">✔ <strong>RUCs Ilimitados</strong> sin tope anual</li>
-                            <li class="ok">✔ Red LAN TCP/IP centralizada (5 PCs)</li>
-                            <li class="ok">✔ Bóveda compartida UNC <code>\\SERVIDOR\...</code></li>
-                            <li class="ok">✔ Cola distribuida anti-colisión SRI</li>
-                            <li class="locked">🔒 Sin conector Multi-Regional HTTPS</li>
-                            <li class="locked">🔒 Tope 5 PCs en red local</li>
+                            <li class="ok">RUCs y Consulta Masiva ilimitados</li>
+                            <li class="ok">Híbrido Red Local LAN TCP/IP + Teletrabajo VPN</li>
+                            <li class="ok">Bóveda compartida UNC para equipos contables</li>
+                            <li class="ok">Auditoría EFOS + Contingencia ATS completa</li>
                         </ul>
-                    </div>
-                    <div class="plan-action-box">
-                        <button type="button" class="btn-open-checkout btn-enterprise" data-checkout-plan="ENTERPRISE_TEAM">🏦 Solicitar Activación Corporativa</button>
-                        <span class="action-hint">Deuna / Transferencia Directa (0 % com.)</span>
-                    </div>
-                </article>
+                        <div class="plan-action-box">
+                            <button type="button" class="btn-open-checkout btn-enterprise" data-checkout-plan="ENTERPRISE_TEAM">Solicitar Enterprise Team</button>
+                            <span class="action-hint">Activación directa Deuna! / Transferencia</span>
+                        </div>
+                    </article>
 
-                <!-- Plan 5: Enterprise Corporativo ($1,490 + $150/PC extra) -->
-                <article class="plan-card plan-enterprise" data-plan-card="ENTERPRISE_CORP">
-                    <div class="plan-info-box">
+                    <!-- 5. ENTERPRISE CORPORATIVO -->
+                    <article class="plan-card plan-enterprise">
                         <div class="plan-header">
-                            <h3>Enterprise Corp</h3>
-                            <p>Holdings, grupos empresariales y multisucursales escalables.</p>
+                            <h3>Enterprise Corporativo</h3>
+                            <p>Multi-sucursal nacional sobre HTTPS/VPN con expansión sin límite por estación extra.</p>
                         </div>
                         <div class="plan-pricing">
-                            <span class="price-regular">Regular: $1,890.00 USD / año</span>
-                            <div class="price-launch">$1,490 <span class="period">USD / año</span></div>
-                            <span class="price-note">+ $150.00 USD/año por PC extra</span>
+                            <span class="price-regular">Regular $1,890</span>
+                            <div class="price-launch">$1,490 <span class="period">/ año</span></div>
+                            <span class="price-note">10 PCs base · +1 PC adicional por $150/año</span>
                         </div>
                         <div class="plan-quotas">
-                            <span class="quota-pill">RUCs Ilimitados</span>
-                            <span class="quota-pill">10+ Estaciones</span>
+                            <span class="quota-pill">💻 10 PCs base</span>
+                            <span class="quota-pill">➕ +1 PC ($150/año)</span>
+                            <span class="quota-pill">🏢 Ilimitados</span>
                         </div>
                         <ul class="plan-list">
-                            <li class="ok">✔ Todo lo de Enterprise Team</li>
-                            <li class="ok">✔ <strong>10 Estaciones Base</strong> (+$150/PC)</li>
-                            <li class="ok">✔ Conector Multi-Regional HTTPS</li>
-                            <li class="ok">✔ Bóveda híbrida / S3 corporativa</li>
-                            <li class="ok">✔ Despliegue prioritario multi-sucursal</li>
-                            <li class="ok">✔ Emisión centralizada multi-HWID</li>
-                            <li class="ok">✔ Factura corporativa directa</li>
+                            <li class="ok">Add-on escalable +1 PC sin tope ($150/año c/u)</li>
+                            <li class="ok">Modo Local + Red Local + Multi-Sucursal HTTPS/VPN</li>
+                            <li class="ok">Respaldo corporativo cifrado en la nube (S3)</li>
+                            <li class="ok">Onboarding prioritario e integración multi-sede</li>
                         </ul>
-                    </div>
-                    <div class="plan-action-box">
-                        <button type="button" class="btn-open-checkout btn-enterprise" data-checkout-plan="ENTERPRISE_CORP">🏦 Solicitar Activación Corporativa</button>
-                        <span class="action-hint">Calcula PCs extra y paga 0 % comisión</span>
-                    </div>
-                </article>
-            </div>
-
-            <!-- Tabla Comparativa Completa de Funcionalidades -->
-            <div class="table-wrap">
-                <table class="compare-table" aria-label="Matriz comparativa de los 5 planes de TributaFlow Pro">
-                    <thead>
-                        <tr>
-                            <th>Capacidad / Módulo TributaFlow Pro v2.3.0</th>
-                            <th>Personal Pro<br><small>$59/año</small></th>
-                            <th>Contador Master<br><small>$139/año</small></th>
-                            <th>Estudio Pro<br><small>$299/año</small></th>
-                            <th>Enterprise Team<br><small>$890/año</small></th>
-                            <th>Enterprise Corp<br><small>$1,490+/año</small></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Cupo de Contribuyentes (RUCs)</td>
-                            <td>1 RUC</td>
-                            <td>Hasta 15 RUCs</td>
-                            <td>Hasta 50 RUCs</td>
-                            <td class="cell-ok">Ilimitados</td>
-                            <td class="cell-ok">Ilimitados</td>
-                        </tr>
-                        <tr>
-                            <td>Estaciones / PCs Autorizadas</td>
-                            <td>1 PC</td>
-                            <td>1 PC</td>
-                            <td>Hasta 2 PCs</td>
-                            <td>5 PCs LAN</td>
-                            <td class="cell-ok">10 base (+$150/PC)</td>
-                        </tr>
-                        <tr>
-                            <td>Sincronización SRI, RIDE PDF y Bóveda Contable Jerárquica</td>
-                            <td class="cell-ok">✔ Incluido</td>
-                            <td class="cell-ok">✔ Incluido</td>
-                            <td class="cell-ok">✔ Incluido</td>
-                            <td class="cell-ok">✔ Incluido</td>
-                            <td class="cell-ok">✔ Incluido</td>
-                        </tr>
-                        <tr>
-                            <td>SQLite Cifrada HWID (PBKDF2 + AES-256-GCM + HMAC)</td>
-                            <td class="cell-ok">✔ Incluido</td>
-                            <td class="cell-ok">✔ Incluido</td>
-                            <td class="cell-ok">✔ Incluido</td>
-                            <td class="cell-ok">✔ Incluido</td>
-                            <td class="cell-ok">✔ Incluido</td>
-                        </tr>
-                        <tr>
-                            <td>Generador y Validador Oficial ATS (XML + XSD + Excel)</td>
-                            <td class="cell-lock">🔒</td>
-                            <td class="cell-ok">✔ Incluido</td>
-                            <td class="cell-ok">✔ Incluido</td>
-                            <td class="cell-ok">✔ Incluido</td>
-                            <td class="cell-ok">✔ Incluido</td>
-                        </tr>
-                        <tr>
-                            <td>Auditor Fantasma SRI en Tiempo Real y Contingencia ATS</td>
-                            <td class="cell-lock">🔒</td>
-                            <td class="cell-lock">🔒</td>
-                            <td class="cell-ok">✔ Incluido</td>
-                            <td class="cell-ok">✔ Incluido</td>
-                            <td class="cell-ok">✔ Incluido</td>
-                        </tr>
-                        <tr>
-                            <td>Red LAN TCP/IP, Bóveda Compartida UNC y Lock Anti-Colisión</td>
-                            <td class="cell-lock">🔒</td>
-                            <td class="cell-lock">🔒</td>
-                            <td class="cell-lock">🔒</td>
-                            <td class="cell-ok">✔ Hasta 5 PCs</td>
-                            <td class="cell-ok">✔ 10+ Estaciones</td>
-                        </tr>
-                        <tr>
-                            <td>Conector Multi-Regional HTTPS y Escalabilidad +$150/PC</td>
-                            <td class="cell-lock">🔒</td>
-                            <td class="cell-lock">🔒</td>
-                            <td class="cell-lock">🔒</td>
-                            <td class="cell-lock">🔒</td>
-                            <td class="cell-ok">✔ Incluido</td>
-                        </tr>
-                        <tr>
-                            <td>Métodos de Pago Disponibles</td>
-                            <td>PayPhone / Deuna</td>
-                            <td>PayPhone / Deuna</td>
-                            <td>PayPhone / Deuna</td>
-                            <td>Deuna / Transferencia</td>
-                            <td>Deuna / Transferencia</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Canales Oficiales de Pago en Ecuador (Deuna Protegido + Transferencia + PayPhone) -->
-            <div class="architecture-split" style="margin-top: 28px;">
-                <div class="feature-list-panel deuna-protected-card">
-                    <span class="eyebrow">PAGO LOCAL ECUADOR (0 % COMISIÓN)</span>
-                    <h3>Pago Local Instantáneo con Deuna! (0 % Comisión)</h3>
-                    <p style="font-size: 13.5px; color: var(--text-muted);">Disponible en las 5 ediciones. Para proteger cada orden, el QR oficial escaneable se genera exclusivamente dentro del checkout tras seleccionar tu plan con tu monto exacto y referencia única <code>TF-&lt;PLAN&gt;-&lt;HWID&gt;</code>.</p>
-                    <div class="deuna-layout" style="margin-top: 6px;">
-                        <div class="deuna-shield-box" aria-label="QR Deuna protegido por orden de pago">
-                            <span class="deuna-shield-icon" aria-hidden="true">🛡️</span>
-                            <strong>QR Oficial Protegido por Orden</strong>
-                            <small>Selecciona tu plan arriba para desbloquear el QR Deuna! con monto USD y referencia única <code>TF-...</code>.</small>
+                        <div class="plan-action-box">
+                            <button type="button" class="btn-open-checkout btn-enterprise" data-checkout-plan="ENTERPRISE_CORP">Solicitar Corporativo</button>
+                            <span class="action-hint">Activación directa Deuna! / Transferencia</span>
                         </div>
-                        <ul class="deuna-steps">
-                            <li><strong>1.</strong> Elige tu plan anual arriba y abre el modal de pago seguro.</li>
-                            <li><strong>2.</strong> Abre Deuna! o Banca Móvil Banco Pichincha y escanea el QR oficial dentro del modal.</li>
-                            <li><strong>3.</strong> Ingresa el monto exacto en USD y tu referencia única <code>TF-...</code>.</li>
-                            <li><strong>4.</strong> Envía tu comprobante real por WhatsApp (<code>0996459771</code>) o correo (<code>soportetributaflow@quoratec.com</code>) para recibir tu licencia <code>.lic</code>.</li>
-                        </ul>
-                    </div>
-                    <p class="deuna-titular-note">🔎 Al escanear el QR o transferir en Banco Pichincha, verifica que el titular registrado sea <strong>Fausto Andrés Orellana Jaén (Recaudo Oficial TributaFlow Pro)</strong>.</p>
-                    <div style="margin-top: 6px;">
-                        <a href="#planes" class="btn-glow" id="btnSeleccionarPlanQr">Seleccionar Plan para Generar QR y Referencia ➔</a>
-                    </div>
+                    </article>
                 </div>
-                <div class="feature-list-panel">
-                    <span class="eyebrow">TARJETAS Y REGLAS COMERCIALES</span>
-                    <h3>PayPhone Tarjeta y Garantías de Suscripción</h3>
-                    <div class="pay-badges" aria-label="Visa · Mastercard · Diners · Discover · Alia">
-                        <span class="pay-badge-pill">Visa</span>
-                        <span class="pay-badge-pill">Mastercard</span>
-                        <span class="pay-badge-pill">Diners</span>
-                        <span class="pay-badge-pill">Discover</span>
-                        <span class="pay-badge-pill">Alia</span>
+
+                <!-- CANALES DE PAGO Y PROTECCIÓN QR -->
+                <div class="payment-channels-grid mt-36">
+                    <div class="pay-box pay-deuna">
+                        <h4>Pago Local Instantáneo con Deuna! / Transferencia (0 % Comisión)</h4>
+                        <div class="deuna-layout deuna-protected-card">
+                            <div class="deuna-shield-box">
+                                <div class="deuna-shield-icon" aria-hidden="true">🛡️</div>
+                                <strong>QR Deuna! Generado al Seleccionar Tu Plan</strong>
+                                <small>Por seguridad operativa, el código QR escaneable se genera exclusivamente dentro de la ventana de pago tras elegir tu plan y referencia única.</small>
+                            </div>
+                            <div class="deuna-steps">
+                                <ol>
+                                    <li>Haz clic en el plan que deseas adquirir (<code>Personal</code>, <code>Master</code>, <code>Estudio</code> o <code>Enterprise</code>).</li>
+                                    <li>Ingresa tu RUC o código HWID y copia tu referencia única <code>TF-...</code>.</li>
+                                    <li>Escanea el código QR dentro de la ventana de pago verificando el titular oficial.</li>
+                                    <li>Envía la captura real y tu número de comprobante por WhatsApp o Correo oficial.</li>
+                                </ol>
+                                <div class="deuna-titular-note">
+                                    Titular verificado: <strong>Fausto Andrés Orellana Jaén (Recaudo Oficial TributaFlow Pro)</strong>
+                                </div>
+                                <div class="mt-12">
+                                    <button type="button" class="btn-glow" data-checkout-plan="CONTADOR_MASTER">Seleccionar Plan para Generar QR y Referencia ➔</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="pay-security-note">🛡️ Pago protegido con verificación 3D Secure Ecuador</div>
-                    <ul>
-                        <li>✔ <strong>Tarjeta Crédito / Débito (PayPhone):</strong> Habilitado en Personal Pro ($59), Contador Master ($139) y Estudio Pro ($299).</li>
-                        <li>🏦 <strong>Activación Corporativa LAN:</strong> Enterprise Team ($890) y Enterprise Corp ($1,490+) operan sin PayPhone mediante Transferencia Directa o Deuna! con 0 % comisión.</li>
-                        <li>✔ <strong>15 días gratis sin tarjeta:</strong> Prueba cualquiera de las 5 ediciones desde el instalador antes de pagar.</li>
-                        <li>✔ <strong>Vigencia anual (365 días) + Actualizaciones SRI:</strong> Política ética de sellado de RUCs tras la primera descarga real del SRI.</li>
-                    </ul>
-                    <div class="support-inline-bar">
-                        <span>¿Dudas técnicas o comerciales antes de pagar?</span>
-                        <div class="support-inline-links">
-                            <a href="https://wa.me/593996459771?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" target="_blank" rel="noopener noreferrer" class="btn-support-link" data-support-link="whatsapp">💬 Soporte Oficial (0996459771)</a>
+
+                    <div class="pay-box pay-card">
+                        <h4>Pago con Tarjeta (PayPhone Ecuador) y Soporte Oficial</h4>
+                        <p class="muted-note">Disponible en planes individuales y profesionales mediante pasarela oficial PayPhone:</p>
+                        <div class="pay-badges mt-8">
+                            <span class="pay-badge-pill">Personal Pro — $59</span>
+                            <span class="pay-badge-pill">Contador Master — $139</span>
+                            <span class="pay-badge-pill">Estudio Pro — $299</span>
+                        </div>
+                        <p class="pay-security-note">Nota anti-falsos positivos: envía tu comprobante únicamente tras aprobarse el cargo o transferencia real. Si solo necesitas asesoría previa, utiliza los canales de Soporte Técnico:</p>
+                        <div class="flex-wrap-actions mt-12">
+                            <a href="https://wa.me/593996459771?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" target="_blank" rel="noopener noreferrer" class="btn-support-link" data-support-link="whatsapp">💬 Soporte WhatsApp (0996459771)</a>
                             <a href="mailto:soportetributaflow@quoratec.com?subject=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" class="btn-support-link" data-support-link="correo">✉️ soportetributaflow@quoratec.com</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Sección Quiénes Somos — Ingeniería TributaFlow Pro -->
-    <section id="quienes-somos" class="section bg-subtle">
+        <!-- ACCESO RÁPIDO A PÁGINAS ESPECIALIZADAS -->
+        <section class="section">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Documentación y Recursos del Portal</span>
+                    <h2>Todo lo que necesitas antes de implementar</h2>
+                    <p>Navega por páginas enfocadas para comparar límites técnicos, seguir paso a paso la instalación o revisar nuestras condiciones transparentes.</p>
+                </div>
+
+                <div class="portal-docs-grid">
+                    <a href="planes.html" class="portal-doc-card">
+                        <span class="eyebrow">Comparativa & Add-ons</span>
+                        <h3>Planes, Cupos y Calculadora Corporativa</h3>
+                        <p>Compara los 5 planes fila por fila, revisa detalles de red LAN/VPN y calcula estaciones extra (+1 PC por $150/año).</p>
+                    </a>
+
+                    <a href="guia-uso.html" class="portal-doc-card">
+                        <span class="eyebrow">Implementación Ágil</span>
+                        <h3>Guía de Uso e Implementación por Plan</h3>
+                        <p>Instalación en Windows/macOS, bóveda Dual-PC (30+30 o 60 en 1), configuración LAN y activación de licencia .lic.</p>
+                    </a>
+
+                    <a href="politicas.html" class="portal-doc-card">
+                        <span class="eyebrow">Marco Legal Ecuador</span>
+                        <h3>Licencia, Privacidad Local y Traslado de PC</h3>
+                        <p>Lee el Acuerdo de Licencia de Usuario Final y Condiciones de Uso completo, privacidad AES-256 y garantía sin secuestro de datos.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUIÉNES SOMOS Y RESPALDO -->
+        <section class="section bg-subtle" id="quienes-somos">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Respaldo Tecnológico Ecuatoriano</span>
+                    <h2>Desarrollado por Quoratec Software Solutions</h2>
+                </div>
+
+                <div class="about-authority-box">
+                    <p>En <strong>Quoratec Software Solutions</strong> creamos software de ingeniería tributaria pensado para la realidad diaria de estudios contables y departamentos financieros en Ecuador. Nuestra prioridad es devolverle horas productivas a cada contador mientras sus llaves fiscales permanecen 100 % bajo su propio control.</p>
+                </div>
+
+                <div class="trust-pillars-grid">
+                    <article class="trust-pillar-card">
+                        <div class="trust-pillar-icon" aria-hidden="true">🔐</div>
+                        <h3>Soberanía Total de Tus Datos</h3>
+                        <p>No somos un SaaS que retiene tu información ni cobra comisiones por factura descargada. Todo ocurre localmente con SQLCipher AES-256.</p>
+                    </article>
+
+                    <article class="trust-pillar-card">
+                        <div class="trust-pillar-icon" aria-hidden="true">📜</div>
+                        <h3>Rigor Normativo SRI (ATS/XSD)</h3>
+                        <p>Mantenemos nuestros esquemas XSD, catálogos y algoritmos alineados con las resoluciones vigentes del Servicio de Rentas Internas.</p>
+                    </article>
+
+                    <article class="trust-pillar-card">
+                        <div class="trust-pillar-icon" aria-hidden="true">🤝</div>
+                        <h3>Soporte Directo en Ecuador</h3>
+                        <p>Atención técnica humana por WhatsApp Oficial (<code>0996459771</code>) y correo electrónico para resolver dudas y traslados de equipo.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACUERDO DE LICENCIA DE USUARIO FINAL Y CONDICIONES DE USO -->
+        <section class="section" id="politicas">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Transparencia Legal y Técnica</span>
+                    <h2>Acuerdo de Licencia de Usuario Final y Condiciones de Uso</h2>
+                    <p>Resumen ejecutivo de las 6 cláusulas que protegen tu información, tus cupos de equipo y tu inversión anual.</p>
+                </div>
+
+                <div class="policies-stack">
+                    <details class="policy-accordion" open>
+                        <summary class="policy-summary">
+                            <span class="policy-summary-title"><span class="policy-num">01</span> Concesión de Licencia por Suscripción Anual (365 Días) y 5 Planes Oficiales</span>
+                            <span class="policy-chevron" aria-hidden="true">▾</span>
+                        </summary>
+                        <div class="policy-body">
+                            <p>Cada licencia habilita funciones y cupos verificados offline durante 365 días mediante firma Ed25519:</p>
+                            <ul>
+                                <li><strong>Personal Pro ($59/año):</strong> 1 PC · Hasta 3 RUCs · Consulta Masiva 50 líneas · Modo Local.</li>
+                                <li><strong>Contador Master ($139/año):</strong> 1 PC · Hasta 25 RUCs · Generador ATS XML/XSD y Excel Consolidado.</li>
+                                <li><strong>Estudio Contable Pro ($299/año):</strong> Hasta 2 PCs independientes (oficina + casa, cualquier SO) · 60 RUCs totales (30 por equipo en 2 PCs o 60 en 1 sola PC) · Auditor Fantasma EFOS y respaldo <code>.tfbkp</code>.</li>
+                                <li><strong>Enterprise Team ($890/año):</strong> 5 PCs base (Red Local LAN + VPN) · RUCs y Consulta Masiva ilimitados.</li>
+                                <li><strong>Enterprise Corporativo ($1,490/año):</strong> 10 PCs base (+1 PC extra sin tope a $150/año c/u) · Multi-Sucursal HTTPS/VPN + respaldo S3.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details class="policy-accordion">
+                        <summary class="policy-summary">
+                            <span class="policy-summary-title"><span class="policy-num">02</span> Evaluación Gratuita (14 Días), Sellado Ético y Cero Secuestro de Datos</span>
+                            <span class="policy-chevron" aria-hidden="true">▾</span>
+                        </summary>
+                        <div class="policy-body">
+                            <p>La evaluación gratuita dura 14 días calendario en 1 PC con hasta 2 RUCs y 15 líneas por lote en Consulta Masiva. Si finaliza tu suscripción, solo se pausan las automatizaciones nuevas: todos tus XML, RIDE PDF y reportes Excel permanecen íntegros y exportables sin costo ni penalidad.</p>
+                        </div>
+                    </details>
+
+                    <details class="policy-accordion">
+                        <summary class="policy-summary">
+                            <span class="policy-summary-title"><span class="policy-num">03</span> Privacidad Soberana (Local-First) y Respaldo Portátil (.tfbkp)</span>
+                            <span class="policy-chevron" aria-hidden="true">▾</span>
+                        </summary>
+                        <div class="policy-body">
+                            <p>TributaFlow Pro procesa tus contraseñas SRI y base de datos SQLCipher AES-256 estrictamente en tu computadora. Solo cuando tú solicitas trasladar tu archivo o usar modo nube corporativo se generan paquetes cifrados <code>.tfbkp</code> bajo tu propio control.</p>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="flex-wrap-actions mt-24">
+                    <a href="politicas.html" class="btn-glass">Leer las 6 Cláusulas Completas en Políticas ➔</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PRE-FOOTER CTA -->
+    <div class="pre-footer-cta">
         <div class="container">
-            <div class="section-head">
-                <span class="eyebrow">QUIÉNES SOMOS • INGENIERÍA QUORATEC • TRIBUTAFLOW PRO</span>
-                <h2>Ingeniería Ecuatoriana Especializada en Automatización y Seguridad Tributaria</h2>
-            </div>
-
-            <div class="about-authority-box">
-                <p><strong>TributaFlow Pro</strong> es desarrollado por <strong>Quoratec</strong>, firma ecuatoriana de desarrollo de software contable de alto rendimiento y ciberseguridad aplicada al ecosistema del <strong>Servicio de Rentas Internas (SRI)</strong> del Ecuador, creada para eliminar el trabajo manual repetitivo de contadores independientes, estudios contables y empresas.</p>
-            </div>
-
-            <div class="trust-pillars-grid">
-                <article class="trust-pillar-card">
-                    <span class="trust-pillar-icon" aria-hidden="true">🔒</span>
-                    <h3>Privacidad Absoluta (Arquitectura Local-First)</h3>
-                    <p>Tu información fiscal nunca sale de tu equipo. Sin servidores intermedios ni exposición en la nube.</p>
-                </article>
-
-                <article class="trust-pillar-card">
-                    <span class="trust-pillar-icon" aria-hidden="true">🛡️</span>
-                    <h3>Blindaje Criptográfico (AES-256-GCM + RSA-2048)</h3>
-                    <p>Bóveda local cifrada por hardware (HWID) y licenciamiento digital infalsificable.</p>
-                </article>
-
-                <article class="trust-pillar-card">
-                    <span class="trust-pillar-icon" aria-hidden="true">✅</span>
-                    <h3>Cumplimiento Técnico SRI &amp; Soporte Directo</h3>
-                    <p>Validación nativa XSD para Comprobantes Electrónicos y ATS, con acompañamiento técnico especializado en Ecuador.</p>
-                </article>
+            <div class="pre-footer-card">
+                <div>
+                    <h3>¿Listo para automatizar tus declaraciones del SRI hoy?</h3>
+                    <p>Comienza gratis por <span data-trial-days>14 días</span> o conversa directamente con nuestro equipo por WhatsApp (<code>0996459771</code>).</p>
+                </div>
+                <div class="pre-footer-actions">
+                    <a href="planes.html" class="btn-glow">Ver Planes y Adquirir ➔</a>
+                    <a href="guia-uso.html" class="btn-glass">Guía de Uso e Implementación</a>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Sección Políticas Oficiales y Marco Legal (v2.3.0) -->
-    <section id="politicas" class="section">
-        <div class="container">
-            <div class="section-head">
-                <span class="eyebrow">MARCO LEGAL Y TRANSPARENCIA v2.3.0</span>
-                <h2>Políticas Oficiales y Marco Legal (v2.3.0)</h2>
-                <p>Condiciones oficiales de licenciamiento RSA-2048, privacidad Local-First, activación en canales verificados y alcance normativo SRI de TributaFlow Pro.</p>
-            </div>
-
-            <div class="policies-stack">
-                <details class="policy-accordion">
-                    <summary class="policy-summary">
-                        <span class="policy-summary-title">
-                            <span class="policy-num">01</span>
-                            <span>Términos de Licencia de Uso (EULA v2.3.0)</span>
-                        </span>
-                        <span class="policy-chevron" aria-hidden="true">▾</span>
-                    </summary>
-                    <div class="policy-body">
-                        <p>Licencia anual vinculada criptográficamente mediante firma asimétrica <strong>RSA-2048</strong> al código <strong>HWID</strong> de las estaciones autorizadas según el plan contratado (<code>1</code>, <code>2</code>, <code>5</code>, <code>10</code> o estaciones personalizadas en Red LAN). TributaFlow Pro ofrece un <strong>período de evaluación gratuito de 14 días</strong> para verificar sus funcionalidades operativas antes de adquirir la suscripción. Queda prohibida la ingeniería inversa, descompilación, redistribución no autorizada, sublicenciamiento o alteración de archivos criptográficos de licencia (<code>.lic</code>).</p>
-                    </div>
-                </details>
-
-                <details class="policy-accordion">
-                    <summary class="policy-summary">
-                        <span class="policy-summary-title">
-                            <span class="policy-num">02</span>
-                            <span>Política de Privacidad y Soberanía de Datos</span>
-                        </span>
-                        <span class="policy-chevron" aria-hidden="true">▾</span>
-                    </summary>
-                    <div class="policy-body">
-                        <p>TributaFlow Pro procesa el <strong>100 % de los comprobantes XML, RUC, reportes y bases SQLite localmente</strong> bajo cifrado <strong>PBKDF2 + AES-256-GCM</strong> con verificación de integridad HMAC. No recolectamos, almacenamos ni compartimos información contable, claves del SRI o información tributaria de los usuarios en servidores externos ni plataformas de analítica.</p>
-                    </div>
-                </details>
-
-                <details class="policy-accordion">
-                    <summary class="policy-summary">
-                        <span class="policy-summary-title">
-                            <span class="policy-num">03</span>
-                            <span>Política de Pagos, Activación y Migración de Equipo</span>
-                        </span>
-                        <span class="policy-chevron" aria-hidden="true">▾</span>
-                    </summary>
-                    <div class="policy-body">
-                        <p>Activación de licencia mediante archivo <code>.lic</code> personalizado tras validar el pago en nuestros canales oficiales (<strong>Deuna! / Banco Pichincha</strong> o <strong>PayPhone Tarjeta</strong>). Incluye soporte técnico especializado para traslado de licencia por cambio o daño de PC utilizando el <strong>Respaldo Portátil Cifrado (<code>.tfbkp</code>)</strong>. Debido a la vinculación criptográfica irrevocable al hardware autorizado, las devoluciones aplican únicamente antes de emitir la llave criptográfica <code>.lic</code>.</p>
-                    </div>
-                </details>
-
-                <details class="policy-accordion">
-                    <summary class="policy-summary">
-                        <span class="policy-summary-title">
-                            <span class="policy-num">04</span>
-                            <span>Descargo de Responsabilidad Tributaria</span>
-                        </span>
-                        <span class="policy-chevron" aria-hidden="true">▾</span>
-                    </summary>
-                    <div class="policy-body">
-                        <p>TributaFlow Pro es una herramienta tecnológica de auditoría, validación XSD y automatización documental diseñada conforme a la normativa técnica pública vigente del <strong>SRI Ecuador</strong>. La validación contable final, revisión normativa y presentación oportuna de anexos y declaraciones tributarias corresponden exclusivamente al profesional contable o contribuyente.</p>
-                    </div>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer Exclusivo de TributaFlow Pro -->
+    <!-- FOOTER UNIFICADO 4 COLUMNAS -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
+            <div class="footer-grid-4">
                 <div class="footer-col">
-                    <h4>TributaFlow Pro v2.3.0 Enterprise</h4>
-                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Suite nativa especializada en sincronización tributaria SRI, bóveda contable jerárquica, validación ATS XSD y despliegue Red LAN TCP/IP para Ecuador.</p>
-                    <p style="font-size: 12.5px; color: var(--accent);">Soporte WhatsApp Oficial: 0996459771 • soportetributaflow@quoratec.com</p>
-                    <div class="footer-support-links">
-                        <a href="https://wa.me/593996459771?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" target="_blank" rel="noopener noreferrer" class="btn-support-link" data-support-link="whatsapp">💬 Soporte Oficial WhatsApp</a>
-                        <a href="mailto:soportetributaflow@quoratec.com?subject=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" class="btn-support-link" data-support-link="correo">✉️ Correo Soporte Oficial</a>
+                    <h4>TributaFlow Pro <span data-app-version-tag>v2.4.0</span></h4>
+                    <p class="muted-note">Software contable ecuatoriano 100 % local para descarga masiva del SRI, auditoría tributaria y generación de ATS XML/XSD.</p>
+                    <div class="footer-trust-pill">🔒 Cifrado Local AES-256 · Sin Nube</div>
+                    <p class="muted-note">Desarrollado en Ecuador por <strong>Quoratec Software Solutions</strong>.</p>
+                </div>
+
+                <div class="footer-col footer-links-col">
+                    <h4>Navegación del Portal</h4>
+                    <a href="index.html">Inicio</a>
+                    <a href="index.html#modulos">9 Módulos del Sistema</a>
+                    <a href="planes.html">Planes y Precios (5)</a>
+                    <a href="guia-uso.html">Guía de Uso e Implementación</a>
+                    <a href="index.html#descargas">Descargas Oficiales</a>
+                </div>
+
+                <div class="footer-col footer-links-col">
+                    <h4>Descargas y Medios de Pago</h4>
+                    <a href="#descargas" data-download-os="windows">Windows 64-bit (.exe)</a>
+                    <a href="#descargas" data-download-os="macos">macOS Universal (.dmg)</a>
+                    <a href="#descargas" data-download-os="linux">Linux Ubuntu/Debian (.deb)</a>
+                    <div class="footer-pay-badges">
+                        <span class="footer-pay-pill">PayPhone Tarjetas</span>
+                        <span class="footer-pay-pill">Deuna!</span>
+                        <span class="footer-pay-pill">Transferencia Ecuador</span>
                     </div>
                 </div>
 
-                <div class="footer-col">
-                    <h4>Módulos del Sistema (1–5)</h4>
-                    <div class="footer-links-col">
-                        <a href="modulos/panel-general.html">1. Panel General</a>
-                        <a href="modulos/mis-contribuyentes.html">2. Mis Contribuyentes (Multi-RUC)</a>
-                        <a href="modulos/sincronizar-sri.html">3. Sincronizar SRI (Árbol Jerárquico)</a>
-                        <a href="modulos/importar-comprobantes.html">4. Importar Comprobantes</a>
-                        <a href="modulos/auditor-fantasma.html">5. Auditor Fantasma SRI</a>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Módulos (6–9), Planes y Legal</h4>
-                    <div class="footer-links-col">
-                        <a href="modulos/busqueda-ruc.html">6. Búsqueda RUC / Cédula</a>
-                        <a href="modulos/consulta-masiva.html">7. Consulta Masiva</a>
-                        <a href="modulos/generador-ats.html">8. Generador Oficial ATS</a>
-                        <a href="modulos/ajustes-seguridad.html">9. Ajustes, Red LAN y Blindaje</a>
-                        <a href="#precios">Planes Anuales (5 Ediciones)</a>
-                        <a href="#descargas">Descargas Windows / Linux / macOS</a>
-                        <a href="#quienes-somos">Quiénes Somos</a>
-                        <a href="#politicas">Políticas Oficiales (v2.3.0)</a>
-                        <button type="button" class="legal-trigger" data-legal="terminos">Términos del Servicio</button>
-                        <button type="button" class="legal-trigger" data-legal="privacidad">Privacidad Zero-Knowledge</button>
-                        <button type="button" class="legal-trigger" data-legal="licenciamiento">Política de Licencias y Sellado</button>
-                    </div>
+                <div class="footer-col footer-links-col">
+                    <h4>Marco Legal y Soporte Directo</h4>
+                    <a href="politicas.html#licencia">Acuerdo de Licencia y Condiciones de Uso</a>
+                    <a href="politicas.html#privacidad">Privacidad Soberana Local-First</a>
+                    <a href="politicas.html#traslado">Traslado de PC y Garantía .tfbkp</a>
+                    <a href="https://wa.me/593996459771?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" target="_blank" rel="noopener noreferrer" data-support-link="whatsapp">💬 WhatsApp Oficial (+593 99 645 9771)</a>
+                    <a href="mailto:soportetributaflow@quoratec.com?subject=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" data-support-link="correo">✉️ soportetributaflow@quoratec.com</a>
                 </div>
             </div>
 
-            <div class="footer-bottom">
-                <span>© 2026 TributaFlow Pro — Sistema de Gestión Tributaria, Bóveda Documental y ATS para Ecuador</span>
-                <span>Desarrollado por Quoratec • Protección Criptográfica RSA-2048 • AES-256-GCM • XSD SRI</span>
+            <div class="footer-bottom-bar">
+                <span>© 2026 Quoratec Software Solutions — TributaFlow Pro. Todos los derechos reservados.</span>
+                <div class="footer-bottom-meta">
+                    <span class="footer-version-badge" data-app-version-tag>v2.4.0</span>
+                    <button type="button" class="footer-top-btn" data-scroll-top>↑ Subir</button>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script src="assets/js/portal.js"></script>
+    <a href="https://wa.me/593996459771?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" target="_blank" rel="noopener noreferrer" class="whatsapp-float" id="btnFlotanteSoporte" data-support-link="whatsapp" aria-label="Contactar Soporte Oficial TributaFlow Pro por WhatsApp">
+        <span>💬 Soporte 0996459771</span>
+    </a>
+
+    <script src="assets/js/portal.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none';">
+    <meta name="referrer" content="no-referrer">
+    <title>Guía de Uso e Implementación v2.4.0 | TributaFlow Pro</title>
+    <meta name="description" content="Guía práctica de instalación y puesta en marcha de TributaFlow Pro v2.4.0 por escenario: Windows, macOS, Linux, Estudio Dual-PC (30+30 o 60 en 1), Red LAN y Corporativo.">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/portal.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="brand">
+                <img src="assets/img/logo-tributaflow.svg" alt="TributaFlow Pro" class="brand-logo-img" data-fallback="assets/img/logo-tributaflow.png">
+                <div>
+                    <strong>TributaFlow Pro <span data-app-version-tag>v2.4.0</span></strong>
+                    <span class="brand-sub">Suite Tributaria Ecuador · Quoratec</span>
+                </div>
+            </a>
+
+            <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menú de navegación" aria-expanded="false">☰</button>
+
+            <nav class="nav-menu" id="navMenu" aria-label="Navegación principal">
+                <a href="index.html#flujo">Cómo Funciona</a>
+                <div class="nav-dropdown" data-nav-dropdown>
+                    <button type="button" class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+                        <span>9 Módulos</span>
+                        <span class="nav-caret" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="nav-dropdown-panel" role="menu"></div>
+                </div>
+                <a href="planes.html">Planes (5)</a>
+                <a href="guia-uso.html" class="active">Guía de Uso</a>
+                <a href="politicas.html">Políticas</a>
+                <a href="index.html#descargas">Descargas</a>
+                <a href="planes.html" class="nav-cta">Ver Planes y Pagar</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="index.html">Inicio</a>
+                    <span>/</span>
+                    <span>Guía de Uso e Implementación</span>
+                </div>
+                <span class="eyebrow">Manual Operativo Ágil <span data-app-version-tag>v2.4.0</span></span>
+                <h1>Guía de Uso e Implementación por Plan</h1>
+                <p class="lead-sub">Selecciona tu escenario de trabajo en las pestañas inferiores para ver pasos claros, requisitos de red y activación de licencia sin muros de texto.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <!-- PESTAÑAS INTERACTIVAS DE LA GUÍA -->
+                <div class="guide-tabs-bar" role="tablist" aria-label="Escenarios de implementación TributaFlow Pro">
+                    <button type="button" class="guide-tab-btn is-active" role="tab" aria-selected="true" data-guide-tab="rapida">🚀 Instalación Rápida (SO)</button>
+                    <button type="button" class="guide-tab-btn" role="tab" aria-selected="false" data-guide-tab="1pc">💻 1 PC (Personal / Master)</button>
+                    <button type="button" class="guide-tab-btn" role="tab" aria-selected="false" data-guide-tab="2pcs">🏠🏢 Estudio Pro (2 PCs)</button>
+                    <button type="button" class="guide-tab-btn" role="tab" aria-selected="false" data-guide-tab="lan">🌐 Red LAN / VPN (Team)</button>
+                    <button type="button" class="guide-tab-btn" role="tab" aria-selected="false" data-guide-tab="corp">🏛️ Corporativo Multi-Sede</button>
+                </div>
+
+                <!-- PANEL 1: INSTALACIÓN RÁPIDA -->
+                <article class="guide-panel is-active" id="tab-rapida" role="tabpanel" data-guide-panel="rapida">
+                    <h2>Instalación Rápida en Windows, macOS o Linux (<span data-app-version-tag>v2.4.0</span>)</h2>
+                    <p class="muted-note mt-6">Todos los instaladores incluyen la evaluación gratuita de <strong data-trial-days>14 días</strong> (1 PC, hasta 2 RUCs reales y 15 líneas en Consulta Masiva).</p>
+
+                    <div class="guide-steps-grid mt-24">
+                        <div class="guide-step-card">
+                            <span class="step-num">01</span>
+                            <h3>Windows 10 / 11 (PC y Laptop Táctil)</h3>
+                            <p>Ejecuta el asistente <code>TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe</code>. Si aparece aviso preventivo de Windows SmartScreen, haz clic en <strong>"Más información" ➔ "Ejecutar de todas formas"</strong>.</p>
+                        </div>
+
+                        <div class="guide-step-card">
+                            <span class="step-num">02</span>
+                            <h3>macOS (.dmg Apple Silicon & Intel)</h3>
+                            <p>Arrastra <strong>TributaFlow Pro</strong> a Aplicaciones. Para el primer arranque fuera de App Store, presiona <strong>Control + clic</strong> (o clic derecho) sobre el icono y elige <strong>Abrir</strong>.</p>
+                        </div>
+
+                        <div class="guide-step-card">
+                            <span class="step-num">03</span>
+                            <h3>Linux Ubuntu / Debian (.deb)</h3>
+                            <p>Instala dependencias automáticamente desde terminal con <code>sudo apt install ./TributaFlow_Pro_v2.4.0_Linux_amd64.deb</code> e inicia desde el menú del sistema.</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-callout mt-24">
+                        <strong>Activación de licencia pagada (.lic):</strong> Cuando adquieras tu plan, abre dentro de la app <em>Ajustes y Seguridad ➔ Activar Licencia</em>, copia tu código único <code>TF-XXXXXX-...</code> y envíanoslo con tu comprobante real. Recibirás tu archivo <code>.lic</code> firmado para activarlo en un clic (offline).
+                    </div>
+                </article>
+
+                <!-- PANEL 2: 1 PC (PERSONAL Y CONTADOR MASTER) -->
+                <article class="guide-panel" id="tab-1pc" role="tabpanel" data-guide-panel="1pc">
+                    <h2>Operación Individual en 1 PC (Personal Pro y Contador Master)</h2>
+                    <p class="muted-note mt-6">Diseñado para trabajar con máxima privacidad local: <strong>Personal Pro</strong> gestiona hasta <strong>3 RUCs</strong> ($59/año) y <strong>Contador Master</strong> hasta <strong>25 RUCs</strong> con Generador ATS ($139/año).</p>
+
+                    <div class="guide-steps-grid mt-24">
+                        <div class="guide-step-card">
+                            <span class="step-num">01</span>
+                            <h3>Define tu Carpeta Bóveda</h3>
+                            <p>Al abrir TributaFlow Pro por primera vez, elige la ruta donde se guardarán tus XML, RIDE PDF y base SQLCipher AES-256 (por ejemplo <code>Documentos/Boveda_SRI</code>).</p>
+                        </div>
+
+                        <div class="guide-step-card">
+                            <span class="step-num">02</span>
+                            <h3>Registra tus Contribuyentes</h3>
+                            <p>Ve a <strong>Mis Contribuyentes</strong>, registra hasta 3 RUCs (Personal Pro) o 25 RUCs (Contador Master) y ejecuta <strong>Sincronizar SRI</strong> o <strong>Importar TXT/ZIP</strong>.</p>
+                        </div>
+
+                        <div class="guide-step-card">
+                            <span class="step-num">03</span>
+                            <h3>Genera ATS XML y Excel</h3>
+                            <p>En <strong>Contador Master</strong>, entra a <strong>Generador ATS Oficial</strong>, selecciona periodo y RUC para exportar el XML validado con esquema XSD listo para subir al SRI.</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-callout-warn mt-24">
+                        <strong>Sobre cambios o formateo de equipo:</strong> Genera siempre un archivo <code>.tfbkp</code> desde <em>Ajustes y Seguridad</em> antes de formatear o cambiar de laptop. Incluimos respaldo de traslado de equipo dentro del periodo anual vigente.
+                    </div>
+                </article>
+
+                <!-- PANEL 3: ESTUDIO PRO DUAL-PC -->
+                <article class="guide-panel" id="tab-2pcs" role="tabpanel" data-guide-panel="2pcs">
+                    <h2>Trabajo Dual-PC Independiente (Estudio Contable Pro — $299/año)</h2>
+                    <p class="muted-note mt-6">Pensado para contadores que alternan entre oficina y casa o comparten carga entre 2 máquinas (Windows, macOS o Linux combinables) <strong>sin depender de servidor ni red LAN permanente</strong>.</p>
+
+                    <div class="guide-steps-grid mt-24">
+                        <div class="guide-step-card">
+                            <span class="step-num">01</span>
+                            <h3>Distribución Flexible de 60 RUCs</h3>
+                            <p>Tu licencia habilita <strong>60 RUCs totales</strong>: usa <strong>30 RUCs en PC Oficina + 30 RUCs en Laptop Casa</strong>, o bien concentra los <strong>60 RUCs completos en 1 sola PC</strong> sin PC maestra.</p>
+                        </div>
+
+                        <div class="guide-step-card">
+                            <span class="step-num">02</span>
+                            <h3>Auditoría EFOS y Contingencia</h3>
+                            <p>Activa <strong>Auditor Fantasma</strong> para cruzar facturas frente a listados EFOS del SRI y utiliza el modo de <strong>Contingencia ATS</strong> en cierres masivos de estudio.</p>
+                        </div>
+
+                        <div class="guide-step-card">
+                            <span class="step-num">03</span>
+                            <h3>Sincroniza Oficina ⇄ Casa con .tfbkp</h3>
+                            <p>Exporta un paquete portátil cifrado <code>.tfbkp</code> (bóveda + llaves) en un pendrive o carpeta privada para continuar trabajando en tu segunda computadora en segundos.</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-callout mt-24">
+                        <strong>Sin dependencia de internet entre equipos:</strong> Cada una de las 2 computadoras recibe su archivo de activación oficial vinculado a su HWID, funcionando offline de manera totalmente autónoma.
+                    </div>
+                </article>
+
+                <!-- PANEL 4: ENTERPRISE TEAM LAN / VPN -->
+                <article class="guide-panel" id="tab-lan" role="tabpanel" data-guide-panel="lan">
+                    <h2>Implementación Colaborativa en Red Local LAN o VPN (Enterprise Team)</h2>
+                    <p class="muted-note mt-6">Ideal para estudios con equipo contable: <strong>5 PCs base</strong> ($890/año) con <strong>RUCs Ilimitados</strong>, Consulta Masiva sin límite y arquitectura híbrida oficina + teletrabajo.</p>
+
+                    <div class="guide-steps-grid mt-24">
+                        <div class="guide-step-card">
+                            <span class="step-num">01</span>
+                            <h3>Designa la Estación Maestra (LAN_SERVIDOR)</h3>
+                            <p>En tu computadora principal o servidor interno de oficina, comparte la carpeta de bóveda por ruta de red (ej. <code>\\SERVIDOR\BovedaTributaFlow</code>) y activa el servicio LAN TCP/IP.</p>
+                        </div>
+
+                        <div class="guide-step-card">
+                            <span class="step-num">02</span>
+                            <h3>Conecta Hasta 4 PCs Adicionales (LAN_CLIENTE)</h3>
+                            <p>Las estaciones asistentes apuntan a la IP local o ruta UNC compartida trabajando sobre el mismo repositorio central sin duplicar comprobantes ni claves.</p>
+                        </div>
+
+                        <div class="guide-step-card">
+                            <span class="step-num">03</span>
+                            <h3>Soporte Teletrabajo por VPN Multi-HWID</h3>
+                            <p>Los contadores fuera de oficina conectan por túnel VPN seguro manteniendo permisos cifrados y auditoría trazable de cada estación autorizada.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PANEL 5: ENTERPRISE CORPORATIVO -->
+                <article class="guide-panel" id="tab-corp" role="tabpanel" data-guide-panel="corp">
+                    <h2>Despliegue Nacional Multi-Sucursal (Enterprise Corporativo)</h2>
+                    <p class="muted-note mt-6">Arquitectura empresarial para grupos económicos con múltiples sedes: <strong>10 PCs base ($1,490/año)</strong> + expansión ilimitada <strong>+1 PC por $150/año c/u</strong>.</p>
+
+                    <div class="guide-steps-grid mt-24">
+                        <div class="guide-step-card">
+                            <span class="step-num">01</span>
+                            <h3>Multi-Sucursal sobre HTTPS / VPN</h3>
+                            <p>Centraliza compañías hermanas y razones sociales ilimitadas entre Quito, Guayaquil, Cuenca u otras ciudades bajo canales cifrados dedicados.</p>
+                        </div>
+
+                        <div class="guide-step-card">
+                            <span class="step-num">02</span>
+                            <h3>Respaldo Corporativo en Nube Privada (S3)</h3>
+                            <p>Programa copias cifradas punto a punto hacia tu propio bucket compatible con S3 manteniendo las claves AES-256 bajo custodia interna de tu empresa.</p>
+                        </div>
+
+                        <div class="guide-step-card">
+                            <span class="step-num">03</span>
+                            <h3>Crecimiento Modular sin Fricción</h3>
+                            <p>Cuando se incorpore un nuevo analista financiero, añade licencias individuales (+$150/año por PC extra) desde el mismo contrato anual.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex-wrap-actions mt-24">
+                        <a href="planes.html#corp-addon" class="btn-glow">Calcular Estaciones Extra (+1 PC) ➔</a>
+                        <a href="https://wa.me/593996459771?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" target="_blank" rel="noopener noreferrer" class="btn-support-link" data-support-link="whatsapp">💬 Coordinar Onboarding Corporativo</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <div class="pre-footer-cta">
+        <div class="container">
+            <div class="pre-footer-card">
+                <div>
+                    <h3>¿Prefieres instalar primero y probar durante <span data-trial-days>14 días</span>?</h3>
+                    <p>Descarga la edición oficial <span data-app-version-tag>v2.4.0</span> o conversa con soporte técnico al <code>0996459771</code>.</p>
+                </div>
+                <div class="pre-footer-actions">
+                    <button type="button" class="btn-glow" data-download-os="auto">⬇ Descargar para Mi PC</button>
+                    <a href="planes.html" class="btn-glass">Ver 5 Planes y Precios ➔</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid-4">
+                <div class="footer-col">
+                    <h4>TributaFlow Pro <span data-app-version-tag>v2.4.0</span></h4>
+                    <p class="muted-note">Software contable ecuatoriano 100 % local para descarga masiva del SRI, auditoría tributaria y generación de ATS XML/XSD.</p>
+                    <div class="footer-trust-pill">🔒 Cifrado Local AES-256 · Sin Nube</div>
+                    <p class="muted-note">Desarrollado en Ecuador por <strong>Quoratec Software Solutions</strong>.</p>
+                </div>
+
+                <div class="footer-col footer-links-col">
+                    <h4>Navegación del Portal</h4>
+                    <a href="index.html">Inicio</a>
+                    <a href="index.html#modulos">9 Módulos del Sistema</a>
+                    <a href="planes.html">Planes y Precios (5)</a>
+                    <a href="guia-uso.html">Guía de Uso e Implementación</a>
+                    <a href="index.html#descargas">Descargas Oficiales</a>
+                </div>
+
+                <div class="footer-col footer-links-col">
+                    <h4>Descargas y Medios de Pago</h4>
+                    <a href="index.html#descargas" data-download-os="windows">Windows 64-bit (.exe)</a>
+                    <a href="index.html#descargas" data-download-os="macos">macOS Universal (.dmg)</a>
+                    <a href="index.html#descargas" data-download-os="linux">Linux Ubuntu/Debian (.deb)</a>
+                    <div class="footer-pay-badges">
+                        <span class="footer-pay-pill">PayPhone Tarjetas</span>
+                        <span class="footer-pay-pill">Deuna!</span>
+                        <span class="footer-pay-pill">Transferencia Ecuador</span>
+                    </div>
+                </div>
+
+                <div class="footer-col footer-links-col">
+                    <h4>Marco Legal y Soporte Directo</h4>
+                    <a href="politicas.html#licencia">Acuerdo de Licencia y Condiciones de Uso</a>
+                    <a href="politicas.html#privacidad">Privacidad Soberana Local-First</a>
+                    <a href="politicas.html#traslado">Traslado de PC y Garantía .tfbkp</a>
+                    <a href="https://wa.me/593996459771?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" target="_blank" rel="noopener noreferrer" data-support-link="whatsapp">💬 WhatsApp Oficial (+593 99 645 9771)</a>
+                    <a href="mailto:soportetributaflow@quoratec.com?subject=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" data-support-link="correo">✉️ soportetributaflow@quoratec.com</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <span>© 2026 Quoratec Software Solutions — TributaFlow Pro. Todos los derechos reservados.</span>
+                <div class="footer-bottom-meta">
+                    <span class="footer-version-badge" data-app-version-tag>v2.4.0</span>
+                    <button type="button" class="footer-top-btn" data-scroll-top>↑ Subir</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/593996459771?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" target="_blank" rel="noopener noreferrer" class="whatsapp-float" id="btnFlotanteSoporte" data-support-link="whatsapp" aria-label="Contactar Soporte Oficial TributaFlow Pro por WhatsApp">
+        <span>💬 Soporte 0996459771</span>
+    </a>
+
+    <script src="assets/js/portal.js" defer></script>
+</body>
+</html>

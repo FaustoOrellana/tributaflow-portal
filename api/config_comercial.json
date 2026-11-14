@@ -1,0 +1,117 @@
+{
+  "version": "2.4.0",
+  "producto": "TributaFlow Pro",
+  "fabricante": "Quoratec Software Solutions",
+  "dominio_oficial": "https://tributaflow.quoratec.com",
+  "trial_dias": 14,
+  "trial_rucs": 2,
+  "trial_consulta_masiva": 15,
+  "precio_seat_extra_usd": 150.0,
+  "canal_soporte": {
+    "whatsapp_numero": "593996459771",
+    "whatsapp_local": "0996459771",
+    "whatsapp_url": "https://wa.me/593996459771",
+    "correo": "soportetributaflow@quoratec.com"
+  },
+  "payphone_links": {
+    "PERSONAL_PRO": "https://ppls.me/5S1Y89pBi1vYHBTEgEzRA",
+    "CONTADOR_MASTER": "https://ppls.me/dxope7VBAjK5LR1mO4UitA",
+    "ESTUDIO_PRO": "https://ppls.me/60Bdw7lcRhMfvjqwA5cFdg",
+    "ENTERPRISE_TEAM": null,
+    "ENTERPRISE_CORP": null
+  },
+  "planes": {
+    "PERSONAL_PRO": {
+      "tier": "PERSONAL_PRO",
+      "nombre": "Personal Pro",
+      "nombre_comercial": "TF Personal Pro",
+      "precio_base_usd": 59.0,
+      "precio_regular_usd": 69.0,
+      "estaciones_base": 1,
+      "estaciones_texto": "1 PC",
+      "rucs_max": 3,
+      "rucs_texto": "Hasta 3 RUCs",
+      "consulta_masiva_texto": "50 líneas",
+      "modo": "Modo Local",
+      "admite_addon_pc": false,
+      "url_payphone": "https://ppls.me/5S1Y89pBi1vYHBTEgEzRA"
+    },
+    "CONTADOR_MASTER": {
+      "tier": "CONTADOR_MASTER",
+      "nombre": "Contador Master",
+      "nombre_comercial": "TF Contador Master",
+      "precio_base_usd": 139.0,
+      "precio_regular_usd": 169.0,
+      "estaciones_base": 1,
+      "estaciones_texto": "1 PC",
+      "rucs_max": 25,
+      "rucs_texto": "Hasta 25 RUCs",
+      "consulta_masiva_texto": "50 líneas",
+      "modo": "Modo Local",
+      "admite_addon_pc": false,
+      "url_payphone": "https://ppls.me/dxope7VBAjK5LR1mO4UitA"
+    },
+    "ESTUDIO_PRO": {
+      "tier": "ESTUDIO_PRO",
+      "nombre": "Estudio Contable Pro / PyME",
+      "nombre_comercial": "TF Estudio Pro",
+      "precio_base_usd": 299.0,
+      "precio_regular_usd": 399.0,
+      "estaciones_base": 2,
+      "estaciones_texto": "Hasta 2 PCs independientes",
+      "rucs_max": 60,
+      "rucs_texto": "Hasta 60 RUCs (30 por PC o 60 en 1 PC)",
+      "consulta_masiva_texto": "200 líneas",
+      "modo": "Modo Local (2 PCs independientes)",
+      "admite_addon_pc": false,
+      "url_payphone": "https://ppls.me/60Bdw7lcRhMfvjqwA5cFdg"
+    },
+    "ENTERPRISE_TEAM": {
+      "tier": "ENTERPRISE_TEAM",
+      "nombre": "Enterprise Team (Red LAN)",
+      "nombre_comercial": "TF Enterprise Team",
+      "precio_base_usd": 890.0,
+      "precio_regular_usd": 1190.0,
+      "estaciones_base": 5,
+      "estaciones_texto": "5 PCs base (LAN + Teletrabajo VPN)",
+      "rucs_max": -1,
+      "rucs_texto": "RUCs Ilimitados",
+      "consulta_masiva_texto": "Sin límite",
+      "modo": "Modo Local + Red Local Oficina (LAN TCP/IP)",
+      "admite_addon_pc": false,
+      "url_payphone": null
+    },
+    "ENTERPRISE_CORP": {
+      "tier": "ENTERPRISE_CORP",
+      "nombre": "Enterprise Corporativo",
+      "nombre_comercial": "TF Enterprise Corp",
+      "precio_base_usd": 1490.0,
+      "precio_regular_usd": 1890.0,
+      "estaciones_base": 10,
+      "estaciones_texto": "10 PCs base (+1 PC sin límite)",
+      "rucs_max": -1,
+      "rucs_texto": "RUCs Ilimitados",
+      "consulta_masiva_texto": "Sin límite",
+      "modo": "Local + Red Local + Multi-Sucursal Nacional HTTPS/VPN",
+      "admite_addon_pc": true,
+      "url_payphone": null
+    }
+  },
+  "descargas": {
+    "windows": {
+      "archivo": "TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe",
+      "url": "https://github.com/FaustoOrellana/tributaflow-portal/releases/latest/download/TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe",
+      "plataforma": "Windows 10 / 11 (64-bit y Tablets Windows)"
+    },
+    "macos": {
+      "archivo": "TributaFlow_Pro_v2.4.0_macOS.dmg",
+      "url": "https://github.com/FaustoOrellana/tributaflow-portal/releases/latest/download/TributaFlow_Pro_v2.4.0_macOS.dmg",
+      "plataforma": "macOS (Apple Silicon / Intel)"
+    },
+    "linux": {
+      "archivo": "TributaFlow_Pro_v2.4.0_Linux_amd64.deb",
+      "url": "https://github.com/FaustoOrellana/tributaflow-portal/releases/latest/download/TributaFlow_Pro_v2.4.0_Linux_amd64.deb",
+      "plataforma": "Linux (Ubuntu / Debian / Mint amd64)"
+    }
+  }
+}

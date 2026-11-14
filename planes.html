@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none';">
+    <meta name="referrer" content="no-referrer">
+    <title>Planes y Precios v2.4.0 | TributaFlow Pro — Ecuador</title>
+    <meta name="description" content="Compara los 5 planes anuales de TributaFlow Pro v2.4.0, prueba gratuita de 14 días, dual-PC para Estudio Pro y calculadora de estaciones extra para Enterprise Corporativo.">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/portal.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="brand">
+                <img src="assets/img/logo-tributaflow.svg" alt="TributaFlow Pro" class="brand-logo-img" data-fallback="assets/img/logo-tributaflow.png">
+                <div>
+                    <strong>TributaFlow Pro <span data-app-version-tag>v2.4.0</span></strong>
+                    <span class="brand-sub">Suite Tributaria Ecuador · Quoratec</span>
+                </div>
+            </a>
+
+            <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menú de navegación" aria-expanded="false">☰</button>
+
+            <nav class="nav-menu" id="navMenu" aria-label="Navegación principal">
+                <a href="index.html#flujo">Cómo Funciona</a>
+                <div class="nav-dropdown" data-nav-dropdown>
+                    <button type="button" class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+                        <span>9 Módulos</span>
+                        <span class="nav-caret" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="nav-dropdown-panel" role="menu"></div>
+                </div>
+                <a href="planes.html" class="active">Planes (5)</a>
+                <a href="guia-uso.html">Guía de Uso</a>
+                <a href="politicas.html">Políticas</a>
+                <a href="index.html#descargas">Descargas</a>
+                <button type="button" class="nav-cta" data-checkout-plan="CONTADOR_MASTER">Adquirir Licencia</button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="index.html">Inicio</a>
+                    <span>/</span>
+                    <span>Planes y Precios <span data-app-version-tag>v2.4.0</span></span>
+                </div>
+                <span class="eyebrow">Suscripción Anual (365 Días) · Sin Cobros por Factura</span>
+                <h1>Elige el plan exacto para tu estudio o empresa</h1>
+                <p class="lead-sub">Licencias emitidas con firma digital Ed25519 para operación offline 100 % privada. Escala sin perder un solo comprobante de tu bóveda local.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <!-- BANNER DE EVALUACIÓN GRATUITA 14 DÍAS -->
+                <div class="trial-banner">
+                    <div>
+                        <span class="eyebrow">Evaluación Inicial Sin Riesgo</span>
+                        <h2>Prueba Gratuita Completa por <span data-trial-days>14 días</span></h2>
+                        <p class="muted-note mt-6">Evalúa el flujo real antes de invertir: sincroniza SRI, revisa tu bóveda AES-256 y valida RUC reales.</p>
+                        <div class="trial-pills">
+                            <span class="quota-pill">💻 1 Computadora</span>
+                            <span class="quota-pill">🏢 Hasta 2 RUCs</span>
+                            <span class="quota-pill">📋 15 líneas Consulta Masiva</span>
+                            <span class="quota-pill">🔐 Modo Local Cifrado</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-glow" data-download-os="auto">⬇ Descargar Versión <span data-app-version-tag>v2.4.0</span></button>
+                </div>
+
+                <!-- 5 PLANES ANUALES -->
+                <div class="plans-grid-5" id="planes">
+                    <article class="plan-card">
+                        <div class="plan-header">
+                            <h3>Personal Pro</h3>
+                            <p>Para profesionales independientes y hasta 3 negocios familiares.</p>
+                        </div>
+                        <div class="plan-pricing">
+                            <span class="price-regular">Regular $69</span>
+                            <div class="price-launch">$59 <span class="period">/ año</span></div>
+                            <span class="price-note">Equivalente a $4.92/mes · 365 días</span>
+                        </div>
+                        <div class="plan-quotas">
+                            <span class="quota-pill">💻 1 PC</span>
+                            <span class="quota-pill">🏢 Hasta 3 RUCs</span>
+                            <span class="quota-pill">📋 50 líneas Masiva</span>
+                        </div>
+                        <ul class="plan-list">
+                            <li class="ok">Descarga XML y RIDE PDF oficiales del SRI</li>
+                            <li class="ok">Bóveda local cifrada AES-256</li>
+                            <li class="ok">Importación TXT / ZIP + Consulta Masiva 50 líneas</li>
+                            <li class="locked">Generador ATS XML/XSD completo</li>
+                        </ul>
+                        <div class="plan-action-box">
+                            <button type="button" class="btn-open-checkout" data-checkout-plan="PERSONAL_PRO">Adquirir Personal Pro</button>
+                            <span class="action-hint">PayPhone Tarjeta o Deuna! 0 %</span>
+                        </div>
+                    </article>
+
+                    <article class="plan-card">
+                        <div class="plan-header">
+                            <h3>Contador Master</h3>
+                            <p>Para contadores con cartera activa de hasta 25 contribuyentes.</p>
+                        </div>
+                        <div class="plan-pricing">
+                            <span class="price-regular">Regular $169</span>
+                            <div class="price-launch">$139 <span class="period">/ año</span></div>
+                            <span class="price-note">Equivalente a $11.58/mes · 365 días</span>
+                        </div>
+                        <div class="plan-quotas">
+                            <span class="quota-pill">💻 1 PC</span>
+                            <span class="quota-pill">🏢 Hasta 25 RUCs</span>
+                            <span class="quota-pill">📋 50 líneas Masiva</span>
+                        </div>
+                        <ul class="plan-list">
+                            <li class="ok">Hasta 25 RUCs en 1 equipo Windows, macOS o Linux</li>
+                            <li class="ok">Generador ATS XML validado por esquema XSD SRI</li>
+                            <li class="ok">Excel consolidado mensual por contribuyente</li>
+                            <li class="locked">Doble PC independiente y Auditor EFOS</li>
+                        </ul>
+                        <div class="plan-action-box">
+                            <button type="button" class="btn-open-checkout" data-checkout-plan="CONTADOR_MASTER">Adquirir Contador Master</button>
+                            <span class="action-hint">PayPhone Tarjeta o Deuna! 0 %</span>
+                        </div>
+                    </article>
+
+                    <article class="plan-card plan-popular">
+                        <div class="popular-ribbon">MÁS ELEGIDO · OFICINA + CASA</div>
+                        <div class="plan-header">
+                            <h3>Estudio Contable Pro</h3>
+                            <p>Trabaja desde 2 PCs independientes (oficina y casa, cualquier SO) sin PC maestra.</p>
+                        </div>
+                        <div class="plan-pricing">
+                            <span class="price-regular">Regular $399</span>
+                            <div class="price-launch">$299 <span class="period">/ año</span></div>
+                            <span class="price-note">60 RUCs totales (30/PC en 2 PCs o 60 en 1)</span>
+                        </div>
+                        <div class="plan-quotas">
+                            <span class="quota-pill">💻 Hasta 2 PCs</span>
+                            <span class="quota-pill">🏢 60 RUCs totales</span>
+                            <span class="quota-pill">📋 200 líneas Masiva</span>
+                        </div>
+                        <ul class="plan-list">
+                            <li class="ok">30 RUCs por equipo en 2 PCs (o 60 en 1 sola PC)</li>
+                            <li class="ok">Auditor Fantasma (EFOS) + Contingencia ATS</li>
+                            <li class="ok">Respaldo portátil cifrado (.tfbkp) oficina ⇄ casa</li>
+                            <li class="ok">Consulta Masiva hasta 200 líneas por lote</li>
+                        </ul>
+                        <div class="plan-action-box">
+                            <button type="button" class="btn-open-checkout btn-accent" data-checkout-plan="ESTUDIO_PRO">Adquirir Estudio Pro</button>
+                            <span class="action-hint">PayPhone Tarjeta o Deuna! 0 %</span>
+                        </div>
+                    </article>
+
+                    <article class="plan-card plan-enterprise">
+                        <div class="plan-header">
+                            <h3>Enterprise Team</h3>
+                            <p>Red local LAN TCP/IP e infraestructura híbrida con teletrabajo VPN.</p>
+                        </div>
+                        <div class="plan-pricing">
+                            <span class="price-regular">Regular $1,190</span>
+                            <div class="price-launch">$890 <span class="period">/ año</span></div>
+                            <span class="price-note">5 PCs base · Modo Local + Red Oficina</span>
+                        </div>
+                        <div class="plan-quotas">
+                            <span class="quota-pill">💻 5 PCs base</span>
+                            <span class="quota-pill">🏢 RUCs Ilimitados</span>
+                            <span class="quota-pill">📋 Sin límite</span>
+                        </div>
+                        <ul class="plan-list">
+                            <li class="ok">RUCs y Consulta Masiva completamente ilimitados</li>
+                            <li class="ok">Híbrido Red LAN oficina + Teletrabajo Multi-HWID</li>
+                            <li class="ok">Bóveda compartida UNC para asistentes contables</li>
+                            <li class="ok">Auditor Fantasma EFOS + ATS XSD completo</li>
+                        </ul>
+                        <div class="plan-action-box">
+                            <button type="button" class="btn-open-checkout btn-enterprise" data-checkout-plan="ENTERPRISE_TEAM">Solicitar Enterprise Team</button>
+                            <span class="action-hint">Deuna! / Transferencia Bancaria</span>
+                        </div>
+                    </article>
+
+                    <article class="plan-card plan-enterprise">
+                        <div class="plan-header">
+                            <h3>Enterprise Corporativo</h3>
+                            <p>Multi-sucursal nacional sobre HTTPS/VPN con expansión sin límite de PCs.</p>
+                        </div>
+                        <div class="plan-pricing">
+                            <span class="price-regular">Regular $1,890</span>
+                            <div class="price-launch">$1,490 <span class="period">/ año</span></div>
+                            <span class="price-note">10 PCs base · +1 PC extra ($150/año c/u)</span>
+                        </div>
+                        <div class="plan-quotas">
+                            <span class="quota-pill">💻 10 PCs base</span>
+                            <span class="quota-pill">➕ +1 PC ($150/año)</span>
+                            <span class="quota-pill">🏢 Ilimitados</span>
+                        </div>
+                        <ul class="plan-list">
+                            <li class="ok">Add-on +1 PC adicional sin límite ($150/año c/u)</li>
+                            <li class="ok">Modo Local + Red LAN + Multi-Sucursal HTTPS/VPN</li>
+                            <li class="ok">Respaldo corporativo cifrado en la nube (S3)</li>
+                            <li class="ok">Acompañamiento técnico multi-sede prioritario</li>
+                        </ul>
+                        <div class="plan-action-box">
+                            <button type="button" class="btn-open-checkout btn-enterprise" data-checkout-plan="ENTERPRISE_CORP">Solicitar Corporativo</button>
+                            <span class="action-hint">Deuna! / Transferencia Bancaria</span>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- CALCULADORA ADD-ON +1 PC CORPORATIVO -->
+                <div class="corp-addon-box" id="corp-addon">
+                    <div>
+                        <span class="eyebrow">Escalabilidad Enterprise Corporativo</span>
+                        <h3>Calculadora de Estaciones Adicionales (+1 PC sin límite — $150/año c/u)</h3>
+                        <p class="muted-note mt-6">Parte desde <strong>10 PCs base ($1,490/año)</strong> y añade tantas computadoras adicionales como requieran tus sucursales o contadores remotos.</p>
+                    </div>
+                    <div class="corp-addon-row">
+                        <label for="corpAddonInput">PCs extra:</label>
+                        <div class="seats-stepper">
+                            <button type="button" id="corpAddonMenos" aria-label="Restar 1 estación adicional">−</button>
+                            <input type="number" id="corpAddonInput" class="text-input mono-input corp-addon-input" min="1" max="50" value="1">
+                            <button type="button" id="corpAddonMas" aria-label="Sumar 1 estación adicional">+</button>
+                        </div>
+                        <span>Total equipos: <strong id="corpAddonPcs">11 PCs</strong></span>
+                        <span>Inversión anual: <strong id="corpAddonTotal">$1,640/año</strong></span>
+                        <button type="button" class="btn-glow" id="btnCorpAddonCheckout">Adquirir con Extras ➔</button>
+                        <a href="https://wa.me/593996459771?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" target="_blank" rel="noopener noreferrer" class="btn-support-link" id="btnCorpAddonWhatsapp" data-support-link="whatsapp">💬 Cotizar por WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TABLA COMPARATIVA COMPLETA -->
+        <section class="section bg-subtle">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Especificación Técnica Completa</span>
+                    <h2>Comparativa detallada por modalidad de licencia</h2>
+                    <p>Desliza horizontalmente en pantallas pequeñas para comparar cada cuota, arquitectura y canal de pago.</p>
+                </div>
+
+                <div class="table-wrap">
+                    <table class="compare-table">
+                        <thead>
+                            <tr>
+                                <th>Capacidad / Módulo</th>
+                                <th>Evaluación Gratuita</th>
+                                <th>Personal Pro ($59)</th>
+                                <th>Contador Master ($139)</th>
+                                <th>Estudio Contable Pro ($299)</th>
+                                <th>Enterprise Team ($890)</th>
+                                <th>Enterprise Corp ($1,490)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Vigencia de Licencia</strong></td>
+                                <td>14 días calendario</td>
+                                <td>365 días</td>
+                                <td>365 días</td>
+                                <td>365 días</td>
+                                <td>365 días</td>
+                                <td>365 días</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Equipos PC Permitidos</strong></td>
+                                <td>1 PC</td>
+                                <td>1 PC</td>
+                                <td>1 PC</td>
+                                <td>Hasta 2 PCs independientes</td>
+                                <td>5 PCs base (LAN + VPN)</td>
+                                <td>10 PCs base + add-on $150/PC</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cupo de RUCs (Contribuyentes)</strong></td>
+                                <td>Hasta 2 RUCs</td>
+                                <td>Hasta 3 RUCs</td>
+                                <td>Hasta 25 RUCs</td>
+                                <td>60 totales (30/PC o 60 en 1)</td>
+                                <td>Ilimitados</td>
+                                <td>Ilimitados</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Consulta Masiva por Lote</strong></td>
+                                <td>15 líneas</td>
+                                <td>50 líneas</td>
+                                <td>50 líneas</td>
+                                <td>200 líneas</td>
+                                <td>Sin límite</td>
+                                <td>Sin límite</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Modo de Operación</strong></td>
+                                <td>Local</td>
+                                <td>Local</td>
+                                <td>Local</td>
+                                <td>Local independiente (2 SOs)</td>
+                                <td>Local + Red Local LAN</td>
+                                <td>Local + LAN + HTTPS/VPN</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sincronizar SRI + Importar TXT/ZIP</strong></td>
+                                <td class="cell-ok">✓</td>
+                                <td class="cell-ok">✓</td>
+                                <td class="cell-ok">✓</td>
+                                <td class="cell-ok">✓</td>
+                                <td class="cell-ok">✓</td>
+                                <td class="cell-ok">✓</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Generador ATS XML / XSD SRI</strong></td>
+                                <td class="cell-lock">Solo evaluación</td>
+                                <td class="cell-lock">—</td>
+                                <td class="cell-ok">✓</td>
+                                <td class="cell-ok">✓</td>
+                                <td class="cell-ok">✓</td>
+                                <td class="cell-ok">✓</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Auditor Fantasma (EFOS) + Contingencia ATS</strong></td>
+                                <td class="cell-lock">—</td>
+                                <td class="cell-lock">—</td>
+                                <td class="cell-lock">—</td>
+                                <td class="cell-ok">✓</td>
+                                <td class="cell-ok">✓</td>
+                                <td class="cell-ok">✓</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Respaldo Portátil (.tfbkp) y Nube S3</strong></td>
+                                <td>Lectura</td>
+                                <td>Manual Local</td>
+                                <td>Manual Local</td>
+                                <td>Portátil .tfbkp (2 PCs)</td>
+                                <td>.tfbkp + Compartida UNC</td>
+                                <td>.tfbkp + UNC + Nube S3</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Canal de Pago Oficial</strong></td>
+                                <td>Gratis</td>
+                                <td>PayPhone / Deuna!</td>
+                                <td>PayPhone / Deuna!</td>
+                                <td>PayPhone / Deuna!</td>
+                                <td>Deuna! / Transferencia</td>
+                                <td>Deuna! / Transferencia</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- CANALES OFICIALES Y PROTECCIÓN QR -->
+                <div class="payment-channels-grid mt-36">
+                    <div class="pay-box pay-deuna">
+                        <h4>Pago Local Instantáneo con Deuna! / Transferencia (0 % Comisión)</h4>
+                        <div class="deuna-layout deuna-protected-card">
+                            <div class="deuna-shield-box">
+                                <div class="deuna-shield-icon" aria-hidden="true">🛡️</div>
+                                <strong>QR Deuna! Protegido en Checkout</strong>
+                                <small>El código QR escaneable se muestra únicamente dentro de la ventana de pago tras confirmar tu plan y referencia única.</small>
+                            </div>
+                            <div class="deuna-steps">
+                                <ol>
+                                    <li>Selecciona cualquier plan de arriba para generar tu referencia <code>TF-...</code>.</li>
+                                    <li>Escanea el QR dentro del modal verificando a <strong>Fausto Andrés Orellana Jaén</strong>.</li>
+                                    <li>Adjunta tu comprobante real por WhatsApp o Correo oficial para emitir tu <code>.lic</code>.</li>
+                                </ol>
+                                <div class="mt-12">
+                                    <button type="button" class="btn-glow" data-checkout-plan="ESTUDIO_PRO">Abrir Ventana de Pago ➔</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pay-box pay-card">
+                        <h4>PayPhone Tarjetas y Atención Directa</h4>
+                        <p class="muted-note">Pago con tarjeta habilitado en Personal Pro ($59), Contador Master ($139) y Estudio Pro ($299). Para asesoría corporativa antes de pagar:</p>
+                        <div class="flex-wrap-actions mt-12">
+                            <a href="https://wa.me/593996459771?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" target="_blank" rel="noopener noreferrer" class="btn-support-link" data-support-link="whatsapp">💬 WhatsApp Soporte (0996459771)</a>
+                            <a href="mailto:soportetributaflow@quoratec.com?subject=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" class="btn-support-link" data-support-link="correo">✉️ soportetributaflow@quoratec.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="pre-footer-cta">
+        <div class="container">
+            <div class="pre-footer-card">
+                <div>
+                    <h3>¿Dudas sobre qué cupo o arquitectura conviene a tu firma?</h3>
+                    <p>Revisa los flujos paso a paso en la Guía de Uso o escríbenos por WhatsApp (<code>0996459771</code>).</p>
+                </div>
+                <div class="pre-footer-actions">
+                    <a href="guia-uso.html" class="btn-glow">Ver Guía de Uso e Implementación ➔</a>
+                    <a href="politicas.html" class="btn-glass">Revisar Acuerdo y Condiciones</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid-4">
+                <div class="footer-col">
+                    <h4>TributaFlow Pro <span data-app-version-tag>v2.4.0</span></h4>
+                    <p class="muted-note">Software contable ecuatoriano 100 % local para descarga masiva del SRI, auditoría tributaria y generación de ATS XML/XSD.</p>
+                    <div class="footer-trust-pill">🔒 Cifrado Local AES-256 · Sin Nube</div>
+                    <p class="muted-note">Desarrollado en Ecuador por <strong>Quoratec Software Solutions</strong>.</p>
+                </div>
+
+                <div class="footer-col footer-links-col">
+                    <h4>Navegación del Portal</h4>
+                    <a href="index.html">Inicio</a>
+                    <a href="index.html#modulos">9 Módulos del Sistema</a>
+                    <a href="planes.html">Planes y Precios (5)</a>
+                    <a href="guia-uso.html">Guía de Uso e Implementación</a>
+                    <a href="index.html#descargas">Descargas Oficiales</a>
+                </div>
+
+                <div class="footer-col footer-links-col">
+                    <h4>Descargas y Medios de Pago</h4>
+                    <a href="index.html#descargas" data-download-os="windows">Windows 64-bit (.exe)</a>
+                    <a href="index.html#descargas" data-download-os="macos">macOS Universal (.dmg)</a>
+                    <a href="index.html#descargas" data-download-os="linux">Linux Ubuntu/Debian (.deb)</a>
+                    <div class="footer-pay-badges">
+                        <span class="footer-pay-pill">PayPhone Tarjetas</span>
+                        <span class="footer-pay-pill">Deuna!</span>
+                        <span class="footer-pay-pill">Transferencia Ecuador</span>
+                    </div>
+                </div>
+
+                <div class="footer-col footer-links-col">
+                    <h4>Marco Legal y Soporte Directo</h4>
+                    <a href="politicas.html#licencia">Acuerdo de Licencia y Condiciones de Uso</a>
+                    <a href="politicas.html#privacidad">Privacidad Soberana Local-First</a>
+                    <a href="politicas.html#traslado">Traslado de PC y Garantía .tfbkp</a>
+                    <a href="https://wa.me/593996459771?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" target="_blank" rel="noopener noreferrer" data-support-link="whatsapp">💬 WhatsApp Oficial (+593 99 645 9771)</a>
+                    <a href="mailto:soportetributaflow@quoratec.com?subject=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" data-support-link="correo">✉️ soportetributaflow@quoratec.com</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <span>© 2026 Quoratec Software Solutions — TributaFlow Pro. Todos los derechos reservados.</span>
+                <div class="footer-bottom-meta">
+                    <span class="footer-version-badge" data-app-version-tag>v2.4.0</span>
+                    <button type="button" class="footer-top-btn" data-scroll-top>↑ Subir</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/593996459771?text=Consulta%20Soporte%20T%C3%A9cnico%20%E2%80%94%20TributaFlow%20Pro" target="_blank" rel="noopener noreferrer" class="whatsapp-float" id="btnFlotanteSoporte" data-support-link="whatsapp" aria-label="Contactar Soporte Oficial TributaFlow Pro por WhatsApp">
+        <span>💬 Soporte 0996459771</span>
+    </a>
+
+    <script src="assets/js/portal.js" defer></script>
+</body>
+</html>
