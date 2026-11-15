@@ -118,21 +118,21 @@
     "windows": {
       "archivo": "TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe",
       "url": "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe",
-      "sha256": "2c9f35ef3ddd723456a389b1f6308d4176d86e099610ff520652b9d6a4ddfdaa",
+      "sha256": "534211af20180824e4d203ec3e9eedd411de847303e6f11423a31e54e2fed092",
       "sha256_url": "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe.sha256",
       "plataforma": "Windows 10 / 11 (x64 y Tablets Windows)"
     },
     "macos": {
       "archivo": "TributaFlow_Pro_v2.4.0_macOS.dmg",
       "url": "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_macOS.dmg",
-      "sha256": "cddc6830d5c0605f3d607edcb136b44ca779fcac731b612647841da10756181c",
+      "sha256": "c11460fd02b0470c64efe6de0f565ed804e24ba83c9e24f50e09a84b494c0ae6",
       "sha256_url": "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_macOS.dmg.sha256",
       "plataforma": "macOS (Apple Silicon / Intel)"
     },
     "linux": {
       "archivo": "TributaFlow_Pro_v2.4.0_Linux_amd64.deb",
       "url": "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Linux_amd64.deb",
-      "sha256": "7a98f9f50df57d96927522d5f792ec83d733b24d1bd90897167f207dc41cea98",
+      "sha256": "1d0e0d7830264fe63ac4e14b1b75cc72e30e1242bfe8b1a54225d7396ffdd9a0",
       "sha256_url": "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Linux_amd64.deb.sha256",
       "plataforma": "Linux (Ubuntu / Debian / Mint amd64)"
     }

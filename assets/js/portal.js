@@ -158,7 +158,7 @@
             archivo: "TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe",
             tamano: "Instalador Windows x64 • Verificado SHA-256",
             url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe",
-            sha256: "2c9f35ef3ddd723456a389b1f6308d4176d86e099610ff520652b9d6a4ddfdaa",
+            sha256: "534211af20180824e4d203ec3e9eedd411de847303e6f11423a31e54e2fed092",
             sha256Url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe.sha256",
             comandoSha256: 'certutil -hashfile "TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe" SHA256',
             pasos: [
@@ -176,7 +176,7 @@
             archivo: "TributaFlow_Pro_v2.4.0_macOS.dmg",
             tamano: "Imagen de disco macOS • Verificado SHA-256",
             url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_macOS.dmg",
-            sha256: "cddc6830d5c0605f3d607edcb136b44ca779fcac731b612647841da10756181c",
+            sha256: "c11460fd02b0470c64efe6de0f565ed804e24ba83c9e24f50e09a84b494c0ae6",
             sha256Url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_macOS.dmg.sha256",
             comandoSha256: "shasum -a 256 TributaFlow_Pro_v2.4.0_macOS.dmg",
             pasos: [
@@ -194,7 +194,7 @@
             archivo: "TributaFlow_Pro_v2.4.0_Linux_amd64.deb",
             tamano: "Paquete Debian amd64 • Verificado SHA-256",
             url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Linux_amd64.deb",
-            sha256: "7a98f9f50df57d96927522d5f792ec83d733b24d1bd90897167f207dc41cea98",
+            sha256: "1d0e0d7830264fe63ac4e14b1b75cc72e30e1242bfe8b1a54225d7396ffdd9a0",
             sha256Url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Linux_amd64.deb.sha256",
             comandoSha256: "sha256sum TributaFlow_Pro_v2.4.0_Linux_amd64.deb",
             pasos: [

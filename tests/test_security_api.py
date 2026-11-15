@@ -33,15 +33,15 @@ PAYPHONE_OFICIALES = {
 SHA256_OFICIALES = {
     "windows": (
         "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe",
-        "2c9f35ef3ddd723456a389b1f6308d4176d86e099610ff520652b9d6a4ddfdaa",
+        "534211af20180824e4d203ec3e9eedd411de847303e6f11423a31e54e2fed092",
     ),
     "macos": (
         "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_macOS.dmg",
-        "cddc6830d5c0605f3d607edcb136b44ca779fcac731b612647841da10756181c",
+        "c11460fd02b0470c64efe6de0f565ed804e24ba83c9e24f50e09a84b494c0ae6",
     ),
     "linux": (
         "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Linux_amd64.deb",
-        "7a98f9f50df57d96927522d5f792ec83d733b24d1bd90897167f207dc41cea98",
+        "1d0e0d7830264fe63ac4e14b1b75cc72e30e1242bfe8b1a54225d7396ffdd9a0",
     ),
 }
 
