@@ -3,9 +3,10 @@
   "producto": "TributaFlow Pro",
   "fabricante": "Quoratec Software Solutions",
   "dominio_oficial": "https://tributaflow.quoratec.com",
-  "trial_dias": 14,
-  "trial_rucs": 2,
-  "trial_consulta_masiva": 15,
+  "trial_dias": 15,
+  "trial_rucs": 60,
+  "trial_modalidad": "ESTUDIO_PRO",
+  "trial_texto": "15 días de evaluación gratuita (hasta 60 RUCs, modalidad Estudio Contable Pro, sin tarjeta de crédito)",
   "precio_seat_extra_usd": 150.0,
   "canal_soporte": {
     "whatsapp_numero": "593996459771",
@@ -31,8 +32,14 @@
       "estaciones_texto": "1 PC",
       "rucs_max": 3,
       "rucs_texto": "Hasta 3 RUCs",
-      "consulta_masiva_texto": "50 líneas",
-      "modo": "Modo Local",
+      "modo": "Sincronización SRI/RIDE/XML y bóveda local cifrada",
+      "exclusiones": [
+        "Sin lote multi-RUC",
+        "Sin Generador ATS",
+        "Sin Auditor Fantasma EFOS",
+        "Sin respaldo .tfbkp",
+        "Sin Red LAN"
+      ],
       "admite_addon_pc": false,
       "url_payphone": "https://ppls.me/5S1Y89pBi1vYHBTEgEzRA"
     },
@@ -46,38 +53,48 @@
       "estaciones_texto": "1 PC",
       "rucs_max": 25,
       "rucs_texto": "Hasta 25 RUCs",
-      "consulta_masiva_texto": "50 líneas",
-      "modo": "Modo Local",
+      "modo": "Lote Multi-RUC y Generador/Validador oficial ATS (XML/XSD/Excel)",
+      "exclusiones": [
+        "Sin Auditor Fantasma EFOS",
+        "Sin Multi-PC",
+        "Sin respaldo .tfbkp",
+        "Sin Red LAN"
+      ],
       "admite_addon_pc": false,
       "url_payphone": "https://ppls.me/dxope7VBAjK5LR1mO4UitA"
     },
     "ESTUDIO_PRO": {
       "tier": "ESTUDIO_PRO",
-      "nombre": "Estudio Contable Pro / PyME",
+      "nombre": "Estudio Contable Pro",
       "nombre_comercial": "TF Estudio Pro",
       "precio_base_usd": 299.0,
       "precio_regular_usd": 399.0,
       "estaciones_base": 2,
-      "estaciones_texto": "Hasta 2 PCs independientes",
+      "estaciones_texto": "Hasta 2 PCs (60 RUCs o 30/PC)",
       "rucs_max": 60,
-      "rucs_texto": "Hasta 60 RUCs (30 por PC o 60 en 1 PC)",
-      "consulta_masiva_texto": "200 líneas",
-      "modo": "Modo Local (2 PCs independientes)",
+      "rucs_texto": "Hasta 60 RUCs (o 30/PC en hasta 2 PCs)",
+      "modo": "Auditor Fantasma EFOS en tiempo real, Modo Contingencia ATS y Respaldo Portátil Cifrado (.tfbkp AES-256-GCM + HMAC)",
+      "exclusiones": [
+        "Sin Red LAN TCP/IP",
+        "Sin Bóveda UNC"
+      ],
       "admite_addon_pc": false,
       "url_payphone": "https://ppls.me/60Bdw7lcRhMfvjqwA5cFdg"
     },
     "ENTERPRISE_TEAM": {
       "tier": "ENTERPRISE_TEAM",
-      "nombre": "Enterprise Team (Red LAN)",
+      "nombre": "Enterprise Team",
       "nombre_comercial": "TF Enterprise Team",
       "precio_base_usd": 890.0,
       "precio_regular_usd": 1190.0,
       "estaciones_base": 5,
-      "estaciones_texto": "5 PCs base (LAN + Teletrabajo VPN)",
+      "estaciones_texto": "5 estaciones base",
       "rucs_max": -1,
-      "rucs_texto": "RUCs Ilimitados",
-      "consulta_masiva_texto": "Sin límite",
-      "modo": "Modo Local + Red Local Oficina (LAN TCP/IP)",
+      "rucs_texto": "RUCs ilimitados",
+      "modo": "Red LAN TCP/IP Centralizada con cola anti-colisión y Bóveda Compartida UNC (\\\\SERVIDOR\\...)",
+      "exclusiones": [
+        "Sin Conector Multi-Regional HTTPS"
+      ],
       "admite_addon_pc": false,
       "url_payphone": null
     },
@@ -88,11 +105,11 @@
       "precio_base_usd": 1490.0,
       "precio_regular_usd": 1890.0,
       "estaciones_base": 10,
-      "estaciones_texto": "10 PCs base (+1 PC sin límite)",
+      "estaciones_texto": "10+ estaciones escalables (+$150/PC extra)",
       "rucs_max": -1,
-      "rucs_texto": "RUCs Ilimitados",
-      "consulta_masiva_texto": "Sin límite",
-      "modo": "Local + Red Local + Multi-Sucursal Nacional HTTPS/VPN",
+      "rucs_texto": "RUCs ilimitados",
+      "modo": "Red LAN TCP/IP + Bóveda UNC + Conector Multi-Regional HTTPS / Gateway seguro",
+      "exclusiones": [],
       "admite_addon_pc": true,
       "url_payphone": null
     }
@@ -100,17 +117,23 @@
   "descargas": {
     "windows": {
       "archivo": "TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe",
-      "url": "https://github.com/FaustoOrellana/tributaflow-portal/releases/latest/download/TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe",
-      "plataforma": "Windows 10 / 11 (64-bit y Tablets Windows)"
+      "url": "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe",
+      "sha256": "2c9f35ef3ddd723456a389b1f6308d4176d86e099610ff520652b9d6a4ddfdaa",
+      "sha256_url": "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe.sha256",
+      "plataforma": "Windows 10 / 11 (x64 y Tablets Windows)"
     },
     "macos": {
       "archivo": "TributaFlow_Pro_v2.4.0_macOS.dmg",
-      "url": "https://github.com/FaustoOrellana/tributaflow-portal/releases/latest/download/TributaFlow_Pro_v2.4.0_macOS.dmg",
+      "url": "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_macOS.dmg",
+      "sha256": "cddc6830d5c0605f3d607edcb136b44ca779fcac731b612647841da10756181c",
+      "sha256_url": "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_macOS.dmg.sha256",
       "plataforma": "macOS (Apple Silicon / Intel)"
     },
     "linux": {
       "archivo": "TributaFlow_Pro_v2.4.0_Linux_amd64.deb",
-      "url": "https://github.com/FaustoOrellana/tributaflow-portal/releases/latest/download/TributaFlow_Pro_v2.4.0_Linux_amd64.deb",
+      "url": "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Linux_amd64.deb",
+      "sha256": "7a98f9f50df57d96927522d5f792ec83d733b24d1bd90897167f207dc41cea98",
+      "sha256_url": "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Linux_amd64.deb.sha256",
       "plataforma": "Linux (Ubuntu / Debian / Mint amd64)"
     }
   }

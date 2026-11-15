@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none';">
-    <meta name="referrer" content="no-referrer">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Ajustes, Red LAN TCP/IP y Blindaje | TributaFlow Pro v2.4.0</title>
     <meta name="description" content="Matriz de permisos ✓/🔒, Red LAN TCP/IP centralizada (5 a 10+ estaciones), bóveda compartida UNC con bloqueo atómico anti-colisión y backups .tfbkp.">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
-    <link rel="stylesheet" href="../assets/css/portal.css">
+    <link rel="stylesheet" href="../assets/css/portal.css" integrity="sha384-sVn32hko8xHqLn9XA7bOd7hwZGVCN6VbsPAV3lmZ4TWju2Y/wk0JFilzVapotcKz" crossorigin="anonymous">
 </head>
 <body data-root="../">
         <header class="navbar">
@@ -60,10 +60,10 @@
                 <div class="feature-list-panel">
                     <h3>Matriz de Capacidades y Gobernanza en Ajustes</h3>
                     <ul>
-                        <li>✔ <strong>Modo Local (Planes Personal, Contador y Estudio):</strong> Base SQLite cifrada por HWID con <code>PBKDF2 + AES-256-GCM + HMAC</code> sin requerir servidor.</li>
-                        <li>✔ <strong>Red LAN TCP/IP (Enterprise Team 5 PCs / Corp 10+ PCs):</strong> Múltiples auxiliares contables conectados concurrentemente al servidor de base de datos de oficina por IP/puerto.</li>
-                        <li>✔ <strong>Bóveda Compartida UNC (<code>\\SERVIDOR\Boveda_TributaFlow\...</code>):</strong> Repositorio único de XML, RIDE y ATS en red con <strong>bloqueo atómico distribuido anti-colisión</strong> para que dos estaciones no escriban o descarguen el mismo RUC a la vez.</li>
-                        <li>✔ <strong>Respaldo y Migración <code>.tfbkp</code>:</strong> Exporta o restaura bóvedas completas protegidas criptográficamente en segundos.</li>
+                        <li>✔ <strong>Modo Local Cifrado (Personal, Contador Master y Estudio Pro):</strong> Base SQLite cifrada por HWID con <code>PBKDF2 + AES-256-GCM + HMAC</code> sin requerir servidor.</li>
+                        <li>✔ <strong>Red LAN TCP/IP Centralizada (Enterprise Team 5 estaciones / Corp 10+ estaciones):</strong> Operación concurrente multi-estación en oficina sin Conector Multi-Regional HTTPS en Team.</li>
+                        <li>✔ <strong>Bóveda Compartida UNC (<code>\\SERVIDOR\Boveda_TributaFlow\...</code>):</strong> Repositorio único en red para Enterprise Team/Corp con <strong>cola anti-colisión</strong>; Conector Multi-Regional HTTPS / Gateway seguro incluido en Enterprise Corporativo ($1,490+ base, +$150/PC extra).</li>
+                        <li>✔ <strong>Respaldo Portátil Cifrado <code>.tfbkp</code> (Desde Estudio Pro $299+):</strong> Exporta o restaura bóvedas cifradas con <code>AES-256-GCM + HMAC</code>.</li>
                     </ul>
                 </div>
 
@@ -73,15 +73,15 @@
 [Estación 2 - Contador] ──┼──(TCP/IP Red LAN + UNC)──▶ [SERVIDOR OFICINA]
 [Estación 3 - Auditor ] ──┘                             ├── DB Centralizada
                                                         ├── \\SERVIDOR\Boveda_TributaFlow\
-                                                        │   └── Lock Atómico Anti-Colisión
+                                                        │   └── Cola Anti-Colisión
                                                         └── 1790012345001_EMPRESA_DEMOSTRACION_SA
 
 Panel Ajustes en App:
 ✓ Bóveda Jerárquica Local (Personal Pro+)
 ✓ Generador ATS XML/XSD (Contador Master+)
-✓ Auditor Fantasma SRI (Estudio Pro+)
-🔒 Red LAN 5+ PCs &amp; UNC (Enterprise Team $890+)
-🔒 10+ Estaciones + Multi-Regional HTTPS (Enterprise Corp $1,490+)</pre>
+✓ Auditor Fantasma EFOS + .tfbkp (Estudio Pro+)
+🔒 Red LAN 5 estaciones &amp; UNC (Enterprise Team $890+)
+🔒 10+ Estaciones (+$150/PC) + Multi-Regional HTTPS (Enterprise Corp $1,490+)</pre>
                 </div>
             </div>
 
@@ -101,7 +101,7 @@ Panel Ajustes en App:
             <div class="pre-footer-card">
                 <div>
                     <h3>¿Listo para implementar este módulo en tu estudio o empresa?</h3>
-                    <p>Descarga tu evaluación gratuita de <span data-trial-days>14 días</span> o escríbenos por WhatsApp al <code>0996459771</code>.</p>
+                    <p>Descarga tu evaluación gratuita de <span data-trial-days>15 días</span> (hasta 60 RUCs, modalidad Estudio Pro, sin tarjeta) o escríbenos por WhatsApp al <code>0996459771</code>.</p>
                 </div>
                 <div class="pre-footer-actions">
                     <button type="button" class="btn-glow" data-download-os="auto">⬇ Descargar para Mi PC</button>
@@ -166,7 +166,7 @@ Panel Ajustes en App:
         <span>💬 Soporte 0996459771</span>
     </a>
 
-    <script src="../assets/js/portal.js" defer></script>
+    <script src="../assets/js/portal.js" integrity="sha384-kebtRLoN/uWtZmOBf9j5Yij0r1GMQH4JPggPDzwd5+cjwherbeJVzn8v8KODzYOa" crossorigin="anonymous" defer></script>
 </body>
 </html>
 

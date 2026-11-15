@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none';">
-    <meta name="referrer" content="no-referrer">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>TributaFlow Pro v2.4.0 | Automatización SRI, Bóveda Documental y ATS — Ecuador</title>
-    <meta name="description" content="Suite contable de escritorio 100 % local para Ecuador. Automatiza descargas XML/PDF del SRI, auditoría tributaria y generación de Anexo Transaccional Simplificado (ATS). Prueba gratis 14 días en Windows, macOS y Linux.">
+    <meta name="description" content="Suite contable de escritorio 100 % local para Ecuador. Automatiza descargas XML/PDF del SRI, auditoría EFOS y Anexo Transaccional Simplificado (ATS). Prueba gratis 15 días hasta 60 RUCs sin tarjeta en Windows, macOS y Linux.">
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
-    <link rel="stylesheet" href="assets/css/portal.css">
+    <link rel="stylesheet" href="assets/css/portal.css" integrity="sha384-sVn32hko8xHqLn9XA7bOd7hwZGVCN6VbsPAV3lmZ4TWju2Y/wk0JFilzVapotcKz" crossorigin="anonymous">
 </head>
 <body>
 
@@ -66,7 +66,7 @@
                 <div class="hero-text">
                     <div class="status-pill">
                         <span class="pulse-dot" aria-hidden="true"></span>
-                        <span>Lanzamiento Oficial <span data-app-version-tag>v2.4.0</span> · Prueba Gratis <span data-trial-days>14 días</span> · Sin Nube</span>
+                        <span>Lanzamiento Oficial <span data-app-version-tag>v2.4.0</span> · Prueba Gratis <span data-trial-days>15 días</span> (60 RUCs) · Sin Nube</span>
                     </div>
 
                     <h1>Automatiza tus descargas del SRI, Bóveda Documental y ATS Oficial <span class="text-gradient">en minutos</span></h1>
@@ -74,14 +74,14 @@
                     <p>Diseñado para contadores y empresas en Ecuador. Descarga comprobantes XML y RIDE oficiales en lote, organiza cada RUC por año/mes en tu propio disco con cifrado AES-256 y genera el Anexo Transaccional Simplificado validado por esquema XSD del SRI.</p>
 
                     <div class="hero-buttons">
-                        <button type="button" class="btn-glow" id="btnDescargaDetectada" data-download-os="auto">⬇ Descarga Gratuita 14 Días (v2.4.0)</button>
+                        <button type="button" class="btn-glow" id="btnDescargaDetectada" data-download-os="auto">⬇ Descarga Gratuita 15 Días (v2.4.0)</button>
                         <a href="planes.html" class="btn-glass">Comparar 5 Planes y Adquirir ➔</a>
                     </div>
 
                     <div class="trust-metrics">
                         <div class="metric">
-                            <strong><span data-trial-days>14 días</span></strong>
-                            <span>Prueba Gratuita</span>
+                            <strong><span data-trial-days>15 días</span> · 60 RUCs</strong>
+                            <span>Prueba Estudio Pro Sin Tarjeta</span>
                         </div>
                         <div class="metric-divider" aria-hidden="true"></div>
                         <div class="metric">
@@ -203,7 +203,7 @@
                     <article class="workflow-step">
                         <span class="step-num">01</span>
                         <h3>Instala e inicia tu bóveda local</h3>
-                        <p>Disponible en Windows, macOS y Linux con <strong><span data-trial-days>14 días</span> gratis</strong> y hasta 2 RUCs reales para evaluar todo el motor.</p>
+                        <p>Disponible en Windows, macOS y Linux con <strong><span data-trial-days>15 días</span> gratis</strong> y hasta 60 RUCs reales (modalidad Estudio Contable Pro) sin tarjeta.</p>
                     </article>
 
                     <article class="workflow-step">
@@ -300,10 +300,10 @@
                     <article class="module-card">
                         <div class="module-top">
                             <span class="module-icon" aria-hidden="true">📋</span>
-                            <span class="module-tier">50 / 200 / Sin límite</span>
+                            <span class="module-tier">Multi-RUC / Lotes</span>
                         </div>
                         <h3>7. Consulta Masiva</h3>
-                        <p>Verificación por lotes desde 50 líneas (Personal/Master), 200 líneas (Estudio Pro) hasta ilimitado en Enterprise.</p>
+                        <p>Verificación estructurada por lotes con exportación limpia a Excel y CSV para auditorías y validación previa al ATS.</p>
                         <a href="modulos/consulta-masiva.html" class="module-link">Explorar Consulta Masiva ➔</a>
                     </article>
 
@@ -323,7 +323,7 @@
                             <span class="module-tier">Cifrado Local</span>
                         </div>
                         <h3>9. Ajustes y Seguridad</h3>
-                        <p>Respaldos portátiles cifrados (.tfbkp), modo Red Local LAN TCP/IP, traslado entre computadoras y licencia HWID.</p>
+                        <p>Respaldos portátiles cifrados (.tfbkp AES-256-GCM + HMAC), Red LAN TCP/IP UNC, Conector HTTPS y licencia HWID.</p>
                         <a href="modulos/ajustes-seguridad.html" class="module-link">Explorar Ajustes y Seguridad ➔</a>
                     </article>
                 </div>
@@ -335,21 +335,21 @@
                         <pre>Boveda_TributaFlow/
 ├── _config/
 │   ├── tributaflow_boveda.db        (Cifrado AES-256 SQLCipher)
-│   └── licencia_activa.lic          (Firma digital Ed25519 offline)
+│   └── licencia_activa.lic          (Firma criptográfica verificable)
 ├── 1790012345001_DISTRIBUIDORA_SA/
 │   ├── 2026/
 │   │   ├── 01-Enero/   [XML + RIDE PDF + Excel + ATS.xml]
 │   │   └── 02-Febrero/ [XML + RIDE PDF + Auditoria_EFOS.xlsx]
 └── Respaldos_Portatiles/
-    └── Backup_Cartera_2026.tfbkp    (Paquete portátil cifrado)</pre>
+    └── Backup_Cartera_2026.tfbkp    (AES-256-GCM + HMAC verificable)</pre>
                     </div>
 
                     <div class="feature-list-panel">
                         <h3>Ventajas de Arquitectura Local-First <span data-app-version-tag>v2.4.0</span></h3>
                         <ul>
                             <li><span>✓</span> <span><strong>Sin nube intermediaria:</strong> tus claves SRI y comprobantes no salen de tu computadora ni se venden a terceros.</span></li>
-                            <li><span>✓</span> <span><strong>Cupos reales escalables:</strong> desde 3 RUCs (Personal), 25 RUCs (Master) y 60 RUCs en 1 o 2 PCs (Estudio Pro) hasta RUCs ilimitados (Enterprise).</span></li>
-                            <li><span>✓</span> <span><strong>Respaldo portátil .tfbkp:</strong> mueve toda tu cartera contable entre oficina y casa o en red LAN cifrada.</span></li>
+                            <li><span>✓</span> <span><strong>Cupos reales escalables:</strong> 3 RUCs (Personal), 25 RUCs (Master), 60 RUCs o 30/PC en 2 PCs (Estudio Pro) y RUCs ilimitados (Enterprise).</span></li>
+                            <li><span>✓</span> <span><strong>Respaldo portátil .tfbkp (AES-256-GCM + HMAC):</strong> mueve tu cartera contable de oficina a casa o opera en Red LAN + Bóveda UNC.</span></li>
                             <li><span>✓</span> <span><strong>Sellado ético al vencer:</strong> jamás perdemos tus datos; tus carpetas XML/PDF y Excel siempre permanecen legibles.</span></li>
                         </ul>
                     </div>
@@ -363,16 +363,16 @@
                 <div class="section-head">
                     <span class="eyebrow">Instaladores Oficiales <span data-app-version-tag>v2.4.0</span></span>
                     <h2>Descarga TributaFlow Pro para tu Computadora</h2>
-                    <p>Detectamos automáticamente el sistema operativo de tu computadora (Windows, macOS o Linux, incluyendo laptops táctiles y 2-en-1 con Windows) para ofrecerte el instalador exacto.</p>
+                    <p>Detectamos automáticamente el sistema operativo de tu computadora (Windows, macOS o Linux, incluyendo laptops táctiles y 2-en-1 con Windows) y publicamos el resumen SHA-256 oficial de cada binario.</p>
                 </div>
 
                 <div class="download-banner">
                     <div>
-                        <h3>Prueba Gratuita Completa de <span data-trial-days>14 días</span></h3>
+                        <h3>Prueba Gratuita Completa de <span data-trial-days>15 días</span></h3>
                         <div class="dl-meta">
                             <span>• Versión activa: <strong data-app-version>2.4.0</strong></span>
-                            <span>• 1 Equipo · Hasta 2 RUCs · 15 líneas en Consulta Masiva</span>
-                            <span>• Sin tarjeta requerida para instalar</span>
+                            <span>• Hasta 60 RUCs (Modalidad Estudio Contable Pro)</span>
+                            <span>• Sin necesidad de tarjeta de crédito</span>
                         </div>
                     </div>
                     <button type="button" class="btn-glow" data-download-os="auto">Descargar para Mi Equipo ➔</button>
@@ -381,14 +381,21 @@
                 <div class="os-grid">
                     <article class="os-card" data-os="windows">
                         <div class="os-card-top">
-                            <span class="os-badge">Windows 10 / 11 (64-bit)</span>
+                            <span class="os-badge">Windows 10 / 11 (x64)</span>
                             <span class="os-size">Setup .exe</span>
                         </div>
                         <h3>Instalador Windows Desktop</h3>
                         <p>Compatible con PC de escritorio, laptops táctiles y tabletas Windows 10/11 de 64 bits con asistente gráfico guiado.</p>
                         <code>TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe</code>
+                        <div class="os-sha-box">
+                            <div class="os-sha-head">
+                                <span class="os-sha-label">SHA-256 Oficial</span>
+                                <button type="button" class="btn-sha-copy" data-sha256-copy="windows">Copiar SHA-256</button>
+                            </div>
+                            <code class="os-sha-code" data-sha256-value="windows">2c9f35ef3ddd723456a389b1f6308d4176d86e099610ff520652b9d6a4ddfdaa</code>
+                        </div>
                         <div class="mt-12">
-                            <button type="button" class="btn-os-modal" data-download-os="windows">⬇ Descargar Windows (<span data-app-version-tag>v2.4.0</span>)</button>
+                            <a href="https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe" class="btn-os-modal" data-download-os="windows">⬇ Descargar Windows (<span data-app-version-tag>v2.4.0</span>)</a>
                         </div>
                     </article>
 
@@ -398,10 +405,17 @@
                             <span class="os-size">Apple Silicon + Intel</span>
                         </div>
                         <h3>Instalador nativo macOS</h3>
-                        <p>Paquete nativo Apple Disk Image para MacBook, iMac y Mac Studio con guía de primer arranque seguro (sin bloqueos).</p>
+                        <p>Paquete nativo Apple Disk Image para MacBook, iMac y Mac Studio con verificación criptográfica SHA-256.</p>
                         <code>TributaFlow_Pro_v2.4.0_macOS.dmg</code>
+                        <div class="os-sha-box">
+                            <div class="os-sha-head">
+                                <span class="os-sha-label">SHA-256 Oficial</span>
+                                <button type="button" class="btn-sha-copy" data-sha256-copy="macos">Copiar SHA-256</button>
+                            </div>
+                            <code class="os-sha-code" data-sha256-value="macos">cddc6830d5c0605f3d607edcb136b44ca779fcac731b612647841da10756181c</code>
+                        </div>
                         <div class="mt-12">
-                            <button type="button" class="btn-os-modal" data-download-os="macos">⬇ Descargar macOS (<span data-app-version-tag>v2.4.0</span>)</button>
+                            <a href="https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_macOS.dmg" class="btn-os-modal" data-download-os="macos">⬇ Descargar macOS (<span data-app-version-tag>v2.4.0</span>)</a>
                         </div>
                     </article>
 
@@ -411,10 +425,17 @@
                             <span class="os-size">amd64</span>
                         </div>
                         <h3>Paquete nativo Linux</h3>
-                        <p>Instalación limpia mediante <code>apt install</code> para entornos Ubuntu, Debian y Mint de escritorio contable.</p>
+                        <p>Instalación limpia mediante <code>apt install</code> para entornos Ubuntu, Debian y Mint amd64 con validación SHA-256.</p>
                         <code>TributaFlow_Pro_v2.4.0_Linux_amd64.deb</code>
+                        <div class="os-sha-box">
+                            <div class="os-sha-head">
+                                <span class="os-sha-label">SHA-256 Oficial</span>
+                                <button type="button" class="btn-sha-copy" data-sha256-copy="linux">Copiar SHA-256</button>
+                            </div>
+                            <code class="os-sha-code" data-sha256-value="linux">7a98f9f50df57d96927522d5f792ec83d733b24d1bd90897167f207dc41cea98</code>
+                        </div>
                         <div class="mt-12">
-                            <button type="button" class="btn-os-modal" data-download-os="linux">⬇ Descargar Linux (<span data-app-version-tag>v2.4.0</span>)</button>
+                            <a href="https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Linux_amd64.deb" class="btn-os-modal" data-download-os="linux">⬇ Descargar Linux (<span data-app-version-tag>v2.4.0</span>)</a>
                         </div>
                     </article>
                 </div>
@@ -446,13 +467,13 @@
                         <div class="plan-quotas">
                             <span class="quota-pill">💻 1 PC</span>
                             <span class="quota-pill">🏢 Hasta 3 RUCs</span>
-                            <span class="quota-pill">📋 50 líneas Masiva</span>
+                            <span class="quota-pill">🔐 Bóveda AES-256</span>
                         </div>
                         <ul class="plan-list">
-                            <li class="ok">Descarga XML y RIDE PDF del SRI</li>
-                            <li class="ok">Bóveda local cifrada AES-256</li>
-                            <li class="ok">Modo Local + Consulta Masiva 50 líneas</li>
-                            <li class="locked">Generador ATS XML/XSD completo</li>
+                            <li class="ok">Sincronización SRI / RIDE / XML</li>
+                            <li class="ok">Bóveda local cifrada en 1 PC</li>
+                            <li class="locked">Sin lote multi-RUC ni Generador ATS</li>
+                            <li class="locked">Sin Auditor EFOS, sin .tfbkp ni Red LAN</li>
                         </ul>
                         <div class="plan-action-box">
                             <button type="button" class="btn-open-checkout" data-checkout-plan="PERSONAL_PRO">Adquirir Personal Pro</button>
@@ -474,13 +495,13 @@
                         <div class="plan-quotas">
                             <span class="quota-pill">💻 1 PC</span>
                             <span class="quota-pill">🏢 Hasta 25 RUCs</span>
-                            <span class="quota-pill">📋 50 líneas Masiva</span>
+                            <span class="quota-pill">📑 ATS Oficial</span>
                         </div>
                         <ul class="plan-list">
-                            <li class="ok">Hasta 25 contribuyentes en 1 equipo</li>
-                            <li class="ok">Generador ATS XML + validación XSD SRI</li>
-                            <li class="ok">Excel consolidado de compras y ventas</li>
-                            <li class="locked">Doble PC (30+30 RUCs) y Auditor EFOS</li>
+                            <li class="ok">Lote Multi-RUC hasta 25 contribuyentes</li>
+                            <li class="ok">Generador/Validador oficial ATS (XML/XSD/Excel)</li>
+                            <li class="locked">Sin Auditor Fantasma EFOS ni Multi-PC</li>
+                            <li class="locked">Sin respaldo .tfbkp ni Red LAN</li>
                         </ul>
                         <div class="plan-action-box">
                             <button type="button" class="btn-open-checkout" data-checkout-plan="CONTADOR_MASTER">Adquirir Contador Master</button>
@@ -493,23 +514,23 @@
                         <div class="popular-ribbon">MÁS ELEGIDO · OFICINA + CASA</div>
                         <div class="plan-header">
                             <h3>Estudio Contable Pro</h3>
-                            <p>Trabaja con 2 PCs independientes (oficina + casa, sin PC maestra ni red).</p>
+                            <p>Hasta 60 RUCs (o 30/PC en hasta 2 PCs), Auditor EFOS y respaldo portátil .tfbkp.</p>
                         </div>
                         <div class="plan-pricing">
                             <span class="price-regular">Regular $399</span>
                             <div class="price-launch">$299 <span class="period">/ año</span></div>
-                            <span class="price-note">Hasta 2 PCs · 60 RUCs totales (30/PC)</span>
+                            <span class="price-note">Hasta 60 RUCs (o 30/PC en hasta 2 PCs)</span>
                         </div>
                         <div class="plan-quotas">
                             <span class="quota-pill">💻 Hasta 2 PCs</span>
-                            <span class="quota-pill">🏢 60 RUCs totales</span>
-                            <span class="quota-pill">📋 200 líneas Masiva</span>
+                            <span class="quota-pill">🏢 60 RUCs (o 30/PC)</span>
+                            <span class="quota-pill">🛡️ .tfbkp HMAC</span>
                         </div>
                         <ul class="plan-list">
-                            <li class="ok">60 RUCs en 1 PC o 30 RUCs por equipo en 2 PCs</li>
-                            <li class="ok">Windows, macOS o Linux combinables</li>
-                            <li class="ok">Auditor Fantasma (EFOS) + Contingencia ATS</li>
-                            <li class="ok">Paquete de respaldo portátil cifrado (.tfbkp)</li>
+                            <li class="ok">Auditor Fantasma EFOS en tiempo real</li>
+                            <li class="ok">Modo Contingencia ATS XML / XSD</li>
+                            <li class="ok">Respaldo Portátil Cifrado (.tfbkp AES-256-GCM + HMAC)</li>
+                            <li class="locked">Sin Red LAN TCP/IP ni Bóveda UNC</li>
                         </ul>
                         <div class="plan-action-box">
                             <button type="button" class="btn-open-checkout btn-accent" data-checkout-plan="ESTUDIO_PRO">Adquirir Estudio Pro</button>
@@ -521,23 +542,23 @@
                     <article class="plan-card plan-enterprise">
                         <div class="plan-header">
                             <h3>Enterprise Team</h3>
-                            <p>Operación colaborativa en red local LAN y teletrabajo VPN para equipos contables.</p>
+                            <p>Red LAN TCP/IP centralizada con cola anti-colisión y bóveda UNC.</p>
                         </div>
                         <div class="plan-pricing">
                             <span class="price-regular">Regular $1,190</span>
                             <div class="price-launch">$890 <span class="period">/ año</span></div>
-                            <span class="price-note">5 PCs base · Modo Local + Red Oficina</span>
+                            <span class="price-note">5 estaciones base · Red LAN + Bóveda UNC</span>
                         </div>
                         <div class="plan-quotas">
-                            <span class="quota-pill">💻 5 PCs base</span>
+                            <span class="quota-pill">💻 5 estaciones</span>
                             <span class="quota-pill">🏢 RUCs Ilimitados</span>
-                            <span class="quota-pill">📋 Sin límite</span>
+                            <span class="quota-pill">🌐 Red LAN + UNC</span>
                         </div>
                         <ul class="plan-list">
-                            <li class="ok">RUCs y Consulta Masiva ilimitados</li>
-                            <li class="ok">Híbrido Red Local LAN TCP/IP + Teletrabajo VPN</li>
-                            <li class="ok">Bóveda compartida UNC para equipos contables</li>
-                            <li class="ok">Auditoría EFOS + Contingencia ATS completa</li>
+                            <li class="ok">RUCs ilimitados en 5 estaciones base</li>
+                            <li class="ok">Red LAN TCP/IP Centralizada con cola anti-colisión</li>
+                            <li class="ok">Bóveda Compartida UNC (\\SERVIDOR\...)</li>
+                            <li class="locked">Sin Conector Multi-Regional HTTPS</li>
                         </ul>
                         <div class="plan-action-box">
                             <button type="button" class="btn-open-checkout btn-enterprise" data-checkout-plan="ENTERPRISE_TEAM">Solicitar Enterprise Team</button>
@@ -549,22 +570,22 @@
                     <article class="plan-card plan-enterprise">
                         <div class="plan-header">
                             <h3>Enterprise Corporativo</h3>
-                            <p>Multi-sucursal nacional sobre HTTPS/VPN con expansión sin límite por estación extra.</p>
+                            <p>10+ estaciones escalables multi-sede con Conector Multi-Regional HTTPS / Gateway seguro.</p>
                         </div>
                         <div class="plan-pricing">
                             <span class="price-regular">Regular $1,890</span>
                             <div class="price-launch">$1,490 <span class="period">/ año</span></div>
-                            <span class="price-note">10 PCs base · +1 PC adicional por $150/año</span>
+                            <span class="price-note">10+ estaciones base · +$150/PC extra</span>
                         </div>
                         <div class="plan-quotas">
-                            <span class="quota-pill">💻 10 PCs base</span>
-                            <span class="quota-pill">➕ +1 PC ($150/año)</span>
+                            <span class="quota-pill">💻 10+ estaciones</span>
+                            <span class="quota-pill">➕ +$150/PC extra</span>
                             <span class="quota-pill">🏢 Ilimitados</span>
                         </div>
                         <ul class="plan-list">
-                            <li class="ok">Add-on escalable +1 PC sin tope ($150/año c/u)</li>
-                            <li class="ok">Modo Local + Red Local + Multi-Sucursal HTTPS/VPN</li>
-                            <li class="ok">Respaldo corporativo cifrado en la nube (S3)</li>
+                            <li class="ok">10+ estaciones escalables (+$150/PC adicional)</li>
+                            <li class="ok">Conector Multi-Regional HTTPS / Gateway seguro</li>
+                            <li class="ok">Red LAN TCP/IP + Bóveda Compartida UNC</li>
                             <li class="ok">Onboarding prioritario e integración multi-sede</li>
                         </ul>
                         <div class="plan-action-box">
@@ -700,24 +721,24 @@
                             <span class="policy-chevron" aria-hidden="true">▾</span>
                         </summary>
                         <div class="policy-body">
-                            <p>Cada licencia habilita funciones y cupos verificados offline durante 365 días mediante firma Ed25519:</p>
+                            <p>Cada licencia habilita funciones y cupos verificados offline durante 365 días mediante firma criptográfica:</p>
                             <ul>
-                                <li><strong>Personal Pro ($59/año):</strong> 1 PC · Hasta 3 RUCs · Consulta Masiva 50 líneas · Modo Local.</li>
-                                <li><strong>Contador Master ($139/año):</strong> 1 PC · Hasta 25 RUCs · Generador ATS XML/XSD y Excel Consolidado.</li>
-                                <li><strong>Estudio Contable Pro ($299/año):</strong> Hasta 2 PCs independientes (oficina + casa, cualquier SO) · 60 RUCs totales (30 por equipo en 2 PCs o 60 en 1 sola PC) · Auditor Fantasma EFOS y respaldo <code>.tfbkp</code>.</li>
-                                <li><strong>Enterprise Team ($890/año):</strong> 5 PCs base (Red Local LAN + VPN) · RUCs y Consulta Masiva ilimitados.</li>
-                                <li><strong>Enterprise Corporativo ($1,490/año):</strong> 10 PCs base (+1 PC extra sin tope a $150/año c/u) · Multi-Sucursal HTTPS/VPN + respaldo S3.</li>
+                                <li><strong>Personal Pro ($59/año):</strong> Hasta 3 RUCs · 1 PC · Sincronización SRI/RIDE/XML y bóveda local cifrada (sin lote multi-RUC, ATS, EFOS, <code>.tfbkp</code> ni LAN).</li>
+                                <li><strong>Contador Master ($139/año):</strong> Hasta 25 RUCs · 1 PC · Lote Multi-RUC y Generador/Validador oficial ATS XML/XSD/Excel (sin EFOS, Multi-PC, <code>.tfbkp</code> ni LAN).</li>
+                                <li><strong>Estudio Contable Pro ($299/año):</strong> Hasta 60 RUCs (o 30/PC en hasta 2 PCs) · Auditor Fantasma EFOS, Contingencia ATS y Respaldo <code>.tfbkp</code> AES-256-GCM + HMAC (sin Red LAN ni UNC).</li>
+                                <li><strong>Enterprise Team ($890/año):</strong> RUCs ilimitados · 5 estaciones base · Red LAN TCP/IP anti-colisión y Bóveda Compartida UNC (sin Conector Multi-Regional HTTPS).</li>
+                                <li><strong>Enterprise Corporativo ($1,490/año base):</strong> 10+ estaciones escalables (+$150/PC extra) · Red LAN/UNC + Conector Multi-Regional HTTPS / Gateway seguro.</li>
                             </ul>
                         </div>
                     </details>
 
                     <details class="policy-accordion">
                         <summary class="policy-summary">
-                            <span class="policy-summary-title"><span class="policy-num">02</span> Evaluación Gratuita (14 Días), Sellado Ético y Cero Secuestro de Datos</span>
+                            <span class="policy-summary-title"><span class="policy-num">02</span> Evaluación Gratuita (15 Días / 60 RUCs), Sellado Ético y Cero Secuestro de Datos</span>
                             <span class="policy-chevron" aria-hidden="true">▾</span>
                         </summary>
                         <div class="policy-body">
-                            <p>La evaluación gratuita dura 14 días calendario en 1 PC con hasta 2 RUCs y 15 líneas por lote en Consulta Masiva. Si finaliza tu suscripción, solo se pausan las automatizaciones nuevas: todos tus XML, RIDE PDF y reportes Excel permanecen íntegros y exportables sin costo ni penalidad.</p>
+                            <p>La evaluación gratuita dura 15 días calendario con capacidad de hasta 60 RUCs (modalidad Estudio Contable Pro) y sin necesidad de tarjeta de crédito. Si finaliza tu suscripción, solo se pausan las automatizaciones nuevas: todos tus XML, RIDE PDF y reportes Excel permanecen íntegros y exportables sin costo ni penalidad.</p>
                         </div>
                     </details>
 
@@ -727,7 +748,7 @@
                             <span class="policy-chevron" aria-hidden="true">▾</span>
                         </summary>
                         <div class="policy-body">
-                            <p>TributaFlow Pro procesa tus contraseñas SRI y base de datos SQLCipher AES-256 estrictamente en tu computadora. Solo cuando tú solicitas trasladar tu archivo o usar modo nube corporativo se generan paquetes cifrados <code>.tfbkp</code> bajo tu propio control.</p>
+                            <p>TributaFlow Pro procesa tus contraseñas SRI y base de datos SQLCipher AES-256 estrictamente en tu computadora. Cuando respaldas o trasladas tu cartera (desde Estudio Contable Pro) se generan paquetes cifrados <code>.tfbkp</code> (AES-256-GCM + HMAC) bajo tu propio control.</p>
                         </div>
                     </details>
                 </div>
@@ -745,7 +766,7 @@
             <div class="pre-footer-card">
                 <div>
                     <h3>¿Listo para automatizar tus declaraciones del SRI hoy?</h3>
-                    <p>Comienza gratis por <span data-trial-days>14 días</span> o conversa directamente con nuestro equipo por WhatsApp (<code>0996459771</code>).</p>
+                    <p>Comienza gratis por <span data-trial-days>15 días</span> (hasta 60 RUCs, Estudio Pro, sin tarjeta) o conversa por WhatsApp (<code>0996459771</code>).</p>
                 </div>
                 <div class="pre-footer-actions">
                     <a href="planes.html" class="btn-glow">Ver Planes y Adquirir ➔</a>
@@ -811,6 +832,6 @@
         <span>💬 Soporte 0996459771</span>
     </a>
 
-    <script src="assets/js/portal.js" defer></script>
+    <script src="assets/js/portal.js" integrity="sha384-kebtRLoN/uWtZmOBf9j5Yij0r1GMQH4JPggPDzwd5+cjwherbeJVzn8v8KODzYOa" crossorigin="anonymous" defer></script>
 </body>
 </html>

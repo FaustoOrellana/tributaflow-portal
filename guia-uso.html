@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none';">
-    <meta name="referrer" content="no-referrer">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Guía de Uso e Implementación v2.4.0 | TributaFlow Pro</title>
-    <meta name="description" content="Guía práctica de instalación y puesta en marcha de TributaFlow Pro v2.4.0 por escenario: Windows, macOS, Linux, Estudio Dual-PC (30+30 o 60 en 1), Red LAN y Corporativo.">
+    <meta name="description" content="Guía práctica de instalación, verificación SHA-256 y puesta en marcha de TributaFlow Pro v2.4.0 por escenario: Windows, macOS, Linux, Estudio Pro (.tfbkp), Red LAN UNC y Conector Multi-Regional HTTPS.">
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
-    <link rel="stylesheet" href="assets/css/portal.css">
+    <link rel="stylesheet" href="assets/css/portal.css" integrity="sha384-sVn32hko8xHqLn9XA7bOd7hwZGVCN6VbsPAV3lmZ4TWju2Y/wk0JFilzVapotcKz" crossorigin="anonymous">
 </head>
 <body>
 
@@ -69,26 +69,26 @@
 
                 <!-- PANEL 1: INSTALACIÓN RÁPIDA -->
                 <article class="guide-panel is-active" id="tab-rapida" role="tabpanel" data-guide-panel="rapida">
-                    <h2>Instalación Rápida en Windows, macOS o Linux (<span data-app-version-tag>v2.4.0</span>)</h2>
-                    <p class="muted-note mt-6">Todos los instaladores incluyen la evaluación gratuita de <strong data-trial-days>14 días</strong> (1 PC, hasta 2 RUCs reales y 15 líneas en Consulta Masiva).</p>
+                    <h2>Instalación Rápida y Verificación SHA-256 en Windows, macOS o Linux (<span data-app-version-tag>v2.4.0</span>)</h2>
+                    <p class="muted-note mt-6">Todos los instaladores incluyen la evaluación gratuita de <strong data-trial-days>15 días</strong> con capacidad de <strong>hasta 60 RUCs (modalidad Estudio Contable Pro)</strong> y <strong>sin necesidad de tarjeta de crédito</strong>.</p>
 
                     <div class="guide-steps-grid mt-24">
                         <div class="guide-step-card">
                             <span class="step-num">01</span>
-                            <h3>Windows 10 / 11 (PC y Laptop Táctil)</h3>
-                            <p>Ejecuta el asistente <code>TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe</code>. Si aparece aviso preventivo de Windows SmartScreen, haz clic en <strong>"Más información" ➔ "Ejecutar de todas formas"</strong>.</p>
+                            <h3>Windows 10 / 11 (x64 y Laptop Táctil)</h3>
+                            <p>Ejecuta <code>TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe</code> tras comprobar su SHA-256 con <code>certutil -hashfile ... SHA256</code>. Si aparece SmartScreen, selecciona <strong>"Más información" ➔ "Ejecutar de todas formas"</strong>.</p>
                         </div>
 
                         <div class="guide-step-card">
                             <span class="step-num">02</span>
                             <h3>macOS (.dmg Apple Silicon & Intel)</h3>
-                            <p>Arrastra <strong>TributaFlow Pro</strong> a Aplicaciones. Para el primer arranque fuera de App Store, presiona <strong>Control + clic</strong> (o clic derecho) sobre el icono y elige <strong>Abrir</strong>.</p>
+                            <p>Verifica el SHA-256 con <code>shasum -a 256</code> y arrastra <strong>TributaFlow Pro</strong> a Aplicaciones. Para el primer arranque fuera de App Store, presiona <strong>Control + clic</strong> y elige <strong>Abrir</strong>.</p>
                         </div>
 
                         <div class="guide-step-card">
                             <span class="step-num">03</span>
-                            <h3>Linux Ubuntu / Debian (.deb)</h3>
-                            <p>Instala dependencias automáticamente desde terminal con <code>sudo apt install ./TributaFlow_Pro_v2.4.0_Linux_amd64.deb</code> e inicia desde el menú del sistema.</p>
+                            <h3>Linux Ubuntu / Debian (.deb amd64)</h3>
+                            <p>Valida la integridad con <code>sha256sum</code> e instala dependencias desde terminal con <code>sudo apt install ./TributaFlow_Pro_v2.4.0_Linux_amd64.deb</code>.</p>
                         </div>
                     </div>
 
@@ -100,111 +100,111 @@
                 <!-- PANEL 2: 1 PC (PERSONAL Y CONTADOR MASTER) -->
                 <article class="guide-panel" id="tab-1pc" role="tabpanel" data-guide-panel="1pc">
                     <h2>Operación Individual en 1 PC (Personal Pro y Contador Master)</h2>
-                    <p class="muted-note mt-6">Diseñado para trabajar con máxima privacidad local: <strong>Personal Pro</strong> gestiona hasta <strong>3 RUCs</strong> ($59/año) y <strong>Contador Master</strong> hasta <strong>25 RUCs</strong> con Generador ATS ($139/año).</p>
+                    <p class="muted-note mt-6">Privacidad local en 1 estación: <strong>Personal Pro</strong> ($59/año) gestiona hasta <strong>3 RUCs</strong> (sin lote multi-RUC, ATS, EFOS, <code>.tfbkp</code> ni LAN) y <strong>Contador Master</strong> ($139/año) gestiona hasta <strong>25 RUCs</strong> con Lote Multi-RUC y Generador/Validador ATS (XML/XSD/Excel).</p>
 
                     <div class="guide-steps-grid mt-24">
                         <div class="guide-step-card">
                             <span class="step-num">01</span>
                             <h3>Define tu Carpeta Bóveda</h3>
-                            <p>Al abrir TributaFlow Pro por primera vez, elige la ruta donde se guardarán tus XML, RIDE PDF y base SQLCipher AES-256 (por ejemplo <code>Documentos/Boveda_SRI</code>).</p>
+                            <p>Al abrir TributaFlow Pro por primera vez, elige la ruta donde se guardarán tus XML, RIDE PDF y base local cifrada (por ejemplo <code>Documentos/Boveda_SRI</code>).</p>
                         </div>
 
                         <div class="guide-step-card">
                             <span class="step-num">02</span>
                             <h3>Registra tus Contribuyentes</h3>
-                            <p>Ve a <strong>Mis Contribuyentes</strong>, registra hasta 3 RUCs (Personal Pro) o 25 RUCs (Contador Master) y ejecuta <strong>Sincronizar SRI</strong> o <strong>Importar TXT/ZIP</strong>.</p>
+                            <p>Ve a <strong>Mis Contribuyentes</strong>, registra hasta 3 RUCs (Personal Pro) o 25 RUCs en lote (Contador Master) y ejecuta <strong>Sincronizar SRI</strong> o <strong>Importar TXT/ZIP</strong>.</p>
                         </div>
 
                         <div class="guide-step-card">
                             <span class="step-num">03</span>
-                            <h3>Genera ATS XML y Excel</h3>
-                            <p>En <strong>Contador Master</strong>, entra a <strong>Generador ATS Oficial</strong>, selecciona periodo y RUC para exportar el XML validado con esquema XSD listo para subir al SRI.</p>
+                            <h3>Genera ATS XML/XSD y Excel</h3>
+                            <p>En <strong>Contador Master</strong> ($139/año), entra a <strong>Generador ATS Oficial</strong>, selecciona periodo y RUC para exportar el XML validado con esquema XSD y Excel consolidado.</p>
                         </div>
                     </div>
 
                     <div class="guide-callout-warn mt-24">
-                        <strong>Sobre cambios o formateo de equipo:</strong> Genera siempre un archivo <code>.tfbkp</code> desde <em>Ajustes y Seguridad</em> antes de formatear o cambiar de laptop. Incluimos respaldo de traslado de equipo dentro del periodo anual vigente.
+                        <strong>Sobre capacidades por plan:</strong> Personal Pro y Contador Master operan en 1 PC local (sin Auditor EFOS, sin Multi-PC, sin exportación <code>.tfbkp</code> y sin Red LAN). Para habilitar <code>.tfbkp</code>, EFOS y hasta 60 RUCs, escala a Estudio Contable Pro ($299/año).
                     </div>
                 </article>
 
                 <!-- PANEL 3: ESTUDIO PRO DUAL-PC -->
                 <article class="guide-panel" id="tab-2pcs" role="tabpanel" data-guide-panel="2pcs">
                     <h2>Trabajo Dual-PC Independiente (Estudio Contable Pro — $299/año)</h2>
-                    <p class="muted-note mt-6">Pensado para contadores que alternan entre oficina y casa o comparten carga entre 2 máquinas (Windows, macOS o Linux combinables) <strong>sin depender de servidor ni red LAN permanente</strong>.</p>
+                    <p class="muted-note mt-6">Hasta <strong>60 RUCs (o 30/PC en hasta 2 PCs)</strong> con <strong>Auditor Fantasma EFOS en tiempo real</strong>, Modo Contingencia ATS y Respaldo Portátil Cifrado (<code>.tfbkp AES-256-GCM + HMAC</code>), sin Red LAN TCP/IP ni Bóveda UNC.</p>
 
                     <div class="guide-steps-grid mt-24">
                         <div class="guide-step-card">
                             <span class="step-num">01</span>
                             <h3>Distribución Flexible de 60 RUCs</h3>
-                            <p>Tu licencia habilita <strong>60 RUCs totales</strong>: usa <strong>30 RUCs en PC Oficina + 30 RUCs en Laptop Casa</strong>, o bien concentra los <strong>60 RUCs completos en 1 sola PC</strong> sin PC maestra.</p>
+                            <p>Tu licencia habilita <strong>hasta 60 RUCs</strong>: distribuye <strong>30 RUCs/PC en 2 PCs</strong> (oficina + casa, cualquier SO) o concentra los <strong>60 RUCs en 1 sola PC</strong>.</p>
                         </div>
 
                         <div class="guide-step-card">
                             <span class="step-num">02</span>
                             <h3>Auditoría EFOS y Contingencia</h3>
-                            <p>Activa <strong>Auditor Fantasma</strong> para cruzar facturas frente a listados EFOS del SRI y utiliza el modo de <strong>Contingencia ATS</strong> en cierres masivos de estudio.</p>
+                            <p>Activa <strong>Auditor Fantasma</strong> para cruzar facturas en tiempo real frente a EFOS SRI y utiliza el <strong>Modo Contingencia ATS</strong> en cierres masivos.</p>
                         </div>
 
                         <div class="guide-step-card">
                             <span class="step-num">03</span>
                             <h3>Sincroniza Oficina ⇄ Casa con .tfbkp</h3>
-                            <p>Exporta un paquete portátil cifrado <code>.tfbkp</code> (bóveda + llaves) en un pendrive o carpeta privada para continuar trabajando en tu segunda computadora en segundos.</p>
+                            <p>Exporta un paquete portátil cifrado <code>.tfbkp</code> (<strong>AES-256-GCM + HMAC</strong>) para mover o resguardar tu bóveda entre equipos sin necesitar Red LAN TCP/IP ni Bóveda UNC.</p>
                         </div>
                     </div>
 
                     <div class="guide-callout mt-24">
-                        <strong>Sin dependencia de internet entre equipos:</strong> Cada una de las 2 computadoras recibe su archivo de activación oficial vinculado a su HWID, funcionando offline de manera totalmente autónoma.
+                        <strong>Evaluación gratuita idéntica por 15 días:</strong> Al instalar v2.4.0 recibes 15 días de prueba en modalidad Estudio Contable Pro (hasta 60 RUCs, sin tarjeta de crédito).
                     </div>
                 </article>
 
                 <!-- PANEL 4: ENTERPRISE TEAM LAN / VPN -->
                 <article class="guide-panel" id="tab-lan" role="tabpanel" data-guide-panel="lan">
-                    <h2>Implementación Colaborativa en Red Local LAN o VPN (Enterprise Team)</h2>
-                    <p class="muted-note mt-6">Ideal para estudios con equipo contable: <strong>5 PCs base</strong> ($890/año) con <strong>RUCs Ilimitados</strong>, Consulta Masiva sin límite y arquitectura híbrida oficina + teletrabajo.</p>
+                    <h2>Implementación Colaborativa en Red LAN TCP/IP y Bóveda UNC (Enterprise Team — $890/año)</h2>
+                    <p class="muted-note mt-6">Para estudios con equipo contable: <strong>RUCs ilimitados</strong>, <strong>5 estaciones base</strong>, <strong>Red LAN TCP/IP Centralizada con cola anti-colisión</strong> y <strong>Bóveda Compartida UNC (<code>\\SERVIDOR\...</code>)</strong> (sin Conector Multi-Regional HTTPS).</p>
 
                     <div class="guide-steps-grid mt-24">
                         <div class="guide-step-card">
                             <span class="step-num">01</span>
-                            <h3>Designa la Estación Maestra (LAN_SERVIDOR)</h3>
-                            <p>En tu computadora principal o servidor interno de oficina, comparte la carpeta de bóveda por ruta de red (ej. <code>\\SERVIDOR\BovedaTributaFlow</code>) y activa el servicio LAN TCP/IP.</p>
+                            <h3>Designa la Bóveda Compartida UNC</h3>
+                            <p>Comparte la carpeta central en red local (ej. <code>\\SERVIDOR\BovedaTributaFlow</code>) e inicia el servicio de <strong>Red LAN TCP/IP Centralizada</strong>.</p>
                         </div>
 
                         <div class="guide-step-card">
                             <span class="step-num">02</span>
-                            <h3>Conecta Hasta 4 PCs Adicionales (LAN_CLIENTE)</h3>
-                            <p>Las estaciones asistentes apuntan a la IP local o ruta UNC compartida trabajando sobre el mismo repositorio central sin duplicar comprobantes ni claves.</p>
+                            <h3>Conecta Hasta 5 Estaciones Base</h3>
+                            <p>Las estaciones asistentes operan sobre el repositorio único con <strong>cola anti-colisión</strong> para evitar descargas duplicadas del mismo RUC/período.</p>
                         </div>
 
                         <div class="guide-step-card">
                             <span class="step-num">03</span>
-                            <h3>Soporte Teletrabajo por VPN Multi-HWID</h3>
-                            <p>Los contadores fuera de oficina conectan por túnel VPN seguro manteniendo permisos cifrados y auditoría trazable de cada estación autorizada.</p>
+                            <h3>Sin Conector Multi-Regional HTTPS</h3>
+                            <p>Enterprise Team optimiza oficinas en red local LAN/UNC. Si requieres conectar sucursales remotas por Gateway seguro, utiliza Enterprise Corporativo.</p>
                         </div>
                     </div>
                 </article>
 
                 <!-- PANEL 5: ENTERPRISE CORPORATIVO -->
                 <article class="guide-panel" id="tab-corp" role="tabpanel" data-guide-panel="corp">
-                    <h2>Despliegue Nacional Multi-Sucursal (Enterprise Corporativo)</h2>
-                    <p class="muted-note mt-6">Arquitectura empresarial para grupos económicos con múltiples sedes: <strong>10 PCs base ($1,490/año)</strong> + expansión ilimitada <strong>+1 PC por $150/año c/u</strong>.</p>
+                    <h2>Despliegue Nacional Multi-Sede (Enterprise Corporativo — $1,490/año base)</h2>
+                    <p class="muted-note mt-6">Arquitectura empresarial escalable: <strong>10+ estaciones escalables (+$150/PC extra)</strong>, RUCs ilimitados, Red LAN + Bóveda UNC y <strong>Conector Multi-Regional HTTPS / Gateway seguro</strong>.</p>
 
                     <div class="guide-steps-grid mt-24">
                         <div class="guide-step-card">
                             <span class="step-num">01</span>
-                            <h3>Multi-Sucursal sobre HTTPS / VPN</h3>
-                            <p>Centraliza compañías hermanas y razones sociales ilimitadas entre Quito, Guayaquil, Cuenca u otras ciudades bajo canales cifrados dedicados.</p>
+                            <h3>Conector Multi-Regional HTTPS / Gateway Seguro</h3>
+                            <p>Conecta sedes en distintas ciudades bajo túneles cifrados HTTPS / Gateway seguro manteniendo control centralizado sobre razones sociales ilimitadas.</p>
                         </div>
 
                         <div class="guide-step-card">
                             <span class="step-num">02</span>
-                            <h3>Respaldo Corporativo en Nube Privada (S3)</h3>
-                            <p>Programa copias cifradas punto a punto hacia tu propio bucket compatible con S3 manteniendo las claves AES-256 bajo custodia interna de tu empresa.</p>
+                            <h3>Respaldo Cifrado y Bóveda UNC</h3>
+                            <p>Combina operación en Bóveda Compartida UNC y respaldos cifrados (<code>.tfbkp</code> AES-256-GCM + HMAC) bajo custodia interna exclusiva de tu organización.</p>
                         </div>
 
                         <div class="guide-step-card">
                             <span class="step-num">03</span>
-                            <h3>Crecimiento Modular sin Fricción</h3>
-                            <p>Cuando se incorpore un nuevo analista financiero, añade licencias individuales (+$150/año por PC extra) desde el mismo contrato anual.</p>
+                            <h3>Escalamiento Modular (+$150/PC extra)</h3>
+                            <p>Parte desde 10 estaciones base ($1,490/año) e incorpora nuevas estaciones adicionales por <strong>+$150/PC extra</strong> sin límites.</p>
                         </div>
                     </div>
 
@@ -221,8 +221,8 @@
         <div class="container">
             <div class="pre-footer-card">
                 <div>
-                    <h3>¿Prefieres instalar primero y probar durante <span data-trial-days>14 días</span>?</h3>
-                    <p>Descarga la edición oficial <span data-app-version-tag>v2.4.0</span> o conversa con soporte técnico al <code>0996459771</code>.</p>
+                    <h3>¿Prefieres instalar primero y probar durante <span data-trial-days>15 días</span> (hasta 60 RUCs)?</h3>
+                    <p>Descarga la edición oficial <span data-app-version-tag>v2.4.0</span> en modalidad Estudio Contable Pro sin tarjeta o conversa al <code>0996459771</code>.</p>
                 </div>
                 <div class="pre-footer-actions">
                     <button type="button" class="btn-glow" data-download-os="auto">⬇ Descargar para Mi PC</button>
@@ -287,6 +287,6 @@
         <span>💬 Soporte 0996459771</span>
     </a>
 
-    <script src="assets/js/portal.js" defer></script>
+    <script src="assets/js/portal.js" integrity="sha384-kebtRLoN/uWtZmOBf9j5Yij0r1GMQH4JPggPDzwd5+cjwherbeJVzn8v8KODzYOa" crossorigin="anonymous" defer></script>
 </body>
 </html>

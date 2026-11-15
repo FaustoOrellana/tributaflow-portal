@@ -2867,3 +2867,73 @@ html, body {
 *, *:before, *:after {
   box-sizing: border-box;
 }
+
+/* ==========================================================================
+   VERIFICACIÓN SHA-256 DE INSTALADORES v2.4.0
+   ========================================================================== */
+.os-sha-box {
+    background: rgba(15, 23, 42, 0.72);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: var(--radius-sm);
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.os-sha-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.os-sha-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.btn-sha-copy {
+    appearance: none;
+    background: rgba(56, 189, 248, 0.14);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s ease, color 0.18s ease;
+}
+
+.btn-sha-copy:hover {
+    background: rgba(56, 189, 248, 0.28);
+    color: #ffffff;
+}
+
+.os-sha-code {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    font-size: 11px;
+    color: #34d399 !important;
+    background: rgba(2, 6, 23, 0.85) !important;
+    padding: 6px 8px !important;
+    border-radius: 6px;
+    word-break: break-all;
+    display: block;
+    user-select: all;
+}
+
+.os-verify-cmd {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    font-size: 11.5px;
+    color: #bae6fd;
+    background: rgba(2, 6, 23, 0.85);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 6px;
+    padding: 8px 10px;
+    word-break: break-all;
+    display: block;
+}

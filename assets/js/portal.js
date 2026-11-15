@@ -33,9 +33,9 @@
 
     const CONFIG_COMERCIAL = congelarProfundo({
         VERSION: "2.4.0",
-        TRIAL_DIAS: 14,
-        TRIAL_RUCS: 2,
-        TRIAL_MASIVA: 15,
+        TRIAL_DIAS: 15,
+        TRIAL_RUCS: 60,
+        TRIAL_MODALIDAD: "Estudio Contable Pro",
         DOMINIO_OFICIAL: "https://tributaflow.quoratec.com",
         URL_DESCARGAS_PORTAL: URL_PORTAL_DESCARGAS,
         API_CONFIG_PATH: "api/config_comercial.json",
@@ -61,7 +61,7 @@
         MAILTO_URL_PREFIX: "mailto:soportetributaflow@quoratec.com",
         ASUNTO_SOPORTE: "Consulta Soporte Técnico — TributaFlow Pro",
         DOMINIOS_PAYPHONE: ["ppls.me", "payphone.app"],
-        GITHUB_RELEASES_PREFIX: "/FaustoOrellana/tributaflow-portal/releases/",
+        GITHUB_RELEASES_PREFIX: "/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/",
         PAYPHONE_BADGES: "Visa · Mastercard · Diners · Discover · Alia",
         PAYPHONE_GARANTIA: "🛡️ Pago protegido con verificación 3D Secure Ecuador",
         PRECIO_SEAT_EXTRA_USD: 150,
@@ -79,10 +79,10 @@
             precioUsd: 59,
             rucsMax: 3,
             rucsLabel: "Hasta 3 RUCs",
-            masivaLabel: "Consulta Masiva: 50 líneas",
+            masivaLabel: "SRI/RIDE/XML • Sin lote multi-RUC/ATS/EFOS",
             estacionesBase: 1,
             estacionesLabel: "1 PC",
-            modoLabel: "Modo Local",
+            modoLabel: "Bóveda local cifrada (Sin .tfbkp / Sin Red LAN)",
             esEnterprise: false,
             permiteExtraSeats: false,
         },
@@ -94,40 +94,40 @@
             precioUsd: 139,
             rucsMax: 25,
             rucsLabel: "Hasta 25 RUCs",
-            masivaLabel: "Consulta Masiva: 50 líneas",
+            masivaLabel: "Lote Multi-RUC + ATS XML/XSD/Excel",
             estacionesBase: 1,
             estacionesLabel: "1 PC",
-            modoLabel: "Modo Local",
+            modoLabel: "Modo Local (Sin EFOS / Multi-PC / .tfbkp / LAN)",
             esEnterprise: false,
             permiteExtraSeats: false,
         },
         ESTUDIO_PRO: {
             id: "ESTUDIO_PRO",
-            nombre: "Estudio Contable Pro / PyME",
+            nombre: "Estudio Contable Pro",
             nombreComercial: "TF Estudio Pro",
             precioRegularUsd: 399,
             precioUsd: 299,
             rucsMax: 60,
-            rucsLabel: "Hasta 60 RUCs (30 por PC o 60 en 1 PC)",
-            masivaLabel: "Consulta Masiva: 200 líneas",
+            rucsLabel: "Hasta 60 RUCs (o 30/PC en hasta 2 PCs)",
+            masivaLabel: "Auditor Fantasma EFOS + Contingencia ATS + .tfbkp",
             estacionesBase: 2,
-            estacionesLabel: "Hasta 2 PCs independientes",
-            modoLabel: "Modo Local (2 PCs independientes)",
+            estacionesLabel: "Hasta 2 PCs (60 RUCs o 30/PC)",
+            modoLabel: "Modo Local + .tfbkp AES-256-GCM (Sin Red LAN/UNC)",
             esEnterprise: false,
             permiteExtraSeats: false,
         },
         ENTERPRISE_TEAM: {
             id: "ENTERPRISE_TEAM",
-            nombre: "Enterprise Team (Red LAN)",
+            nombre: "Enterprise Team",
             nombreComercial: "TF Enterprise Team",
             precioRegularUsd: 1190,
             precioUsd: 890,
             rucsMax: -1,
             rucsLabel: "RUCs Ilimitados",
-            masivaLabel: "Consulta Masiva: Sin límite",
+            masivaLabel: "Red LAN TCP/IP Anti-Colisión + Bóveda UNC",
             estacionesBase: 5,
-            estacionesLabel: "5 PCs base (LAN + VPN Multi-HWID)",
-            modoLabel: "Modo Local + Red Local Oficina",
+            estacionesLabel: "5 estaciones base",
+            modoLabel: "Red LAN TCP/IP + UNC (Sin Multi-Regional HTTPS)",
             esEnterprise: true,
             permiteExtraSeats: false,
         },
@@ -139,10 +139,10 @@
             precioUsd: 1490,
             rucsMax: -1,
             rucsLabel: "RUCs Ilimitados",
-            masivaLabel: "Consulta Masiva: Sin límite",
+            masivaLabel: "10+ estaciones (+$150/PC extra) • Multi-Regional HTTPS",
             estacionesBase: 10,
-            estacionesLabel: "10 PCs base (+1 PC sin límite $150/año)",
-            modoLabel: "Local + Red Local + Multi-Sucursal HTTPS/VPN",
+            estacionesLabel: "10+ estaciones escalables (+$150/PC extra)",
+            modoLabel: "Red LAN + Bóveda UNC + Conector Multi-Regional HTTPS",
             esEnterprise: true,
             permiteExtraSeats: true,
         },
@@ -153,15 +153,18 @@
             id: "windows",
             etiqueta: "Windows",
             modalId: "modalDescargaWindows",
-            titulo: "Descargar para Windows 10 / 11 (64-bit y Tablets Windows)",
+            titulo: "Descargar para Windows 10 / 11 (x64 y Tablets Windows)",
             badge: "INSTALADOR OFICIAL WINDOWS .EXE",
             archivo: "TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe",
-            tamano: "Instalador 64-bit • Firma SHA-256",
-            url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/latest/download/TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe",
+            tamano: "Instalador Windows x64 • Verificado SHA-256",
+            url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe",
+            sha256: "2c9f35ef3ddd723456a389b1f6308d4176d86e099610ff520652b9d6a4ddfdaa",
+            sha256Url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe.sha256",
+            comandoSha256: 'certutil -hashfile "TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe" SHA256',
             pasos: [
-                "1. Descarga e inicia TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe (compatible con PC, laptop táctil y tablets con Windows).",
-                "2. Si aparece Windows SmartScreen, haz clic en \"Más información\" y luego en \"Ejecutar de todas formas\".",
-                "3. Evalúa gratis por 14 días (hasta 2 RUCs y 15 líneas masivas) o carga tu llave anual .lic.",
+                "1. Descarga TributaFlow_Pro_v2.4.0_Windows_x64_Setup.exe (compatible con PC, laptop táctil y tablets con Windows).",
+                "2. Comprueba que el hash SHA-256 local coincida exactamente con el resumen publicado abajo.",
+                "3. Evalúa gratis por 15 días con hasta 60 RUCs (modalidad Estudio Contable Pro, sin tarjeta) o carga tu llave anual .lic.",
             ],
         },
         macos: {
@@ -171,12 +174,15 @@
             titulo: "Descargar para macOS (Apple Silicon / Intel)",
             badge: "IMAGEN OFICIAL MACOS .DMG",
             archivo: "TributaFlow_Pro_v2.4.0_macOS.dmg",
-            tamano: "Imagen de disco macOS • SHA-256",
-            url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/latest/download/TributaFlow_Pro_v2.4.0_macOS.dmg",
+            tamano: "Imagen de disco macOS • Verificado SHA-256",
+            url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_macOS.dmg",
+            sha256: "cddc6830d5c0605f3d607edcb136b44ca779fcac731b612647841da10756181c",
+            sha256Url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_macOS.dmg.sha256",
+            comandoSha256: "shasum -a 256 TributaFlow_Pro_v2.4.0_macOS.dmg",
             pasos: [
-                "1. Abre TributaFlow_Pro_v2.4.0_macOS.dmg y arrastra TributaFlow Pro a la carpeta Aplicaciones.",
+                "1. Abre TributaFlow_Pro_v2.4.0_macOS.dmg tras validar su firma SHA-256 y arrastra TributaFlow Pro a Aplicaciones.",
                 "2. La primera vez, haz clic derecho (o Control + clic) sobre TributaFlow Pro y selecciona Abrir.",
-                "3. Disfruta de 14 días de evaluación gratuita 100 % local en tu Mac antes de activar tu plan.",
+                "3. Disfruta de 15 días de evaluación gratuita con hasta 60 RUCs (modalidad Estudio Contable Pro) antes de activar tu plan.",
             ],
         },
         linux: {
@@ -186,12 +192,15 @@
             titulo: "Descargar para Linux (Ubuntu / Debian / Mint amd64)",
             badge: "PAQUETE OFICIAL LINUX .DEB",
             archivo: "TributaFlow_Pro_v2.4.0_Linux_amd64.deb",
-            tamano: "Paquete Debian amd64 • SHA-256",
-            url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/latest/download/TributaFlow_Pro_v2.4.0_Linux_amd64.deb",
+            tamano: "Paquete Debian amd64 • Verificado SHA-256",
+            url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Linux_amd64.deb",
+            sha256: "7a98f9f50df57d96927522d5f792ec83d733b24d1bd90897167f207dc41cea98",
+            sha256Url: "https://github.com/FaustoOrellana/tributaflow-portal/releases/download/v2.4.0/TributaFlow_Pro_v2.4.0_Linux_amd64.deb.sha256",
+            comandoSha256: "sha256sum TributaFlow_Pro_v2.4.0_Linux_amd64.deb",
             pasos: [
-                "1. Descarga el paquete .deb oficial e instálalo con: sudo apt install ./TributaFlow_Pro_v2.4.0_Linux_amd64.deb",
-                "2. Inicia la aplicación para acceder a la evaluación gratuita de 14 días en tu escritorio Linux.",
-                "3. Opera con bóveda SQLite cifrada AES-256 y respaldo portátil .tfbkp compatible entre plataformas.",
+                "1. Verifica el hash SHA-256 e instala con: sudo apt install ./TributaFlow_Pro_v2.4.0_Linux_amd64.deb",
+                "2. Inicia la aplicación para acceder a la evaluación gratuita de 15 días (hasta 60 RUCs, modalidad Estudio Pro).",
+                "3. Opera con bóveda SQLite cifrada AES-256 y respaldo portátil .tfbkp (AES-256-GCM + HMAC).",
             ],
         },
     });
@@ -202,11 +211,11 @@
             secciones: [
                 {
                     sub: "1. Suscripción Anual (365 Días) y 5 Planes Oficiales",
-                    txt: "Quoratec Software Solutions otorga una licencia anual de 365 días vinculada criptográficamente (RSA-2048) al identificador HWID de las estaciones autorizadas: Personal Pro (3 RUCs, 1 PC), Contador Master (25 RUCs, 1 PC), Estudio Contable Pro (hasta 60 RUCs: 30 por PC en 2 PCs o 60 en 1 PC), Enterprise Team (5 PCs LAN/VPN, RUCs ilimitados) y Enterprise Corporativo (10+N PCs Multi-Sucursal, RUCs ilimitados).",
+                    txt: "Quoratec Software Solutions otorga una licencia anual de 365 días vinculada criptográficamente al identificador HWID de las estaciones autorizadas: Personal Pro (hasta 3 RUCs, 1 PC), Contador Master (hasta 25 RUCs, 1 PC), Estudio Contable Pro (hasta 60 RUCs o 30/PC en hasta 2 PCs), Enterprise Team (RUCs ilimitados, 5 estaciones base LAN/UNC) y Enterprise Corporativo (10+ estaciones +$150/PC extra y Conector Multi-Regional HTTPS).",
                 },
                 {
-                    sub: "2. Evaluación Gratuita (14 Días) y Sin Secuestro de Datos",
-                    txt: "Incluye 14 días de evaluación gratuita (hasta 2 RUCs y 15 líneas en Consulta Masiva). La consulta informativa de RUC no consume cupo. Tras finalizar la vigencia sin renovar, conservas lectura local de tu historial y archivos XML/RIDE/Excel sin secuestro de datos.",
+                    sub: "2. Evaluación Gratuita (15 Días / 60 RUCs) y Sin Secuestro de Datos",
+                    txt: "Incluye 15 días de evaluación gratuita con capacidad de hasta 60 RUCs en modalidad Estudio Contable Pro y sin necesidad de tarjeta de crédito. La consulta informativa de RUC no consume cupo. Tras finalizar la vigencia sin renovar, conservas lectura local de tu historial y archivos XML/RIDE/Excel sin secuestro de datos.",
                 },
                 {
                     sub: "3. Limitación de Responsabilidad Tributaria",
@@ -871,13 +880,29 @@
         metaBox.appendChild(r1);
         metaBox.appendChild(r2);
 
+        const shaBox = crearEl("div", "os-sha-box");
+        const shaHead = crearEl("div", "os-sha-head");
+        shaHead.appendChild(crearEl("span", "os-sha-label", "Verificación SHA-256 Oficial:"));
+        const btnCopySha = crearEl("button", "btn-sha-copy", "📋 Copiar SHA-256");
+        btnCopySha.type = "button";
+        btnCopySha.addEventListener("click", () => {
+            copiarAlPortapapeles(soMeta.sha256, `SHA-256 ${soMeta.etiqueta}`);
+        });
+        shaHead.appendChild(btnCopySha);
+        const shaCode = crearEl("code", "os-sha-code", soMeta.sha256);
+        shaCode.setAttribute("data-modal-sha256", soMeta.id);
+        const verifyCmd = crearEl("code", "os-verify-cmd", soMeta.comandoSha256);
+        shaBox.appendChild(shaHead);
+        shaBox.appendChild(shaCode);
+        shaBox.appendChild(verifyCmd);
+
         const lista = crearEl("ul", "plan-list");
         soMeta.pasos.forEach((p) => lista.appendChild(crearEl("li", "ok", p)));
 
         const notaEdicion = crearEl(
             "div",
             "enterprise-lan-notice",
-            "Incluye evaluación gratuita de 14 días (hasta 2 RUCs y 15 líneas en Consulta Masiva, sin tarjeta). Si ya adquiriste tu licencia, ingresa tu código HWID y carga el archivo .lic en Activar Licencia."
+            "Incluye 15 días de evaluación gratuita con hasta 60 RUCs (modalidad Estudio Contable Pro, sin tarjeta de crédito). Comprueba el hash SHA-256 antes de instalar; si ya adquiriste tu licencia, carga tu archivo .lic en Activar Licencia."
         );
 
         const btnDownload = crearEl("a", "btn-glow", `⬇ Descargar ${soMeta.archivo}`);
@@ -886,6 +911,7 @@
         asignarEnlaceSeguro(btnDownload, soMeta.url, "download_release");
 
         content.appendChild(metaBox);
+        content.appendChild(shaBox);
         content.appendChild(lista);
         content.appendChild(notaEdicion);
         content.appendChild(btnDownload);
@@ -1245,7 +1271,7 @@
 
         const rulesBox = crearEl("div", "rules-box");
         [
-            "✓ 14 días de evaluación gratuita sin tarjeta de crédito.",
+            "✓ 15 días de evaluación gratuita con hasta 60 RUCs (Estudio Contable Pro, sin tarjeta).",
             "✓ Licencia anual por 365 días vinculada a tu equipo.",
             "✓ Actualizaciones ante cambios del SRI incluidas por 1 año.",
             "✓ Sellado ético: cada RUC se sella tras su primera descarga real.",
@@ -1478,12 +1504,13 @@
             }
         }
 
-        // Neutraliza cualquier enlace directo en móviles/iPadOS y en escritorio vincula solo sin exponer GitHub en texto
+        // Neutraliza cualquier enlace directo en móviles/iPadOS y en escritorio vincula al release oficial v2.4.0
         document.querySelectorAll("[data-download-os]").forEach((el) => {
             if (el instanceof HTMLAnchorElement) {
                 if (soInfo.esMovil || !soInfo.soportado) {
                     el.setAttribute("href", "#descargas");
                     el.removeAttribute("download");
+                    el.removeAttribute("data-tf-canal-seguro");
                 } else {
                     const targetOs = el.getAttribute("data-download-os");
                     const key =
@@ -1491,11 +1518,33 @@
                             ? targetOs
                             : soInfo.instaladorId || "windows";
                     const meta = SO_LOOKUP[key];
-                    if (meta) {
-                        el.setAttribute("href", "#descargas");
-                        el.removeAttribute("data-tf-canal-seguro");
+                    if (meta && esUrlDescargaOficialSegura(meta.url)) {
+                        el.setAttribute("href", meta.url);
+                        el.setAttribute("download", meta.archivo);
+                        el.setAttribute("data-tf-canal-seguro", "download_release");
                     }
                 }
+            }
+        });
+
+        document.querySelectorAll("[data-sha256-value]").forEach((el) => {
+            const key = el.getAttribute("data-sha256-value");
+            if (key && esClaveSegura(key) && SO_LOOKUP[key]) {
+                el.textContent = SO_LOOKUP[key].sha256;
+            }
+        });
+
+        document.querySelectorAll("[data-sha256-copy]").forEach((btn) => {
+            if (btn instanceof HTMLElement && !btn.dataset.shaBound) {
+                btn.dataset.shaBound = "1";
+                btn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const key = btn.getAttribute("data-sha256-copy");
+                    if (key && esClaveSegura(key) && SO_LOOKUP[key]) {
+                        copiarAlPortapapeles(SO_LOOKUP[key].sha256, `SHA-256 ${SO_LOOKUP[key].etiqueta}`);
+                    }
+                });
             }
         });
     }
@@ -1546,19 +1595,19 @@
             const horasAhorradasAnio = horasAhorradasMes * 12;
 
             let planId = "PERSONAL_PRO";
-            let motivo = "Ideal para gestionar hasta 3 RUCs en 1 PC con bóveda local cifrada AES-256.";
+            let motivo = "Hasta 3 RUCs en 1 PC con sincronización SRI/RIDE/XML y bóveda local cifrada AES-256.";
             if (rucs > 3 && rucs <= 25) {
                 planId = "CONTADOR_MASTER";
-                motivo = "Cubre hasta 25 RUCs en 1 PC con descarga Multi-RUC y Generador ATS XML/XSD oficial.";
+                motivo = "Hasta 25 RUCs en 1 PC con Lote Multi-RUC y Generador/Validador oficial ATS (XML/XSD/Excel).";
             } else if (rucs > 25 && rucs <= 60) {
                 planId = "ESTUDIO_PRO";
-                motivo = "Hasta 60 RUCs totales (30 por PC en 2 PCs o 60 en 1 PC) + Auditor Fantasma SRI + 200 líneas masivas.";
+                motivo = "Hasta 60 RUCs (o 30/PC en hasta 2 PCs), Auditor Fantasma EFOS, Contingencia ATS y respaldo .tfbkp (AES-256-GCM + HMAC).";
             } else if (rucs > 60 && rucs <= 100) {
                 planId = "ENTERPRISE_TEAM";
-                motivo = "RUCs Ilimitados, Consulta Masiva sin límite y 5 PCs en Red Local LAN + VPN Multi-HWID.";
+                motivo = "RUCs ilimitados, 5 estaciones base, Red LAN TCP/IP centralizada anti-colisión y Bóveda Compartida UNC.";
             } else if (rucs > 100) {
                 planId = "ENTERPRISE_CORP";
-                motivo = "RUCs Ilimitados, 10 PCs base (+$150/PC adicional sin límite) y Multi-Sucursal Nacional HTTPS/VPN.";
+                motivo = "RUCs ilimitados, 10+ estaciones escalables (+$150/PC extra) y Conector Multi-Regional HTTPS / Gateway seguro.";
             }
 
             const planMeta = PLAN_LOOKUP[planId];
